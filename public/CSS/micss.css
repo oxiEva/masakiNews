@@ -1,0 +1,16 @@
+.sections-navbar ul li a {
+  display: flex;
+  position: relative;
+  text-decoration: none;
+  color: red;
+  list-style-type: none;
+}
+
+.nav-item {
+  text-decoration: none;
+}
+
+.nav-link ul li a {
+  text-decoration: none;
+  list-style-type: none;
+}
