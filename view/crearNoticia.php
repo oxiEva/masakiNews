@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <?php include '../View/Includes/header.php'; ?>
+    <?php include '../view/Includes/header.php'; ?>
     <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
 
 

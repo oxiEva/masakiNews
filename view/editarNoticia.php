@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
- <?php include '../View/Includes/header.php'; ?>
+ <?php include '../view/Includes/header.php'; ?>
     <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
 
 
@@ -73,10 +73,10 @@
                     <div class="form-group">
                         <label for="seleccionSeccion">Selecciona la sección</label>
                         <select class="form-control" id="seleccionSeccion">
-                            <option>Actualidad</option>
-                            <option>Política</option>
-                            <option>Cultura</option>
-                            <option>Deportes</option>
+                            <option label="actualidad">Actualidad</option>
+                            <option label="politica">Política</option>
+                            <option label="cultura">Cultura</option>
+                            <option label="deportes">Deportes</option>
 
                         </select>
                     </div>
@@ -101,19 +101,14 @@
                         <input type="text" class="form-control" id="autorNoticia" required data-validation-required-message="Autor notícia">
                     </div>
                 </div>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <input type="checkbox" aria-label="Publicada" value="Publicada">
-                        </div>
-                    </div>
-                    <input type="text" class="form-control" aria-label="Publicada" value="Publicada">
-                </div>
+
 
 
                 <div id="success"></div>
                 <!-- For success/fail messages -->
                 <button type="submit" class="btn btn-primary" id="guardarNoticia">Guardar notícia</button>
+
+                <button type="submit" class="btn btn-primary" id="guardarNoticia">Publicar notícia</button>
             </form>
         </div>
 

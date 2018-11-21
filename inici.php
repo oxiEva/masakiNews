@@ -29,13 +29,13 @@
           <div class="collapse navbar-collapse" id="navbarResponsive">
               <ul class="navbar-nav ml-auto">
                   <li class="nav-item">
-                      <a class="nav-link" href="View/registro.php">Registrar</a>
+                      <a class="nav-link" href="view/registro.php">Registrar</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="View/login.php">Login</a>
+                      <a class="nav-link" href="view/login.php">Login</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="View/logout.php">Logout</a>
+                      <a class="nav-link" href="view/logout.php">Logout</a>
                   </li>
               </ul>
           </div>
@@ -47,7 +47,7 @@
           <div class="collapse navbar-collapse" id="navbarResponsive2">
               <ul class="navbar-nav ml-auto">
                   <li class="nav-item">
-                      <a class="nav-link" href="inici.html">Actualidad</a>
+                      <a class="nav-link" href="actualidad.html">Actualidad</a>
                   </li>
                   <li class="nav-item">
                       <a class="nav-link" href="politica.html">Política</a>
@@ -218,7 +218,7 @@
     <!-- /.container -->
 
 
-    <?php include 'View/Includes/footer.php';?>
+    <?php include 'view/Includes/footer.php';?>
 
     <!-- Bootstrap core JavaScript -->
     <script src="public/jquery/jquery.min.js"></script>

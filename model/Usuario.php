@@ -6,7 +6,7 @@
  * Time: 11:47
  */
 
-class Usuario
+class Usuario extends EntidadBase
 {
     private $id;
     private $username;
@@ -92,6 +92,25 @@ class Usuario
     public function setIdtipousuario($idtipousuario)
     {
         $this->idtipousuario = $idtipousuario;
+    }
+
+    public function __construct($adapter) {
+        $table="usuarios";
+        parent::__construct($table, $adapter);
+    }
+
+
+    public function save(){
+        $query="INSERT INTO usuarios (id,username,password,nombre,idtipousuario)
+                VALUES(NULL,
+                       '".$this->id."',
+                       '".$this->username."',
+                       '".$this->password."',
+                       '".$this->nombre."',
+                       '".$this->idtipousuario."');";
+        $save=$this->db()->query($query);
+        //$this->db()->error;
+        return $save;
     }
 
 

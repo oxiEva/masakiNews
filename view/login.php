@@ -7,7 +7,7 @@
 <html>
 <head>
     <title>Login</title>
-    <?php include '../View/Includes/header.php';
+    <?php include '../view/Includes/header.php';
 ?>
 
 </head>
@@ -31,13 +31,9 @@
                                 <label for="contraseña">Contraseña:</label>
                                 <input type="password" class="form-control" name="contraseña" placeholder="Clave *" value="" />
                             </div>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox"> Recordar
-                                </label>
-                            </div>
+
                             <div class="form-group">
-                                <input type="submit" class="btnSubmit" value="Entrar" />
+                                <input type="submit" class="btn btn-primary" value="Entrar" />
                             </div>
                             <div class="form-group">
                                 <a href="registro.php" class="Register">¿Quieres registrarte? </a>
