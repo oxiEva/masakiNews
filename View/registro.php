@@ -1,25 +1,21 @@
-<?php   if (isset ($contexto['mensaje'])) {
-            echo $contexto['mensaje'];
-        }
-        
-?>
+<?php
+/*Establir la connexio*/
+require_once "../Classes/Conexion.php";
 
+
+/*Carregar les classes q necessitem*/
+require_once "../Model/Usuario.php";
+require_once "../Model/TipoUsuario.php";
+
+/*Reanudem la sessió*/
+session_start();
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="../../css/modern-business.css" rel="stylesheet">
-
-    <!-- Mi css -->
-    <link href="../../css/micss.css" rel="stylesheet">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="assets/jquery.validate.min.js"></script>
+    <title>Registro</title>
+    <?php include '../View/Includes/header.php'; ?>
 
 </head>
 
@@ -28,47 +24,85 @@
         <div class="row">
             <div class="col-lg-8 mb-4">
 
-            <!-- Registro -->
-            <div class="container login-container">
-                <div class="row">
-                    <div class="col-md-6 login-form-1">
-                        <h3>Registrar</h3>
-                        <form method="post" action="" id="formularioRegistro" >
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Nombre *" value="" />
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Apellidos *" value="" />
-                            </div>
-                            <div class="form-group">
-                                <select class="form-control" id="sel1">
-                                    <option selected disabled>Rol *</option>
-                                    <option>Administrador</option>
-                                    <option>Periodista</option>
-                                    <option>Editor</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Usuario *" value="" />
-                            </div>
-                            <div class="form-group">
-                                <input type="password" name="password" class="form-control" placeholder="Clave *" value="" />
-                            </div>
-                            <div class="form-group">
-                                <input type="password" name="cpassword" class="form-control" placeholder="Repetir clave *" value="" />
-                            </div>
-                            
-                            <div class="form-group">
-                                <input type="submit" class="btnSubmit" value="Registrar" id="registrar"/>
-                            </div>
-                        </form>
+                <!-- Registro -->
+                <div class="container login-container">
+                    <div class="row">
+                        <div class="col-md-6 login-form-1">
+                            <h3>Registrar</h3>
+<?php
+
+/*Creem un tipodeusuari*/
+$tipoUsuario = new TipoUsuario();
+
+/*Comprovem que el botó submit cliqui*/
+$usuari = new Conexion();
+if(isset($_POST['registrar'] )) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $nombre = $_POST['nombre'];
+    $idtipousuario = $_POST['idtipousuario'];
+    $confirmPassword = $_POST['reppassword'];
+
+    /*var_dump($rol); exit();*/
+
+
+    if ($_POST['password'] == $_POST['reppassword']) {
+        $usuari->query('INSERT INTO usuarios (username, password, nombre, idtipousuario)
+ VALUES (:username, :password, :nombre, :idtipousuario)');
+        $usuari->bind(':username', $username);
+        $usuari->bind(':password', $password);
+        $usuari->bind(':nombre', $nombre);
+        $usuari->bind(':idtipousuario', $idtipousuario);
+        $usuari->execute();
+
+        echo $username . $password . '<br>' . '<h2>Usuario registrado</h2>';
+        header('location: ../View/confirmacionAdmin.php');
+    } else {
+        echo '<h2>La contraseña no coincide</h2>';
+    }
+
+
+}
+?>
+
+                            <form method="post" action="<?php $_SERVER['PHP_SELF']  ?>" id="formularioRegistro" >
+                                <div class="form-group">
+                                    <label for="username">Username:</label>
+                                    <input type="text" class="form-control" name="username" placeholder="" value="" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Contraseña:</label>
+                                    <input type="password" class="form-control" name="password" placeholder="" value="" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="reppassword">Repetir contraseña:</label>
+                                    <input type="password" name="reppassword" class="form-control" placeholder="" value="" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="nombre">Nombre completo: </label>
+                                    <input name="nombre" type="text" class="form-control" placeholder="" value="" />
+                                </div>
+
+                                <div class="form-group">
+                                    <select class="form-control" id="sel1" name="idtipousuario">
+                                        <option selected disabled>Rol </option>
+                                        <option label="Administrador"<?php if($tipoUsuario->getId() == 1) ?> value="Administrador">>Administrador</option>
+                                        <option label="Periodista" <?php if($tipoUsuario->getId() == 2) ?> value="Periodista"> Periodista</option>
+                                        <option label="Editor" <?php if($tipoUsuario->getId() == 3) ?> value="Editor"> Editor</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-primary" name="registrar" value="Registrar" id="registrar"/>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-        <script>
+        <!--<script>
 
          $("#formularioRegistro").validate({
 
@@ -99,7 +133,7 @@
             
         })
 
-        </script>
+        </script>-->
 </body>
 
 
