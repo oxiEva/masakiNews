@@ -1,0 +1,4 @@
+<?php
+/**
+Buscador de noticies
+ */

@@ -218,7 +218,7 @@
     <!-- /.container -->
 
 
-    <?php include 'View/Includes/footer.php';?>
+    <?php include 'View/Includes/footer.html';?>
 
     <!-- Bootstrap core JavaScript -->
     <script src="public/jquery/jquery.min.js"></script>

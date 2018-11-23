@@ -15,7 +15,7 @@ session_start();
 <html>
 <head>
     <title>Registro</title>
-    <?php include '../View/Includes/header.php'; ?>
+    <?php include '../View/Includes/header.html'; ?>
 
 </head>
 

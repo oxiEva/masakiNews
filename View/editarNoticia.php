@@ -6,13 +6,14 @@
 <!DOCTYPE html>
 <html>
 <head>
- <?php include '../View/Includes/header.php'; ?>
+ <?php include '../View/Includes/header.html'; ?>
     <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
 
 
 </head>
 <body>
 <div class="container">
+    <?php include '../View/Includes/adminNav.html'; ?>
     <div class="row">
         <div class="col-lg-8 mb-4">
 

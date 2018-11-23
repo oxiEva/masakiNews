@@ -6,7 +6,7 @@ require_once "../Classes/Conexion.php";
 <html>
 <head>
     <title>Login</title>
-    <?php include '../View/Includes/header.php';
+    <?php include '../View/Includes/header.html';
 ?>
 
 </head>

@@ -1,4 +1,5 @@
 <?php
+require_once '../Classes/Conexion.php';
 try{
 
     $base = new PDO("mysql:dbname=periodico;host=localhost", "root", "oxieva");
@@ -16,17 +17,21 @@ try{
     $resultat->execute();
 
     $numRegistre = $resultat->rowCount();
+    $userData = reset($resultat->fetchAll());
 
     if($numRegistre != 0){
         /*Si l'usuari es troba a la base d dates, creem sessió*/
         session_start();
-        $_SESSION['username'] = $_POST['password'];
-        header("location: ../View/crearNoticia.php");
+        $_SESSION['username'] = $_POST['username'];
+       /* $_SESSION['password'] = $_POST['password'];
+        $_SESSION['tipousuario'] = $userData['tipousuario'];*/
+
+        header("location: ../View/accionesNoticia.php");
     } else {
 
         /*Redirigim al mateix form*/
-        header("location: ../View/login.php");
-
+        header("location: ../View/registro.php");
+        /*Tirar un missatge abansd que login incorrecte*/
 
         echo "<h2>Usuario no registrado</h2>";
     }
