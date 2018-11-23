@@ -8,6 +8,17 @@
 </head>
 <body>
 <div class="container">
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">Menú administración
+        <small>Acciones</small>
+    </h1>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="accionesNoticia.php">Admin</a>
+        </li>
+        <li class="breadcrumb-item active"></li>
+    </ol>
 <!-- New Form -->
 <div class="row">
     <div class="col-lg-8 mb-4">

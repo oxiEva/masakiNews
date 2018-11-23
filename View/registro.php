@@ -43,7 +43,7 @@ if(isset($_POST['registrar'] )) {
     $idtipousuario = $_POST['idtipousuario'];
     $confirmPassword = $_POST['reppassword'];
 
-    /*var_dump($rol); exit();*/
+
 
 
     if ($_POST['password'] == $_POST['reppassword']) {
@@ -86,9 +86,10 @@ if(isset($_POST['registrar'] )) {
                                 <div class="form-group">
                                     <select class="form-control" id="sel1" name="idtipousuario">
                                         <option selected disabled>Rol </option>
-                                        <option label="Administrador"<?php if($tipoUsuario->getId() == 1) ?> value="Administrador">>Administrador</option>
-                                        <option label="Periodista" <?php if($tipoUsuario->getId() == 2) ?> value="Periodista"> Periodista</option>
-                                        <option label="Editor" <?php if($tipoUsuario->getId() == 3) ?> value="Editor"> Editor</option>
+                                        <option label="Administrador" value="1">Administrador</option>
+
+                                        <option label="Periodista" value="2"> Periodista</option>
+                                        <option label="Editor" value="3"> Editor</option>
                                     </select>
                                 </div>
 
