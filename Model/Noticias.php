@@ -1,10 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: eva
- * Date: 18/11/18
- * Time: 11:50
- */
+
+/*Establir la connexio*/
+require_once "../Classes/Conexion.php";
 
 class Noticias
 {
@@ -194,6 +191,23 @@ class Noticias
     public function setFechaPublicacion($fechaPublicacion)
     {
         $this->fechaPublicacion = $fechaPublicacion;
+    }
+
+    public function listarAllNews()
+    {
+        $conexion = new Conexion;
+        $query = "SELECT * FROM noticias JOIN usuarios ON noticias.autor = usuarios.nombre" ;
+        $result= $conexion->query($query); 
+        return $result;
+    }
+
+    public function listarUserNews()
+    {
+        $conexion = new Conexion;
+        $query = "SELECT * FROM noticias JOIN usuarios ON noticias.autor = usuarios.nombre 
+            WHERE usuarios.username = '$_SESSION[username]'";
+        $result= $conexion->query($query); 
+        return $result;
     }
 
 }
