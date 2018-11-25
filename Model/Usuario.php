@@ -1,10 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: eva
- * Date: 18/11/18
- * Time: 11:47
- */
+
+/*Establir la connexio*/
+require_once "../Classes/Conexion.php";
 
 class Usuario
 {
@@ -92,6 +89,14 @@ class Usuario
     public function setIdtipousuario($idtipousuario)
     {
         $this->idtipousuario = $idtipousuario;
+    }
+
+    public function listar()
+    {
+        $conexion = new Conexion;
+        $query = "SELECT * FROM usuarios"; 
+        $result= $conexion->query($query); 
+        return $result;
     }
 
 
