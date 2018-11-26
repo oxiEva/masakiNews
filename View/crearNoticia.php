@@ -12,7 +12,7 @@
 <!-- New Form -->
 <div class="row">
     <div class="col-lg-8 mb-4">
-        <h3>Crea tu notícia</h3>
+        <h3>Crea tu noticia</h3>
         <form name="sentMessage" id="contactForm" action="">
             <div class="control-group form-group">
                 <div class="controls">
@@ -32,7 +32,7 @@
 
             <div class="control-group form-group">
                 <div class="controls">
-                    <label for="texto">Texto notícia</label>
+                    <label for="texto">Texto noticia:</label>
                     <textarea  rows="10" cols="100" class="form-control" id="textoNoticia" required data-validation-required-message="Texto notícia"
                               name=" texto editor1">
 
@@ -85,7 +85,7 @@
             <!-- For success/fail messages -->
             <button type="submit" class="btn btn-primary" id="guardarNoticia">Guardar notícia</button>
 
-            <button type="submit" class="btn btn-primary" id="modificarNoticia">Modificar notícia</button>
+            <!--<button type="submit" class="btn btn-primary" id="modificarNoticia">Modificar notícia</button>-->
         </form>
     </div>
 

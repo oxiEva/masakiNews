@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: eva
- * Date: 18/11/18
- * Time: 11:54
- */
+require_once '../Classes/Conexion.php';
 
 class TipoUsuario
 {
@@ -44,21 +39,29 @@ class TipoUsuario
         $this->tipoUsuarios = $tipoUsuarios;
     }
 
-   /* public function rolCrear($id){
-        switch ($id){
-            case 1:
-                $this->setTipoUsuarios('ADMINISTRADOR');
-                break;
+    public function __construct($username = null)
+    {
+        if($username != null)
+        {
+            $conexion = new Conexion();
 
-            case 2:
-                $this->setTipoUsuarios('PERIODISTA');
-                break;
+            $consulta = $conexion->prepare('SELECT idtipousuario FROM usuarios WHERE username= :username');
+            $consulta->bindParam(':username', $username);
+            $consulta->execute();
 
-            case 3:
-                $this->setTipoUsuarios('EDITOR');
-                break;
+            $registro = $consulta->fetch();
+
+            if ($registro){
+                $this->setTipoUsuarios($username);
+                echo 'Hola';
+                return $this;
+            }
+
 
         }
-    }*/
+        /*Si el tipo usuari no estroba a la bd*/
+        throw new Exception("Este tipo de usuario no se encuentra en nuestra base de datos. Not found",404);
+    }
+
 
 }

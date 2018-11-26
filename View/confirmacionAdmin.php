@@ -14,9 +14,9 @@ require_once "../Classes/Conexion.php";
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-lg-8 mb-4">
+        <div class="col-lg-8 mb-4" style="margin-top: 50px; color: green">
 
-            <h3>Registrado correctamente,en breve recibirás un correo de la administración </h3>
+            <h3>Registrado correctamente,en breve recibirás un correo de la administración con tus credenciales. </h3>
         </div>
     </div>
 

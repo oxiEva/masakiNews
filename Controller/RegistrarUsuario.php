@@ -1,5 +1,4 @@
 <?php
-
 /*Establir la connexio*/
 require_once "../Classes/Conexion.php";
 
@@ -16,13 +15,13 @@ if(isset($_POST['registrar'] )) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $nombre = $_POST['nombre'];
-    $idtipousuaurio = $_POST['rol'];
+    $idtipousuaurio = $_POST['idtipousuario'];
     $confirmPassword = $_POST['reppassword'];
 
 
     if ($_POST['password'] == $_POST['reppassword']) {
         $usuari->query('INSERT INTO usuarios (username, password, nombre, idtipousuario)
- VALUES (:username, :password, :nombre, :idtipousuario)');
+ VALUES (:username, :password, :nombre, (SELECT `idtipousuario` FROM `tipousuarios` WHERE :idtipousuario))');
         $usuari->bind(':username', $username);
         $usuari->bind(':password', $password);
         $usuari->bind(':nombre', $nombre);
