@@ -24,7 +24,14 @@ try{
         session_start();
         $_SESSION['username'] = $_POST['username'];
        /* $_SESSION['password'] = $_POST['password'];*/
-        $_SESSION['tipousuario'] = $_POST['tipousuario'];
+
+
+        $_SESSION['rol'] = ($userData['idtipousuario']);
+
+        /*Per fer que el idtipoUsuari sigui un integer*/
+        $numTipoRol = (int)($userData['idtipousuario']);
+
+        /*var_dump($numTipoRol); exit();*/
 
         header("location: ../View/accionesNoticia.php");
     } else {

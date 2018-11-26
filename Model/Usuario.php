@@ -100,6 +100,36 @@ class Usuario
     }
 
 
+    /*relacioUsernameIdTipoUsuario*/
+    /*public function __construct($username = null)
+    {
+        if($username != null)
+        {
+            $conexion = new Conexion();
+
+            $consulta = $conexion->prepare('SELECT idtipousuario FROM usuarios WHERE username= :username');
+            $consulta->bindParam(':username', $username);
+            $consulta->execute();
+
+            $registro = $consulta->fetch();
+
+            if ($registro){
+               $this->setUsername($username);
+               $this->setPassword($registro['password']);
+               $this->setNombre($registro['nombre']);
+               $this->setIdtipousuario($registro['idtipousuario']);
+
+               return $this;
+            }
+
+
+        }
+        ///*Si el tipo usuari no estroba a la bd
+        throw new Exception("Este tipo de usuario no se encuentra en nuestra base de datos. Not found",404);
+    }*/
+
+
+
 
 
 }

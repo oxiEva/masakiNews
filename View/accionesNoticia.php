@@ -30,16 +30,6 @@ session_start();
 
         $username = $_SESSION['username'];
 
-        $rolusuari = new TipoUsuario($username);
-
-        $rolusuari = $this->getTipoUsuarios();
-
-        var_dump($rolusuari); exit();
-
-
-
-
-
 
         header("location: login.php");
     }
@@ -48,7 +38,7 @@ session_start();
     <div class="row">
         <div class="col-lg-8 mb-4">
             <?php
-            echo "<h2>Hola " . $_SESSION['username'] . $_SESSION['tipousuario'] . " , qué deseas hacer?</h2>" ;
+            echo "<h2>Hola " . $_SESSION['username'] . " Tu rol es " .  $_SESSION['rol'] ." , qué deseas hacer?</h2>" ;
 
             ?>
 

@@ -39,7 +39,7 @@ class TipoUsuario
         $this->tipoUsuarios = $tipoUsuarios;
     }
 
-    public function __construct($username = null)
+   /* public function __construct($username = null)
     {
         if($username != null)
         {
@@ -52,16 +52,17 @@ class TipoUsuario
             $registro = $consulta->fetch();
 
             if ($registro){
-                $this->setTipoUsuarios($username);
+                $this->getId();
+                var_dump($this->getId()); exit();
                 echo 'Hola';
                 return $this;
             }
 
 
         }
-        /*Si el tipo usuari no estroba a la bd*/
+        ///*Si el tipo usuari no estroba a la bd
         throw new Exception("Este tipo de usuario no se encuentra en nuestra base de datos. Not found",404);
-    }
+    }*/
 
 
 }
