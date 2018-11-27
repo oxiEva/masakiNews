@@ -1,6 +1,7 @@
 <?php
 /*Establir la connexio*/
 require_once "../Classes/Conexion.php";
+require_once "../Model/Usuario.php";
 
 /*Reanudem la sessió*/
 session_start();
@@ -20,6 +21,16 @@ session_start();
         <?php include '../View/Includes/adminNav.html'; ?>
         
         <!-- Users List -->
+
+        <?php 
+        if (isset($_SESSION['username']) && isset($_SESSION['rol'])){
+
+            $usuario = new Usuario();
+            $listarUsuarios = $usuario->listar();
+            var_dump ($listarUsuarios);
+        }
+        
+        ?>
 
         <div class="mb-4" id="accordion" role="tablist">
             <div class="card">

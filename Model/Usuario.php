@@ -93,10 +93,15 @@ class Usuario
 
     public function listar()
     {
-        $conexion = new Conexion;
+        $conexion = new Conexion();
         $query = "SELECT * FROM usuarios"; 
-        $result= $conexion->query($query); 
-        return $result;
+        $result = $conexion->query($query);
+
+        $result->bind($param, $value, $type = null);
+        $result->execute();
+        var_dump ($result);
+        $lista = $result->resultSet();
+        return $lista;
     }
 
 

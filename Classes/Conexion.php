@@ -10,7 +10,7 @@ class Conexion extends PDO
 {
     private $host = 'localhost';
     private $user = 'root';
-    private $pass = 'oxieva';
+    private $pass = '';
     private $dname = 'periodico';
 
     /*Manejador de la BD*/
