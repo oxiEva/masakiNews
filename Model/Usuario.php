@@ -108,7 +108,7 @@ class Usuario extends PDO
         $result->bind(":idtipousuario",$idtipousuario);
         $result->execute();
         var_dump($result);
-        while($fila = $result->fetch_objetct("Usuario")) {
+        while($fila = $result->fetch_object("Usuario")) {
             echo $fila->mostrarDatos();
         }
         

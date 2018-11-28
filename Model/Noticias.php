@@ -197,8 +197,12 @@ class Noticias
     {
         $conexion = new Conexion;
         $query = "SELECT * FROM noticias JOIN usuarios ON noticias.autor = usuarios.nombre" ;
-        $result= $conexion->query($query); 
+        $result= $conexion->query($query);
         return $result;
+
+        while ($fila = $result->fetch_assoc()) {
+            echo "ID: " . $fila['idnoticia'] . ", Nombre: " . $fila['autor'] . ", Título: " . $fila['titulo'] . "<br>";
+        }
     }
 
     public function listarUserNews()
@@ -206,8 +210,11 @@ class Noticias
         $conexion = new Conexion;
         $query = "SELECT * FROM noticias JOIN usuarios ON noticias.autor = usuarios.nombre 
             WHERE usuarios.username = '$_SESSION[username]'";
-        $result= $conexion->query($query); 
+        $result= $conexion->query($query);
         return $result;
-    }
 
+        while ($fila = $result->fetch_assoc()) {
+            echo "ID: " . $fila['idnoticia'] . ", Nombre: " . $fila['autor'] . ", Título: " . $fila['titulo'] . "<br>";
+        }
+    }
 }

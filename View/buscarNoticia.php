@@ -1,8 +1,7 @@
 <?php
-/*    if (isset($contexto['mensaje'])){
-        echo $contexto['mensaje'];
-    }
-*/?>
+/*Establir la connexio*/
+require_once "../Classes/Conexion.php";
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,20 +18,30 @@
 
             <!-- Search Widget -->
             <div class="card mb-4">
-                <h5 class="card-header">Buscador news</h5>
+                <h5 class="card-header">Buscador de noticias</h5>
                 <div class="card-body">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Buscar...">
                         <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="button">Go!</button>
-                </span>
+                            <button class="btn btn-secondary" name="busqueda" type="button" onclick="buscar()">Go!</button>
+                        </span>
                     </div>
                 </div>
             </div>
 
-
-
-
+            <?php /*
+            function buscar()
+            {
+                $conexion = new Conexion();
+                $query = "SELECT * FROM noticias WHERE titulo LIKE '%$busqueda%' OR autor LIKE '%$busqueda% ";
+                $result= $conexion->query($query);
+                return $result;
+        
+                while ($fila = $result->fetch_assoc()) {
+                    echo "ID: " . $fila['idnoticia'] . ", Nombre: " . $fila['autor'] . ", Título: " . $fila['titulo'] . "<br>";
+                }
+            }*/
+            ?> 
 
             <h3>Modifica notícia</h3>
             <form name="sentMessage" id="contactForm" action="">
