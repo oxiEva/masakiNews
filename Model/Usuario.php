@@ -3,7 +3,7 @@
 /*Establir la connexio*/
 require_once "../Classes/Conexion.php";
 
-class Usuario
+class Usuario extends PDO
 {
     private $id;
     private $username;
@@ -90,18 +90,28 @@ class Usuario
     {
         $this->idtipousuario = $idtipousuario;
     }
+    
+    public function mostrarDatos() 
+    {
+        return $this->username . ", " . $this->password . ", " . $this->nombre . ", " . $this->idtipousuario;
+    }
 
     public function listar()
     {
         $conexion = new Conexion();
         $query = "SELECT * FROM usuarios"; 
-        $result = $conexion->query($query);
-
-        $result->bind($param, $value, $type = null);
+        $result = $conexion->prepare($query);
+        var_dump($result);
+        $result->bind(":username",$username);
+        $result->bind(":password",$password);
+        $result->bind(":nombre",$nombre);
+        $result->bind(":idtipousuario",$idtipousuario);
         $result->execute();
-        var_dump ($result);
-        $lista = $result->resultSet();
-        return $lista;
+        var_dump($result);
+        while($fila = $result->fetch_objetct("Usuario")) {
+            echo $fila->mostrarDatos();
+        }
+        
     }
 
 
