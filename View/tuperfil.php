@@ -1,7 +1,4 @@
 <?php
-/**
-Serà les dades del teu registre q pots modificar
- */
 
 /*Establir la connexio*/
 require_once "../Classes/Conexion.php";
@@ -18,7 +15,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Registro</title>
+    <title>Perfil usuario</title>
     <?php include '../View/Includes/header.html'; ?>
 
 </head>
@@ -28,31 +25,33 @@ session_start();
     <div class="row">
         <div class="col-lg-8 mb-4">
 
-            <!-- Registro -->
+            <!-- Perfil -->
             <div class="container login-container">
                 <div class="row">
                     <div class="col-md-6 login-form-1">
-                        <h3>Registrar</h3>
+                        <br>
+                        <h3>Perfil de usuario</h3>
+
                         <?php
-
-                        /*Creem un tipodeusuari*/
-                        $tipoUsuario = new TipoUsuario();
-
+                        /*Cargar datos del usuario*/
+                        if(isset($_SESSION['username'])){
+                            $usuario = new Usuario();
+                           /* $usuario->buscarDatos($_SESSION['username']);
+                            Cargar formulario con datos */ 
+                        }
+                        
                         /*Comprovem que el botó submit cliqui*/
                         $usuari = new Conexion();
-                        if(isset($_POST['registrar'] )) {
+                        if(isset($_POST['modificar'] )) {
                             $username = $_POST['username'];
                             $password = $_POST['password'];
                             $nombre = $_POST['nombre'];
                             $idtipousuario = $_POST['idtipousuario'];
                             $confirmPassword = $_POST['reppassword'];
 
-
-
-
                             if ($_POST['password'] == $_POST['reppassword']) {
                                 $usuari->query('INSERT INTO usuarios (username, password, nombre, idtipousuario)
- VALUES (:username, :password, :nombre, :idtipousuario)');
+                                VALUES (:username, :password, :nombre, :idtipousuario)');
                                 $usuari->bind(':username', $username);
                                 $usuari->bind(':password', $password);
                                 $usuari->bind(':nombre', $nombre);
@@ -98,7 +97,7 @@ session_start();
                             </div>
 
                             <div class="form-group">
-                                <input type="submit" class="btn btn-primary" name="registrar" value="Registrar" id="registrar"/>
+                                <input type="submit" class="btn btn-primary" name="modificar" value="Modificar" id="modificarUsuario"/>
                             </div>
                         </form>
                     </div>

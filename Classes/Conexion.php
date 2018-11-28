@@ -58,7 +58,6 @@ class Conexion extends PDO
                 case is_null($value):
                     $type = PDO::PARAM_NULL;
                     break;
-
                 default:
                     $type = PDO::PARAM_STR;
 

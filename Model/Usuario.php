@@ -3,13 +3,14 @@
 /*Establir la connexio*/
 require_once "../Classes/Conexion.php";
 
-class Usuario extends PDO
+class Usuario
 {
     private $id;
     private $username;
     private $password;
     private $nombre;
     private $idtipousuario;
+
 
     /**
      * @return mixed
@@ -90,18 +91,30 @@ class Usuario extends PDO
     {
         $this->idtipousuario = $idtipousuario;
     }
+
+    public function buscarDatos($username)
+    {
+        $conexion = new Conexion();
+        $query = "SELECT * FROM usuarios WHERE username= :username'";
+        $result = $conexion->query($query);
+        $result->bind(":username",$username);
+        $result->bind(":password",$password);
+        $result->bind(":nombre",$nombre);
+        $result->bind(":idtipousuario",$idtipousuario);
+        $result->execute();
+  
+    }
     
-    public function mostrarDatos() 
+    function mostrarDatos() 
     {
         return $this->username . ", " . $this->password . ", " . $this->nombre . ", " . $this->idtipousuario;
     }
 
-    public function listar()
+    function listar()
     {
         $conexion = new Conexion();
         $query = "SELECT * FROM usuarios"; 
-        $result = $conexion->prepare($query);
-        var_dump($result);
+        $result = $conexion->query($query);
         $result->bind(":username",$username);
         $result->bind(":password",$password);
         $result->bind(":nombre",$nombre);
@@ -142,8 +155,6 @@ class Usuario extends PDO
         ///*Si el tipo usuari no estroba a la bd
         throw new Exception("Este tipo de usuario no se encuentra en nuestra base de datos. Not found",404);
     }*/
-
-
 
 
 

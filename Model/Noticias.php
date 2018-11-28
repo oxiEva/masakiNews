@@ -201,7 +201,8 @@ class Noticias
         return $result;
 
         while ($fila = $result->fetch_assoc()) {
-            echo "ID: " . $fila['idnoticia'] . ", Nombre: " . $fila['autor'] . ", Título: " . $fila['titulo'] . "<br>";
+            echo "ID: " . $fila['idnoticia'] . ", Nombre: " . $fila['autor'] . 
+            ", Título: " . $fila['titulo'] . "<br>";
         }
     }
 
@@ -214,7 +215,8 @@ class Noticias
         return $result;
 
         while ($fila = $result->fetch_assoc()) {
-            echo "ID: " . $fila['idnoticia'] . ", Nombre: " . $fila['autor'] . ", Título: " . $fila['titulo'] . "<br>";
+            echo "ID: " . $fila['idnoticia'] . ", Nombre: " . $fila['autor'] . 
+            ", Título: " . $fila['titulo'] . "<br>";
         }
     }
 }
