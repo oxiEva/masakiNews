@@ -28,13 +28,13 @@ class Noticias
     public function crearNew(){
 
         $conexion = new Conexion();
-                 $autorNoticia =$_SESSION['username'];
+        $autorNoticia =$_SESSION['username'];
 
 
         if(isset($_POST['editorNoticia'])){
             $editorNoticia = $_POST['editorNoticia'];
         }else{
-            $editorNoticia = "Rosca";
+            $editorNoticia = "Editor por defecto";
         }
 
                 $titulo = $_POST['titulo'];
@@ -48,7 +48,7 @@ class Noticias
 
         $consulta = $conexion->prepare(
             "INSERT INTO noticias 
-              (autor, 
+              (  autor,   
               editor, 
               titulo,
               idseccion, 

@@ -13,11 +13,11 @@ $errores = array();
 session_start();
 
 ///*Guardem els valors introduits en el formulari
-/*if(isset($_POST["submit"]) && $_POST(['submit'] == 'guardar')){
+if(isset($_POST["submit"]) && $_POST(['submit'] == 'guardar')){
     $novaNew = new Noticias();
     $novaNew->crearNew();
 
-    echo 'Hola, dades inser';
+    echo 'Hola, dades insertades';
 
 
     $autorNoticia =$_POST['autorNoticia'];
@@ -28,7 +28,7 @@ session_start();
     $imagen = $_POST['imagen'];
     $idSeccion = $_POST['idSeccion'];
 
-}*/
+}
 
 
 ///*Filtres php
@@ -54,12 +54,12 @@ if(isset($_POST['titulo'])) {
     $fechaModificacion = date('d-m-Y');
     $fechaPublicacion = date('d-m-Y');
 
-   /* if (empty($_POST['autorNoticia'])) {
+    /*if (empty($_POST['autorNoticia'])) {
         $errores[] = "Falta autor";
     }
     if (empty($_POST['editorNoticia'])) {
         $errores[] = "editorNoticiaes requerida";
-    }
+    }*/
 
     if (empty($_POST['titulo'])) {
         $errores[] = "titulo es requerida";
@@ -72,39 +72,12 @@ if(isset($_POST['titulo'])) {
     }
     if (empty($_POST['idSeccion'])) {
         $errores[] = "La id seccion es requerida";
-    }*/
-
-
-    if (empty($errores)) {
-
-
-        $conexion = new Conexion();
-        $consulta = $conexion->prepare("INSERT INTO noticias (titulo,idseccion, subtitulo, texto,
- imagen, fechaCreacion, fechaModificacion, fechaPublicacion) VALUES (:titulo,:idSeccion,:subtitulo,
-  :texto, :imagen, :fechaCreacion, :fechaModificacion,:fechaPublicaion)");
-
-       /* $consulta->bindParam(':autorNoticia', $autorNoticia);
-        $consulta->bindParam(':editorNoticia', $editorNoticia);*/
-        $consulta->bindParam(':titulo', $titulo);
-        $consulta->bindParam(':idseccion', $idSeccion);
-        $consulta->bindParam(':subtitulo', $subtitulo);
-        $consulta->bindParam(':imagen', $imagen);
-        $consulta->bindParam(':fechaCreacion', $fechaCreacion);
-        $consulta->bindParam(':fechaModificacion', $fechaModificacion);
-        $consulta->bindParam(':fechaPublicaion', $fechaPublicacion);
-
-        $consulta->execute();
-
-
-    } else {
-        throw new Exception("invalid request ", 400);
     }
 
 
 
+
 }
-
-
 
 
 
