@@ -36,7 +36,7 @@ session_start();
                         /*Cargar datos del usuario*/
                         if(isset($_SESSION['username'])){
                             $usuario = new Usuario();
-                           $usuario->buscarDatos($_SESSION['username']);
+                            $usuario->buscarDatos($_SESSION['username']);
                             echo "Cargar formulario con datos";
                         }
                         

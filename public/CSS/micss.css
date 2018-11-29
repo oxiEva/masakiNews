@@ -2,7 +2,7 @@
   display: flex;
   position: relative;
   text-decoration: none;
-  color: red;
+  color:red;
   list-style-type: none;
 }
 
@@ -14,3 +14,9 @@
   text-decoration: none;
   list-style-type: none;
 }
+
+.navbar-red {
+  background-color:red!important
+}
+
+.bg-red {background-color:red!important}

@@ -92,12 +92,14 @@ class Usuario
         $this->idtipousuario = $idtipousuario;
     }
 
-    public function buscarDatos($username)
+
+    function buscarDatos($username)
     {
         $conexion = new Conexion();
         $query = "SELECT * FROM usuarios WHERE username= :username'";
-        $result = $conexion->query($query);
-        $result->bind(":username",$username,PDO::PARAM_STR);
+        $result = $conexion->prepare($query);
+        var_dump($result);
+        $result->bindValue(":username",$username,PDO::PARAM_STR);
         $result->execute();
     }
     
@@ -124,8 +126,8 @@ class Usuario
     }
 
 
-    /*relacioUsernameIdTipoUsuario*/
-    /*public function __construct($username = null)
+   
+    public function __construct($username = null)
     {
         if($username != null)
         {
@@ -150,7 +152,7 @@ class Usuario
         }
         ///*Si el tipo usuari no estroba a la bd
         throw new Exception("Este tipo de usuario no se encuentra en nuestra base de datos. Not found",404);
-    }*/
+    }
 
 
 

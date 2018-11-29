@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,7 +9,7 @@
     <title>MasakiNews</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="public/CSS/modern-business.css" rel="stylesheet">
@@ -42,21 +42,21 @@
       </div>
   </nav>
 
-  <nav class="sections-navbar navbar-expand-lg navbar-red bg-light">
+  <nav class= "navbar navbar-expand-lg navbar-dark bg-danger"> 
       <div class="container">
-          <div class="collapse navbar-collapse" id="navbarResponsive2">
-              <ul class="navbar-nav ml-auto">
+          <div class="collapse navbar-collapse">
+              <ul class="navbar-nav mx-auto">
                   <li class="nav-item">
-                      <a class="nav-link" href="inici.html">Actualidad</a>
+                      <a class="nav-link" href="http://localhost/masakiNews/inici.php">Actualidad</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="politica.html">Política</a>
+                      <a class="nav-link" href="View/politica.php">Política</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="cultura.html">Cultura</a>
+                      <a class="nav-link" href="View/cultura.php">Cultura</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="deportes.html">Deportes</a>
+                      <a class="nav-link" href="View/deportes.php">Deportes</a>
                   </li>
               </ul>
           </div>

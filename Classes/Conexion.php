@@ -41,7 +41,7 @@ class Conexion extends PDO
         }
     }
 
-    public function query($query){
+    /* public function query($query){
 
         $this->stmt = $this->dbhandling->prepare($query);
     }
@@ -71,11 +71,11 @@ class Conexion extends PDO
         return $this->stmt->execute();
     }
 
-    /*Per mostrar el productes*/
+    /*Per mostrar el productes
     public function resultSet(){
         $this->execute();
         return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+    } */
 
 
 }
