@@ -41,7 +41,11 @@ if(isset($_POST['titulo'])) {
     $novaNew = new Noticias();
 
     $novaNew->crearNew();
-    echo 'Hola, dades inser';
+    echo 'Nueva noticia subida en la base de datos con éxito . <br>';
+
+    echo "<a href='../View/accionesNoticia.php'  class='register'>" . "Volver atrás" . "</a>";
+
+
     $autorNoticia = $_SESSION['username'];
 
     $editorNoticia = $_POST['editorNoticia'];
