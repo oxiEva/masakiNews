@@ -211,7 +211,7 @@ class Noticias
         $conexion = new Conexion;
         $query = "SELECT * FROM noticias JOIN usuarios ON noticias.autor = usuarios.nombre 
             WHERE usuarios.username = '$_SESSION[username]'";
-        $result= $conexion->query($query);
+        $result = $conexion->query($query);
         return $result;
 
         while ($fila = $result->fetch_assoc()) {

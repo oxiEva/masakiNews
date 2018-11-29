@@ -36,8 +36,8 @@ session_start();
                         /*Cargar datos del usuario*/
                         if(isset($_SESSION['username'])){
                             $usuario = new Usuario();
-                           /* $usuario->buscarDatos($_SESSION['username']);
-                            Cargar formulario con datos */ 
+                           $usuario->buscarDatos($_SESSION['username']);
+                            echo "Cargar formulario con datos";
                         }
                         
                         /*Comprovem que el botó submit cliqui*/

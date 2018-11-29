@@ -97,12 +97,8 @@ class Usuario
         $conexion = new Conexion();
         $query = "SELECT * FROM usuarios WHERE username= :username'";
         $result = $conexion->query($query);
-        $result->bind(":username",$username);
-        $result->bind(":password",$password);
-        $result->bind(":nombre",$nombre);
-        $result->bind(":idtipousuario",$idtipousuario);
+        $result->bind(":username",$username,PDO::PARAM_STR);
         $result->execute();
-  
     }
     
     function mostrarDatos() 
