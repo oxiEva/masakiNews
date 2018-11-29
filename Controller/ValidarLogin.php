@@ -2,7 +2,7 @@
 require_once '../Classes/Conexion.php';
 try{
 
-    $base = new PDO("mysql:dbname=periodico;host=localhost", "root", "");
+    $base = new PDO("mysql:dbname=periodico;host=localhost", "root", "oxieva");
     $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $sql = "SELECT * FROM usuarios WHERE username= :username AND password= :password";

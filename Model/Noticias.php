@@ -13,9 +13,126 @@ class Noticias
     private $texto;
     private $imagen;
     private $idseccion;
+    /*private $palabraClave;*/
     private $fechaCreacion;
     private $fechaModificacion;
     private $fechaPublicacion;
+
+
+
+    const TABLA = 'noticias';
+
+    /*Fem funció per afegir Noticia*/
+
+
+    public function crearNew(){
+
+        $conexion = new Conexion();
+                 $autorNoticia =$_SESSION['username'];
+
+
+        if(isset($_POST['editorNoticia'])){
+            $editorNoticia = $_POST['editorNoticia'];
+        }else{
+            $editorNoticia = "Rosca";
+        }
+
+                $titulo = $_POST['titulo'];
+                $subtitulo = $_POST['subtitulo'];
+                $texto= $_POST['texto'];
+                $imagen = $_POST['imagen'];
+                $idSeccion = $_POST['idSeccion'];
+        
+
+
+
+        $consulta = $conexion->prepare(
+            "INSERT INTO noticias 
+              (autor, 
+              editor, 
+              titulo,
+              idseccion, 
+              subtitulo, 
+              texto,
+              fechaCreacion, 
+              fechaModificacion, 
+              fechaPublicacion
+              ) VALUES (
+              :autorNoticia, 
+              :editorNoticia,
+              :titulo,
+              :idSeccion,
+              :subtitulo,
+              :texto,  
+              :fechaCreacion, 
+              :fechaModificacion,
+              :fechaPublicacion)"
+        );
+       // $autorNoticia = 'Rosca';
+        $consulta->bindValue(':autorNoticia', $autorNoticia);
+        //$editorNoticia = 'editor';
+        $consulta->bindValue(':editorNoticia', $editorNoticia);
+       // $titulo = 'titulo';
+        $consulta->bindValue(':titulo', $titulo);
+        //$idSeccion = 1;
+        $consulta->bindValue(':idSeccion', $idSeccion);
+       // $subtitulo = 'subtitulo';
+        $consulta->bindValue(':subtitulo', $subtitulo);
+        //$texto = 'dsadsadda';
+        $consulta->bindValue(':texto', $texto);
+        $fechaCreacion= date('y-m-d');
+        $fechaModificacion = date('y-m-d');
+        $fechaPublicacion = date('y-m-d');
+
+        $consulta->bindValue(':fechaCreacion', $fechaCreacion);
+        $consulta->bindValue(':fechaModificacion', $fechaModificacion);
+        $consulta->bindValue(':fechaPublicacion', $fechaPublicacion);
+
+
+
+        $consulta->execute();
+
+
+    }
+
+    /*Faig q el searchnew li passi el parametre idnoticia,haurem de validar q sigui periodista o admin */
+
+    public function searchNew($idNoticia = null)
+    {
+        if($idNoticia != null){
+            $conexion = new Conexion();
+            $consulta = $conexion->prepare('SELECT * FROM ' . self::TABLA . ' WHERE id = :id');
+            $consulta->bindParam(':id', $idNoticia);
+            $consulta->execute();
+
+            $registro = $consulta->fetch();
+
+            if($registro){
+                /*Tornem l'objecte de noticia*/
+                $this->setId($idNoticia);
+                $this->setAutor($registro['autorNoticia']);
+                $this->setEditor($registro['editorNoticia']);
+                $this->setTitulo($registro['titulo']);
+                $this->setSubtitulo($registro['subtitulo']);
+                $this->setTexto($registro['texto']);
+                $this->setImagen($registro['imagen']);
+                $this->setIdseccion($registro['idSeccion']);
+                $this->setFechaCreacion($fechaCreacion = date("d-m-Y"));
+                $this->setFechaModificacion($fechaModificacion= date("d-m-Y"));
+                $this->setFechaPublicacion($fechaPublicacio = date('d-m-Y'));
+
+                return $this;
+
+            }
+
+        }
+        throw new Exception("Esta noticia no se encuentra en nuestra base de datos. Not found",404);
+    }
+
+
+
+
+
 
     /**
      * @return mixed
@@ -193,7 +310,7 @@ class Noticias
         $this->fechaPublicacion = $fechaPublicacion;
     }
 
-    public function listarAllNews()
+    /*public function listarAllNews()
     {
         $conexion = new Conexion;
         $query = "SELECT * FROM noticias JOIN usuarios ON noticias.autor = usuarios.nombre" ;
@@ -208,6 +325,6 @@ class Noticias
             WHERE usuarios.username = '$_SESSION[username]'";
         $result= $conexion->query($query); 
         return $result;
-    }
+    }*/
 
 }

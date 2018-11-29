@@ -10,7 +10,7 @@ class Conexion extends PDO
 {
     private $host = 'localhost';
     private $user = 'root';
-    private $pass = '';
+    private $pass = 'oxieva';
     private $dname = 'periodico';
 
     /*Manejador de la BD*/
@@ -22,6 +22,7 @@ class Conexion extends PDO
 
     public function __construct()
     {
+
         //Set DSN, la string de la connexió
         $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dname;
         // Set Options
@@ -31,16 +32,14 @@ class Conexion extends PDO
         );
         // Create new PDO
         try{
-
-            $this->dbhandling = new PDO($dsn, $this->user, $this->pass, $options);
-
+            parent::__construct ($dsn, $this->user, $this->pass, $options);
         } catch (PDOException $e){
 
             $this->error = $e->getMessage();
 
         }
     }
-
+/*
     public function query($query){
 
         $this->stmt = $this->dbhandling->prepare($query);
@@ -72,11 +71,10 @@ class Conexion extends PDO
         return $this->stmt->execute();
     }
 
-    /*Per mostrar el productes*/
     public function resultSet(){
         $this->execute();
         return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+    }*/
 
 
 }
