@@ -101,7 +101,6 @@ class Usuario
         $result->bindParam(":username",$username,PDO::PARAM_STR);
         $result->execute();
         $array = $result->fetch(PDO::FETCH_ASSOC);
-        var_dump($array);
         return $array;
         
     }

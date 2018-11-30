@@ -36,7 +36,7 @@ session_start();
                         /*Cargar datos del usuario*/
                         if(isset($_SESSION['username'])){
                             $usuario = new Usuario($_SESSION['username']);
-                            $usuario->buscarDatos($_SESSION['username']);
+                            $datos = $usuario->buscarDatos($_SESSION['username']);
                             echo '
                             <form method="post" action="' .  $_SERVER['PHP_SELF']   .'" id="formularioPerfil" >
                             <div class="form-group">
@@ -45,17 +45,17 @@ session_start();
                             </div>
                             <div class="form-group">
                                 <label for="password">Contraseña:</label>
-                                <input type="password" class="form-control" name="password" placeholder="" value="' . $_SESSION["password"] .'" />
+                                <input type="password" class="form-control" name="password" placeholder="" value="' . $datos["password"] .'" />
                             </div>
                         
                             <div class="form-group">
                                 <label for="nombre">Nombre completo: </label>
-                                <input name="nombre" type="text" class="form-control" placeholder="" value="" />
+                                <input name="nombre" type="text" class="form-control" placeholder="" value="' . $datos["nombre"] . '" />
                             </div>
 
                             <div class="form-group">
                                 <label for="nombre">Rol id: </label>
-                                <input name="idtipousuario" type="text" class="form-control" placeholder="" value="" />
+                                <input name="idtipousuario" type="text" class="form-control" placeholder="" value="' . $datos["idtipousuario"] . '" disabled="disabled"/>
                             </div>
 
                             <div class="form-group">
@@ -83,7 +83,8 @@ session_start();
 
                                 echo $username . $password . '<br>' . '<h2>Usuario registrado</h2>';
                                 header('location: ../View/confirmacionAdmin.php');
-            
+                        
+
                         }
                         ?>
 
