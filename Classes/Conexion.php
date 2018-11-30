@@ -10,7 +10,7 @@ class Conexion extends PDO
 {
     private $host = 'localhost';
     private $user = 'root';
-    private $pass = 'oxieva';
+    private $pass = '';
     private $dname = 'periodico';
 
     /*Manejador de la BD*/
@@ -39,13 +39,8 @@ class Conexion extends PDO
 
         }
     }
-<<<<<<< HEAD
-
-    /* public function query($query){
-=======
 /*
     public function query($query){
->>>>>>> adf9a6904eb1fafe20f763263136d827084f7afd
 
         $this->stmt = $this->dbhandling->prepare($query);
     }
@@ -75,18 +70,10 @@ class Conexion extends PDO
         return $this->stmt->execute();
     }
 
-<<<<<<< HEAD
-    /*Per mostrar el productes
-    public function resultSet(){
-        $this->execute();
-        return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
-    } */
-=======
     public function resultSet(){
         $this->execute();
         return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
     }*/
->>>>>>> adf9a6904eb1fafe20f763263136d827084f7afd
 
 
 }

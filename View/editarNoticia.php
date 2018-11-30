@@ -114,7 +114,7 @@
 
                 <div id="success"></div>
                 <!-- For success/fail messages -->
-                <button type="submit" class="btn btn-primary" id="guardarNoticia">Guardar notícia</button>
+                <button type="submit" class="btn btn-info" id="guardarNoticia">Guardar notícia</button>
             </form>
         </div>
 

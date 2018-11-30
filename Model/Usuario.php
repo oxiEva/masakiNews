@@ -96,11 +96,14 @@ class Usuario
     function buscarDatos($username)
     {
         $conexion = new Conexion();
-        $query = "SELECT * FROM usuarios WHERE username= :username'";
+        $query = "SELECT * FROM usuarios WHERE username= :username";
         $result = $conexion->prepare($query);
-        var_dump($result);
-        $result->bindValue(":username",$username,PDO::PARAM_STR);
+        $result->bindParam(":username",$username,PDO::PARAM_STR);
         $result->execute();
+        $array = $result->fetch(PDO::FETCH_ASSOC);
+        var_dump($array);
+        return $array;
+        
     }
     
     function mostrarDatos() 
@@ -125,15 +128,13 @@ class Usuario
         
     }
 
-
-   
     public function __construct($username = null)
     {
         if($username != null)
         {
             $conexion = new Conexion();
 
-            $consulta = $conexion->prepare('SELECT idtipousuario FROM usuarios WHERE username= :username');
+            $consulta = $conexion->prepare('SELECT * FROM usuarios WHERE username= :username');
             $consulta->bindParam(':username', $username);
             $consulta->execute();
 
@@ -148,10 +149,9 @@ class Usuario
                return $this;
             }
 
-
         }
         ///*Si el tipo usuari no estroba a la bd
-        throw new Exception("Este tipo de usuario no se encuentra en nuestra base de datos. Not found",404);
+        throw new Exception("Este usuario no se encuentra en nuestra base de datos. Not found",404);
     }
 
 

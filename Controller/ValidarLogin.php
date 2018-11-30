@@ -2,7 +2,7 @@
 require_once '../Classes/Conexion.php';
 try{
 
-    $base = new PDO("mysql:dbname=periodico;host=localhost", "root", "oxieva");
+    $base = new PDO("mysql:dbname=periodico;host=localhost", "root", "");
     $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $sql = "SELECT * FROM usuarios WHERE username= :username AND password= :password";
@@ -23,9 +23,8 @@ try{
         /*Si l'usuari es troba a la base d dates, creem sessió*/
         session_start();
         $_SESSION['username'] = $_POST['username'];
-       /* $_SESSION['password'] = $_POST['password'];*/
-
-
+        $_SESSION['password'] = $_POST['password'];
+      
         $_SESSION['rol'] = ($userData['idtipousuario']);
 
         /*Per fer que el idtipoUsuari sigui un integer*/

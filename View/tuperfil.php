@@ -35,9 +35,34 @@ session_start();
                         <?php
                         /*Cargar datos del usuario*/
                         if(isset($_SESSION['username'])){
-                            $usuario = new Usuario();
+                            $usuario = new Usuario($_SESSION['username']);
                             $usuario->buscarDatos($_SESSION['username']);
-                            echo "Cargar formulario con datos";
+                            echo '
+                            <form method="post" action="' .  $_SERVER['PHP_SELF']   .'" id="formularioPerfil" >
+                            <div class="form-group">
+                                <label for="username">Username:</label>
+                                <input type="text" class="form-control" name="username" placeholder="" value="' . $_SESSION["username"] .'" />
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Contraseña:</label>
+                                <input type="password" class="form-control" name="password" placeholder="" value="' . $_SESSION["password"] .'" />
+                            </div>
+                        
+                            <div class="form-group">
+                                <label for="nombre">Nombre completo: </label>
+                                <input name="nombre" type="text" class="form-control" placeholder="" value="" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="nombre">Rol id: </label>
+                                <input name="idtipousuario" type="text" class="form-control" placeholder="" value="" />
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-info" name="modificar" value="Modificar" id="modificarUsuario"/>
+                            </div>
+                        </form>
+                            ';
                         }
                         
                         /*Comprovem que el botó submit cliqui*/
@@ -47,9 +72,7 @@ session_start();
                             $password = $_POST['password'];
                             $nombre = $_POST['nombre'];
                             $idtipousuario = $_POST['idtipousuario'];
-                            $confirmPassword = $_POST['reppassword'];
 
-                            if ($_POST['password'] == $_POST['reppassword']) {
                                 $usuari->query('INSERT INTO usuarios (username, password, nombre, idtipousuario)
                                 VALUES (:username, :password, :nombre, :idtipousuario)');
                                 $usuari->bind(':username', $username);
@@ -60,46 +83,10 @@ session_start();
 
                                 echo $username . $password . '<br>' . '<h2>Usuario registrado</h2>';
                                 header('location: ../View/confirmacionAdmin.php');
-                            } else {
-                                echo '<h2>La contraseña no coincide</h2>';
-                            }
-
-
+            
                         }
                         ?>
 
-                        <form method="post" action="<?php $_SERVER['PHP_SELF']  ?>" id="formularioRegistro" >
-                            <div class="form-group">
-                                <label for="username">Username:</label>
-                                <input type="text" class="form-control" name="username" placeholder="" value="" />
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Contraseña:</label>
-                                <input type="password" class="form-control" name="password" placeholder="" value="" />
-                            </div>
-                            <div class="form-group">
-                                <label for="reppassword">Repetir contraseña:</label>
-                                <input type="password" name="reppassword" class="form-control" placeholder="" value="" />
-                            </div>
-                            <div class="form-group">
-                                <label for="nombre">Nombre completo: </label>
-                                <input name="nombre" type="text" class="form-control" placeholder="" value="" />
-                            </div>
-
-                            <div class="form-group">
-                                <select class="form-control" id="sel1" name="idtipousuario">
-                                    <option selected disabled>Rol </option>
-                                    <option label="Administrador" value="1">Administrador</option>
-
-                                    <option label="Periodista" value="2"> Periodista</option>
-                                    <option label="Editor" value="3"> Editor</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="submit" class="btn btn-primary" name="modificar" value="Modificar" id="modificarUsuario"/>
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>

@@ -192,9 +192,9 @@ if(isset($_POST['titulo'])) {
 
             <div id="success"></div>
             <!-- For success/fail messages -->
-            <button type="submit" class="btn btn-primary" id="guardarNoticia" value="guardar">Guardar notícia</button>
+            <button type="submit" class="btn btn-info" id="guardarNoticia" value="guardar">Guardar notícia</button>
 
-            <!--<button type="submit" class="btn btn-primary" id="modificarNoticia">Modificar notícia</button>-->
+            <!--<button type="submit" class="btn btn-info" id="modificarNoticia">Modificar notícia</button>-->
         </form>
     </div>
 
