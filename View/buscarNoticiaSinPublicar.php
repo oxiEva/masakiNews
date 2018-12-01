@@ -16,20 +16,6 @@ if(!isset($_SESSION['username'])){
     header("location: login.php");
 }
 
-/*$_POST['autor'] = $_SESSION['username'];*/
-if(isset($_SESSION['username']) /*&& $_POST['buscar'] == 'buscar'*/){
-
-    $buscador = new BuscadorNoticias();
-    $noticiasArr = $buscador->searchNewByAutor($_SESSION['username']);
-    /*var_dump($noticiasArr); exit();*/
-    /* $_POST['autor'] = $_SESSION['username'];
-     $notDelAutor = new Noticias();
-     //*$notDelAutor->searchNewById(3);
-     $notDelAutor->searchNewByAutor($_SESSION['username']);
-     var_dump($notDelAutor); exit();*/
-
-
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -45,9 +31,8 @@ if(isset($_SESSION['username']) /*&& $_POST['buscar'] == 'buscar'*/){
     <div class="row">
         <div class="col-lg-12 mb-4">
 
-
             <!-- Search Widget -->
-            <!--<form name="searchForIdNew" method="post" id="searchForUsername" action="<?php /*echo htmlspecialchars($_SERVER['PHP_SELF']);*/?>">
+            <form name="searchForIdNew" method="post" id="searchForUsername" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
 
                 <div class="card mb-4">
                     <h5 class="card-header">Buscador news</h5>
@@ -55,12 +40,22 @@ if(isset($_SESSION['username']) /*&& $_POST['buscar'] == 'buscar'*/){
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Username" name="autor">
                             <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="submit" name="buscar" value="buscar">Buscar</button>
+                  <button class="btn btn-secondary" type="submit" name="buscar" value="buscar">Buscar por autor</button>
                 </span>
                         </div>
                     </div>
                 </div>
-            </form>-->
+            </form>
+
+            <?php
+            if(isset($_SESSION['username']) && $_POST['buscar'] == 'buscar'){
+
+                $buscador = new BuscadorNoticias();
+                $noticiasArr = $buscador->searchNewByAutor($_POST['autor']);
+
+            }
+
+            ?>
 
             <h3>Resultados de la búsqueda</h3>
 
@@ -80,6 +75,8 @@ if(isset($_SESSION['username']) /*&& $_POST['buscar'] == 'buscar'*/){
                                 <h3 class="card-subtitle"> <?php print $noticia->getSubtitulo(); ?></h3>
                                 <p class="card-text"><?php print $noticia->getTexto(); ?></p>
                                 <a href="#" class="btn btn-primary">Modifica <?php print $noticia->getId(); ?></a>
+                                <a href="#" class="btn btn-primary">Publica<?php  ?></a>
+
                             </div>
                         </div>
                     </div>
