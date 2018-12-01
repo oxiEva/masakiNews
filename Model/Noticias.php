@@ -97,13 +97,14 @@ class Noticias
 
     /*Faig q el searchnew li passi el parametre idnoticia,haurem de validar q sigui periodista o admin */
 
-    public function searchNew($idNoticia = null)
+    public function searchNewById($idNoticia = null)
     {
         if($idNoticia != null){
             $conexion = new Conexion();
-            $consulta = $conexion->prepare('SELECT * FROM ' . self::TABLA . ' WHERE id = :id');
+            $consulta = $conexion->prepare('SELECT * FROM ' . self::TABLA . ' WHERE idnoticia = :id');
             $consulta->bindParam(':id', $idNoticia);
             $consulta->execute();
+            var_dump($consulta); exit();
 
             $registro = $consulta->fetch();
 
@@ -128,7 +129,6 @@ class Noticias
         }
         throw new Exception("Esta noticia no se encuentra en nuestra base de datos. Not found",404);
     }
-
 
 
 

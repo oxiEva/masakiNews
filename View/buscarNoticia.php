@@ -1,6 +1,18 @@
 <?php
 /*Establir la connexio*/
 require_once "../Classes/Conexion.php";
+
+/*Carregar les classes q necessitem*/
+require_once "../Model/Noticias.php";
+
+/*Reanudem la sessió*/
+session_start();
+
+if(isset($_POST['buscar'])){
+    $buscarNewId = new Noticias($_POST['id']);
+    echo 'Hola q pasa';
+
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,17 +29,20 @@ require_once "../Classes/Conexion.php";
         <div class="col-lg-8 mb-4">
 
             <!-- Search Widget -->
-            <div class="card mb-4">
-                <h5 class="card-header">Buscador de noticias</h5>
-                <div class="card-body">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Buscar...">
-                        <span class="input-group-btn">
-                            <button class="btn btn-secondary" name="busqueda" type="button" onclick="buscar()">Go!</button>
-                        </span>
+            <form name="searchForIdNew" method="post" id="searchForUsername" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
+
+                <div class="card mb-4">
+                    <h5 class="card-header">Buscador news</h5>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Username">
+                            <span class="input-group-btn">
+                  <button class="btn btn-secondary" type="submit" name="buscar">Buscar</button>
+                </span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
 
             <?php /*
             function buscar()
@@ -36,15 +51,22 @@ require_once "../Classes/Conexion.php";
                 $query = "SELECT * FROM noticias WHERE titulo LIKE '%$busqueda%' OR autor LIKE '%$busqueda% ";
                 $result= $conexion->query($query);
                 return $result;
-        
+
                 while ($fila = $result->fetch_assoc()) {
                     echo "ID: " . $fila['idnoticia'] . ", Nombre: " . $fila['autor'] . ", Título: " . $fila['titulo'] . "<br>";
                 }
             }*/
-            ?> 
+            ?>
 
             <h3>Modifica notícia</h3>
             <form name="sentMessage" id="contactForm" action="">
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label for="id">Id noticia</label>
+                        <input type="text" class="form-control" name="id" value="<?php echo $buscarNewId->getId(); ?>">
+                        <p class="help-block"></p>
+                    </div>
+                </div>
                 <div class="control-group form-group">
                     <div class="controls">
                         <label>Título:</label>

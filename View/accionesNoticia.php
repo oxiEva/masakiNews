@@ -48,7 +48,7 @@ session_start();
             <div class="list-group">
                 <a href="tuperfil.php" class="list-group-item">Tu perfil de usuario</a>
                 <a href="crearNoticia.php" class="list-group-item">Crear una noticia</a>
-                <a href="buscarNoticia.php" class="list-group-item">Buscar una noticia</a>
+                <a href="buscarTusNoticias.php" class="list-group-item">Buscar tus noticias</a>
                 <!--<a href="modificarNoticia.php" class="list-group-item">Modificar</a>
                 <a href="editarNoticia.php" class="list-group-item">Editar</a>
                 <a href="publicarNoticia.php" class="list-group-item">Publicar</a>-->
