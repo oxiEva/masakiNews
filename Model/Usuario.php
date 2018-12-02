@@ -105,26 +105,13 @@ class Usuario
         
     }
     
-    function mostrarDatos() 
-    {
-        return $this->username . ", " . $this->password . ", " . $this->nombre . ", " . $this->idtipousuario;
-    }
-
-    function listar()
+    function list()
     {
         $conexion = new Conexion();
         $query = "SELECT * FROM usuarios"; 
         $result = $conexion->query($query);
-        $result->bind(":username",$username);
-        $result->bind(":password",$password);
-        $result->bind(":nombre",$nombre);
-        $result->bind(":idtipousuario",$idtipousuario);
-        $result->execute();
-        var_dump($result);
-        while($fila = $result->fetch_object("Usuario")) {
-            echo $fila->mostrarDatos();
-        }
-        
+        $dataArray=$result->fetchAll(PDO::FETCH_ASSOC);
+        return ($dataArray);  
     }
 
     public function __construct($username = null)
@@ -147,7 +134,6 @@ class Usuario
 
                return $this;
             }
-
         }
         ///*Si el tipo usuari no estroba a la bd
         throw new Exception("Este usuario no se encuentra en nuestra base de datos. Not found",404);
