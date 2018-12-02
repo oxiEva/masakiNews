@@ -41,7 +41,7 @@ session_start();
                             <form method="post" action="' .  $_SERVER['PHP_SELF']   .'" id="formularioPerfil" >
                             <div class="form-group">
                                 <label for="username">Username:</label>
-                                <input type="text" class="form-control" name="username" placeholder="" value="' . $_SESSION["username"] .'" />
+                                <input type="text" class="form-control" name="username" disabled="disabled" placeholder="" value="' . $_SESSION["username"] .'" />
                             </div>
                             <div class="form-group">
                                 <label for="password">Contraseña:</label>
@@ -68,23 +68,11 @@ session_start();
                         /*Comprovem que el botó submit cliqui*/
                         $usuari = new Conexion();
                         if(isset($_POST['modificar'] )) {
-                            $username = $_POST['username'];
                             $password = $_POST['password'];
                             $nombre = $_POST['nombre'];
-                            $idtipousuario = $_POST['idtipousuario'];
-
-                                $usuari->query('INSERT INTO usuarios (username, password, nombre, idtipousuario)
-                                VALUES (:username, :password, :nombre, :idtipousuario)');
-                                $usuari->bind(':username', $username);
-                                $usuari->bind(':password', $password);
-                                $usuari->bind(':nombre', $nombre);
-                                $usuari->bind(':idtipousuario', $idtipousuario);
-                                $usuari->execute();
-
-                                echo $username . $password . '<br>' . '<h2>Usuario registrado</h2>';
-                                header('location: ../View/confirmacionAdmin.php');
-                        
-
+                                $query = "UPDATE usuarios SET username = '$_SESSION[username]', password = '$password', nombre = '$nombre' WHERE username = '$_SESSION[username]'";
+                                $usuari->query($query);
+                                header('location: ../View/accionesNoticia.php');
                         }
                         ?>
 
