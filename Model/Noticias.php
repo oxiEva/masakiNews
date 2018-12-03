@@ -5,7 +5,7 @@ require_once "../Classes/Conexion.php";
 
 class Noticias
 {
-    private $id;
+    private $idnoticia;
     private $autor;
     private $editor;
     private $titulo;
@@ -80,8 +80,8 @@ class Noticias
         $consulta->bindValue(':subtitulo', $subtitulo);
         //$texto = 'dsadsadda';
         $consulta->bindValue(':texto', $texto);
-        $fechaCreacion= date('y-m-d');
-        $fechaModificacion = date('y-m-d');
+        $fechaCreacion= ('y-m-d');
+        $fechaModificacion = ('y-m-d');
         $fechaPublicacion = date('y-m-d');
 
         $consulta->bindValue(':fechaCreacion', $fechaCreacion);
@@ -95,59 +95,76 @@ class Noticias
 
     }
 
-    /*Faig q el searchnew li passi el parametre idnoticia,haurem de validar q sigui periodista o admin */
 
-    public function searchNewById($idNoticia = null)
+
+
+    public function updateNew($request)
     {
-        if($idNoticia != null){
-            $conexion = new Conexion();
-            $consulta = $conexion->prepare('SELECT * FROM ' . self::TABLA . ' WHERE idnoticia = :id');
-            $consulta->bindParam(':id', $idNoticia);
-            $consulta->execute();
-            var_dump($consulta); exit();
+        $idnoticia = $request['idnoticia'];
+        $idnoticia ='2';
+        /*$idnoticia = intval($this->getIdnoticia());*/
+        $autorNoticia =$request['autor'];
+        $autorNoticia = 'Buuu';
 
-            $registro = $consulta->fetch();
 
-            if($registro){
-                /*Tornem l'objecte de noticia*/
-                $this->setId($idNoticia);
-                $this->setAutor($registro['autorNoticia']);
-                $this->setEditor($registro['editorNoticia']);
-                $this->setTitulo($registro['titulo']);
-                $this->setSubtitulo($registro['subtitulo']);
-                $this->setTexto($registro['texto']);
-                $this->setImagen($registro['imagen']);
-                $this->setIdseccion($registro['idSeccion']);
-                $this->setFechaCreacion($fechaCreacion = date("d-m-Y"));
-                $this->setFechaModificacion($fechaModificacion= date("d-m-Y"));
-                $this->setFechaPublicacion($fechaPublicacio = date('d-m-Y'));
-
-                return $this;
-
-            }
-
+        if(isset($request['editor'])){
+            $editorNoticia = $request['editor'];
+        }else{
+            $editorNoticia = "Editor por defecto";
         }
-        throw new Exception("Esta noticia no se encuentra en nuestra base de datos. Not found",404);
+
+        $titulo = $request['titulo'];
+        $titulo = ' New modificadation';
+        $subtitulo = $request['subtitulo'];
+        $subtitulo = 'pq yo lo valgo';
+        $texto= $request['texto'];
+        $texto = 'jkajdwpn rwn rwe';
+        $imagen = $request['imagen'];
+        $imagen = '';
+        $idSeccion = $request['idSeccion'];
+        $fechaModificacion = $request['fechaModificacion'];
+
+        if($idnoticia){
+            $conexion = new Conexion();
+            $consulta = $conexion->prepare("UPDATE noticias SET autor = '$autorNoticia', titulo = '$titulo', subtitulo = '$subtitulo', 
+            texto = '$texto', imagen = '$imagen', fechaModificacion ='$fechaModificacion'
+            WHERE noticias.idnoticia = '$idnoticia'");
+
+            $consulta->bindParam('autor', $autorNoticia);
+            $consulta->bindParam('titulo',$titulo);
+            $consulta->bindParam('subtitulo',$subtitulo);
+            $consulta->bindParam('texto',$texto);
+            $consulta->bindParam('imagen',$imagen);
+            $consulta->bindParam('fechaModificacion',$fechaModificacion);
+
+
+            //var_dump($consulta); exit();
+            $consulta->execute();
+
+            return $this;
+
+
+        } else {
+            throw new Exception("Esta noticia no se encuentra en nuestra base de datos. Not found",404);
+        }
+
     }
-
-
-
 
 
     /**
      * @return mixed
      */
-    public function getId()
+    public function getIdnoticia()
     {
-        return $this->id;
+        return $this->idnoticia;
     }
 
     /**
-     * @param mixed $id
+     * @param mixed $idnoticia
      */
-    public function setId($id)
+    public function setIdnoticia($idnoticia)
     {
-        $this->id = $id;
+        $this->idnoticia = $idnoticia;
     }
 
     /**

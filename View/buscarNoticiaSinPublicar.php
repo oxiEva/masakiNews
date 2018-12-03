@@ -57,6 +57,9 @@ if(!isset($_SESSION['username'])){
 
             ?>
 
+            <!--Podriem fer més buscadors per id, idSeccio...-->
+            <!--El username session del que hagi pogut entrar aquí és l'editor, per tant $_POST['editor']-->
+
             <h3>Resultados de la búsqueda</h3>
 
             <?php

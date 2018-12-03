@@ -33,7 +33,7 @@ class BuscadorNoticias
                 $noticia = new Noticias();
                 
                 //assignar els valors a la noticia
-                $noticia->setId($row['id']);
+                $noticia->setIdnoticia($row['idnoticia']);
                 $noticia->setAutor($autor);
                 $noticia->setEditor($row['editor']);
                 $noticia->setTitulo($row['titulo']);
@@ -58,7 +58,50 @@ class BuscadorNoticias
         throw new Exception("Esta noticia no se encuentra en nuestra base de datos. Not found",404);
     }
 
+    public function selectNew($idnoticia = null){
 
+        if($idnoticia != null){
+            $conexion = new Conexion();
+            $consulta = $conexion->prepare('SELECT * FROM noticias WHERE idnoticia = :idnoticia');
+
+            //Sql= ('SELECT * FROM ' . self::TABLA . ' WHERE autor = :autor ORDER BY idnoticia DESC  LIMIT 0,25')*/
+            ;
+            $consulta->bindParam(':idnoticia', $idnoticia);
+            $consulta->execute();
+
+
+            $registro = $consulta->fetchAll();
+
+
+
+            foreach ($registro as $row){
+                //crear nova noticia
+                $noticia = new Noticias();
+
+                //assignar els valors a la noticia
+                $noticia->setIdnoticia($idnoticia);
+                $noticia->setAutor($row['autor']);
+                $noticia->setEditor($row['editor']);
+                $noticia->setTitulo($row['titulo']);
+                $noticia->setSubtitulo($row['subtitulo']);
+                $noticia->setTexto($row['texto']);
+                $noticia->setImagen($row['imagen']);
+                $noticia->setIdseccion($row['idseccion']);
+                $noticia->setFechaCreacion($fechaCreacion = date("d-m-Y"));
+                $noticia->setFechaModificacion($fechaModificacion= date("d-m-Y"));
+                $noticia->setFechaPublicacion($fechaPublicacio = date('d-m-Y'));
+
+
+
+            }
+
+            // retornar array de noticies
+            return $noticia;
+
+
+        }
+        throw new Exception("Esta noticia no se encuentra en nuestra base de datos. Not found",404);
+    }
 
 
     public function search()
