@@ -66,9 +66,9 @@ if(!isset($_SESSION['username'])){
 
             <?php
 
-            foreach ($noticiasArr as $noticia) {
-                //var_dump($noticiasArr); exit();
-                ?>            <div class="card mb-4">
+            foreach ($noticiasArr as $index => $noticia) {
+                ?>
+                <div class="card mb-4">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-6">
@@ -80,7 +80,7 @@ if(!isset($_SESSION['username'])){
                                 <h2 class="card-title"> <?php print $noticia->getTitulo(); ?></h2>
                                 <h3 class="card-subtitle"> <?php print $noticia->getSubtitulo(); ?></h3>
                                 <p class="card-text"><?php print $noticia->getTexto(); ?></p>
-                                <a href="#" class="btn btn-primary">Modifica <?php print $noticia->getId(); ?></a>
+                                <a href="#" class="btn btn-primary">Modifica <?php print $noticia->getIdnoticia(); ?></a>
                                 <a href="#" class="btn btn-primary">Publica<?php  ?></a>
 
                             </div>
@@ -99,7 +99,7 @@ if(!isset($_SESSION['username'])){
             }
             /* $noticiasArr = new Noticias();*/
             ?>
-            <!-- Blog Post -->
+
 
         </div>
 
