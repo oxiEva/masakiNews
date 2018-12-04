@@ -65,7 +65,7 @@ session_start();
                             ';
                         }
                         
-                        /*Comprovem que el botó submit cliqui*/
+                        /*Modificar datos del usuario*/
                         $usuari = new Conexion();
                         if(isset($_POST['modificar'] )) {
                             $password = $_POST['password'];

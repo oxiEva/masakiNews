@@ -10,7 +10,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Listado de noticias</title>
+    <title>Listado de usuarios</title>
         
     </head>
 <body>
@@ -33,13 +33,23 @@ session_start();
             <div class="mb-4" id="accordion" role="tablist">
             <a href=""><div class="card">
                 <div class="card-header" role="tab" id="headingOne">
-                    <h6 class="mb-0">
-                        <?php echo 'Usuario: ' . $muestra['username'] . ', Contraseña: ' . $muestra['password'] .
-                         ', Nombre: ' . $muestra['nombre'] . ', Rol id: ' . $muestra['idtipousuario'];?></a>
-                    </h6>
+                    <p class="mb-0">
+                        <b>Usuario: </b><?php echo  $muestra['username'] ?>
+                        <b>Contraseña: </b><?php echo  $muestra['password'] ?>
+                        <b>Nombre: </b><?php echo  $muestra['nombre'] ?>
+                        <b>Rol: </b><?php echo  $muestra['idtipousuario'] ?>
+                        <?php 
+                            if ((int)($muestra['idtipousuario'] == 1)){
+                                echo 'Administrador';
+                            }elseif((int)($muestra['idtipousuario'] == 2)){
+                                echo 'Periodista';
+                            }else{
+                                echo 'Editor';
+                            }
+                        ?>
+                    </p>
                 </div>
             </div></a>
-
             <?php
             }
         }
