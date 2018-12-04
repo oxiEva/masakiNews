@@ -36,32 +36,15 @@ session_start();
     ?>
     <div class="row">
         <div class="col-lg-8 mb-4">
-            <?php
-            echo "<h2 style='color: red'>Hola " . $_SESSION['username'] . " Tu rol es " .  $_SESSION['rol'] .
-                " No tienes permiso para hacer esta acción, quieres hacer algo más ?</h2>" ;
 
-            ?>
+                <h3 style='color: red'><?php
+                    echo "Hola " . $_SESSION['username'] . " Tu rol es " .  $_SESSION['rol'] .
+                        " No tienes permiso para hacer esta acción, quieres hacer algo más ?" ;
 
-            <!-- Sidebar Column -->
-            <div class="col-lg-6 mb-4">
-                <h3>Tus acciones</h3>
+                    ?></h3>
 
-                <div class="list-group">
-                    <a href="tuperfil.php" class="list-group-item">Tu perfil de usuario</a>
-                    <!--Restringir Periodista i admin-->
-                    <a href="crearNoticia.php" class="list-group-item">Crear una noticia</a>
-                    <!--Registringir periodista i admin-->
-                    <a href="buscarTusNoticias.php" class="list-group-item">Buscar tus noticias</a>
-                    <!--Restringir editor-->
-                    <a href="buscarNoticiaSinPublicar.php" class="list-group-item">Buscar noticias sin publicar</a>
-                    <!--<a href="modificarNoticia.php" class="list-group-item">Modificar</a>
-                    <a href="editarNoticia.php" class="list-group-item">Editar</a>
-                    <a href="publicarNoticia.php" class="list-group-item">Publicar</a>-->
-                    <!--Restringir admin-->
-                    <a href="allUsuarios.php" class="list-group-item">Todos los usuarios</a>
+                <a href='../View/accionesNoticia.php'  class='register'> Volver atrás</a>
 
-                </div>
-            </div>
         </div>
     </div>
 

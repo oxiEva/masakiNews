@@ -48,7 +48,7 @@ if(!isset($_SESSION['username'])){
             </form>
 
             <?php
-            if(isset($_SESSION['username']) && $_POST['buscar'] == 'buscar' && $_SESSION['rol'] != 2){
+            if(isset($_SESSION['username']) && $_SESSION['rol'] != 2){
 
                 $buscador = new BuscadorNoticias();
                 $noticiasArr = $buscador->searchNewByAutor($_POST['autor']);
@@ -67,6 +67,7 @@ if(!isset($_SESSION['username'])){
             <?php
 
             foreach ($noticiasArr as $noticia) {
+                //var_dump($noticiasArr); exit();
                 ?>            <div class="card mb-4">
                     <div class="card-body">
                         <div class="row">

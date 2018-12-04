@@ -29,8 +29,6 @@ if(isset($_POST["submit"]) && $_POST(['submit'] == 'guardar') && $_SESSION['rol'
     $imagen = $_POST['imagen'];
     $idSeccion = $_POST['idSeccion'];
 
-} else{
-    header("location: noPermisoAcciones.php");
 }
 
 if(isset($_POST['titulo'])) {
