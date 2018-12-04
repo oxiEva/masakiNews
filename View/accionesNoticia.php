@@ -47,11 +47,16 @@ session_start();
 
             <div class="list-group">
                 <a href="tuperfil.php" class="list-group-item">Tu perfil de usuario</a>
+                <!--Restringir Periodista i admin-->
                 <a href="crearNoticia.php" class="list-group-item">Crear una noticia</a>
-                <a href="buscarNoticia.php" class="list-group-item">Buscar una noticia</a>
+                <!--Registringir periodista i admin-->
+                <a href="buscarTusNoticias.php" class="list-group-item">Buscar tus noticias</a>
+                <!--Restringir editor-->
+                <a href="buscarNoticiaSinPublicar.php" class="list-group-item">Buscar noticias sin publicar</a>
                 <!--<a href="modificarNoticia.php" class="list-group-item">Modificar</a>
                 <a href="editarNoticia.php" class="list-group-item">Editar</a>
                 <a href="publicarNoticia.php" class="list-group-item">Publicar</a>-->
+                <!--Restringir admin-->
                 <a href="allUsuarios.php" class="list-group-item">Todos los usuarios</a>
 
             </div>
