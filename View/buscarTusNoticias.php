@@ -17,18 +17,13 @@ if(!isset($_SESSION['username'])){
 }
 
 /*$_POST['autor'] = $_SESSION['username'];*/
-if(isset($_SESSION['username']) /*&& $_POST['buscar'] == 'buscar'*/){
+if(isset($_SESSION['username']) && $_SESSION['rol'] != 3){
 
     $buscador = new BuscadorNoticias();
     $noticiasArr = $buscador->searchNewByAutor($_SESSION['username']);
-    /*var_dump($noticiasArr); exit();*/
-    /* $_POST['autor'] = $_SESSION['username'];
-     $notDelAutor = new Noticias();
-     //*$notDelAutor->searchNewById(3);
-     $notDelAutor->searchNewByAutor($_SESSION['username']);
-     var_dump($notDelAutor); exit();*/
 
-
+} else {
+    header("location: noPermisoAcciones.php");
 }
 ?>
 <!DOCTYPE html>

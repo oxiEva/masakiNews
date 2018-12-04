@@ -1,6 +1,7 @@
 <?php
 /*Establir la connexio*/
 require_once "../Classes/Conexion.php";
+require_once "../Classes/BuscadorNoticias.php";
 
 /*Carregar les classes q necessitem*/
 require_once "../Model/Noticias.php";
@@ -13,7 +14,7 @@ $errores = array();
 session_start();
 
 ///*Guardem els valors introduits en el formulari
-if(isset($_POST["submit"]) && $_POST(['submit'] == 'guardar')){
+if(isset($_POST["submit"]) && $_POST(['submit'] == 'guardar') && $_SESSION['rol'] != 3){
     $novaNew = new Noticias();
     $novaNew->crearNew();
 
@@ -28,13 +29,9 @@ if(isset($_POST["submit"]) && $_POST(['submit'] == 'guardar')){
     $imagen = $_POST['imagen'];
     $idSeccion = $_POST['idSeccion'];
 
+} else{
+    header("location: noPermisoAcciones.php");
 }
-
-
-///*Filtres php
-///
-
-
 
 if(isset($_POST['titulo'])) {
 
@@ -65,6 +62,7 @@ if(isset($_POST['titulo'])) {
         $errores[] = "editorNoticiaes requerida";
     }*/
 
+    ///*Filtres php
     if (empty($_POST['titulo'])) {
         $errores[] = "titulo es requerida";
     }
@@ -77,8 +75,6 @@ if(isset($_POST['titulo'])) {
     if (empty($_POST['idSeccion'])) {
         $errores[] = "La id seccion es requerida";
     }
-
-
 
 
 }

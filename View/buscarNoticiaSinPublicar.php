@@ -48,11 +48,13 @@ if(!isset($_SESSION['username'])){
             </form>
 
             <?php
-            if(isset($_SESSION['username']) && $_POST['buscar'] == 'buscar'){
+            if(isset($_SESSION['username']) && $_POST['buscar'] == 'buscar' && $_SESSION['rol'] == 2){
 
                 $buscador = new BuscadorNoticias();
                 $noticiasArr = $buscador->searchNewByAutor($_POST['autor']);
 
+            } else{
+                header("location: noPermisoAcciones.php");
             }
 
             ?>

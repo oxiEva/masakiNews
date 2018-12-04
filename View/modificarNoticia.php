@@ -15,10 +15,7 @@ require_once "../Model/Noticias.php";
 session_start();
 
 
-if(isset($_SESSION['username']) && $_GET['id']){
-
-    echo 'hola';
-    echo $_GET['id'];
+if(isset($_SESSION['username']) && $_GET['id'] && $_SESSION['rol'] != 3){
 
     $idnoticia =intval($_GET['id']);
 
@@ -26,12 +23,10 @@ if(isset($_SESSION['username']) && $_GET['id']){
     $noticia = $buscador->selectNew($idnoticia);
 
 
-
-
-    echo 'Hola quieres modificar la noticia 5.. . <br>';
-
     echo "<a href='../View/accionesNoticia.php'  class='register'>" . "Volver atrás" . "</a>";
 
+} else{
+    header("location: noPermisoAcciones.php");
 }
 
 

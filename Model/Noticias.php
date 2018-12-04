@@ -42,6 +42,9 @@ class Noticias
                 $texto= $_POST['texto'];
                 $imagen = $_POST['imagen'];
                 $idSeccion = $_POST['idSeccion'];
+                $fechaCreacion= date('y-m-d');
+                $fechaModificacion = date('y-m-d');
+                $fechaPublicacion = date('y-m-d');
 
 
 
@@ -80,9 +83,7 @@ class Noticias
         $consulta->bindValue(':subtitulo', $subtitulo);
         //$texto = 'dsadsadda';
         $consulta->bindValue(':texto', $texto);
-        $fechaCreacion= ('y-m-d');
-        $fechaModificacion = ('y-m-d');
-        $fechaPublicacion = date('y-m-d');
+
 
         $consulta->bindValue(':fechaCreacion', $fechaCreacion);
         $consulta->bindValue(':fechaModificacion', $fechaModificacion);
