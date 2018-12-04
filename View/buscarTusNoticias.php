@@ -30,7 +30,6 @@ if(isset($_SESSION['username']) && $_SESSION['rol'] != 3){
 <html>
 <head>
     <?php include '../View/Includes/header.html'; ?>
-    <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
 
 
 </head>
@@ -110,88 +109,7 @@ if(isset($_SESSION['username']) && $_SESSION['rol'] != 3){
             <!-- Blog Post -->
 
         </div>
-        <?php
-/*        if(isset($_POST['submit']) && $_POST['submit'] == 'modificar'){
 
-            $descarregarNew = new Noticias();
-
-            $descarregarNew->updateNew($_POST);
-            echo "<h4>Parte modificado con éxito</h4>";
-
-        }
-        */?>
-
-        <?php
-        if (isset($descarregarNew) && $descarregarNew)
-        ?>
-        <div class="col-lg-8 mb-4">
-            <h3>¿Quieres modificar esta noticia? <?php /*echo $_SESSION['username']*/?></h3>
-            <form name="sentMessage" method="post" id="contactForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
-                <div class="control-group form-group">
-                    <div class="controls">
-                        <label for="titulo">Título:</label>
-                        <input name="titulo" type="text" class="form-control" id="titulo"
-                               value="<?php echo $descarregarNew->getTitulo();?>" required data-validation-required-message="Título">
-                        <p class="help-block"></p>
-                    </div>
-                </div>
-
-                <div class="control-group form-group">
-                    <div class="controls">
-                        <label for="subtitulo">Subtítulo:</label>
-                        <input name="subtitulo" type="text" class="form-control" id="subtitulo" required data-validation-required-message="Subtítulo">
-                        <p class="help-block"></p>
-                    </div>
-                </div>
-
-                <div class="control-group form-group">
-                    <div class="controls">
-                        <label for="texto">Texto noticia:</label>
-                        <textarea  rows="10" cols="100" class="form-control" id="textoNoticia" required data-validation-required-message="Texto notícia"
-                                   name="texto">
-
-                    </textarea>
-                    </div>
-                </div>
-
-                <!-- Trec el camp fecha de creación pq el guardem amb $avui q és $avui = date("Y-m-d")
-                <div class="control-group form-group">
-                    <div class="controls">
-                        <label>Fecha:</label>
-                        <input type="date" class="form-control" id="fecha" required data-validation-required-message="Fecha">
-
-                    </div>
-                </div>-->
-
-                <div class="control-group form-group">
-                    <div class="form-group">
-                        <label for="seleccionSeccion">Selecciona la sección</label>
-                        <select name="idSeccion" class="form-control" id="idSeccion">
-                            <option value="1" label="1 actualidad">Actualidad</option>
-                            <option value="2" label="2 politica">Política</option>
-                            <option value="3" label="3 cultura">Cultura</option>
-                            <option value="4" label="4 deportes">Deportes</option>
-
-                        </select>
-                    </div>
-                </div>
-                <div class="control-group form-group">
-                    <div class="controls form-control-file">
-                        <label for="imagen">Selecciona una imagen</label>
-                        <input type="file" name="imagen" id="imagen"  data-validation-required-message="Adjunta una imagen">
-                    </div>
-                </div>
-
-
-                <div id="success"></div>
-                <!-- For success/fail messages -->
-                <button type="submit" class="btn btn-primary" id="guardarNoticia" value="guardar">Guardar notícia</button>
-
-                <!--<button type="submit" class="btn btn-primary" id="modificarNoticia">Modificar notícia</button>-->
-            </form>
-        </div>
-
-    </div>
 
     </div>
     <!-- /.row -->
@@ -199,9 +117,6 @@ if(isset($_SESSION['username']) && $_SESSION['rol'] != 3){
 
 </div>
 
-<script>
-    CKEDITOR.replace('editor1');
-</script>
 <!-- /.row -->
 </body>
 </html>

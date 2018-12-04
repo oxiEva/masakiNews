@@ -42,9 +42,9 @@ class Noticias
                 $texto= $_POST['texto'];
                 $imagen = $_POST['imagen'];
                 $idSeccion = $_POST['idSeccion'];
-                $fechaCreacion= date('y-m-d');
-                $fechaModificacion = date('y-m-d');
-                $fechaPublicacion = date('y-m-d');
+                $fechaCreacion= date('Y-m-d');
+                $fechaModificacion = date('Y-m-d');
+                $fechaPublicacion = date('Y-m-d');
 
 
 
@@ -96,60 +96,6 @@ class Noticias
 
     }
 
-
-
-
-    public function updateNew($request)
-    {
-        $idnoticia = $request['idnoticia'];
-        $idnoticia ='2';
-        /*$idnoticia = intval($this->getIdnoticia());*/
-        $autorNoticia =$request['autor'];
-        $autorNoticia = 'Buuu';
-
-
-        if(isset($request['editor'])){
-            $editorNoticia = $request['editor'];
-        }else{
-            $editorNoticia = "Editor por defecto";
-        }
-
-        $titulo = $request['titulo'];
-        $titulo = ' New modificadation';
-        $subtitulo = $request['subtitulo'];
-        $subtitulo = 'pq yo lo valgo';
-        $texto= $request['texto'];
-        $texto = 'jkajdwpn rwn rwe';
-        $imagen = $request['imagen'];
-        $imagen = '';
-        $idSeccion = $request['idSeccion'];
-        $fechaModificacion = $request['fechaModificacion'];
-
-        if($idnoticia){
-            $conexion = new Conexion();
-            $consulta = $conexion->prepare("UPDATE noticias SET autor = '$autorNoticia', titulo = '$titulo', subtitulo = '$subtitulo', 
-            texto = '$texto', imagen = '$imagen', fechaModificacion ='$fechaModificacion'
-            WHERE noticias.idnoticia = '$idnoticia'");
-
-            $consulta->bindParam('autor', $autorNoticia);
-            $consulta->bindParam('titulo',$titulo);
-            $consulta->bindParam('subtitulo',$subtitulo);
-            $consulta->bindParam('texto',$texto);
-            $consulta->bindParam('imagen',$imagen);
-            $consulta->bindParam('fechaModificacion',$fechaModificacion);
-
-
-            //var_dump($consulta); exit();
-            $consulta->execute();
-
-            return $this;
-
-
-        } else {
-            throw new Exception("Esta noticia no se encuentra en nuestra base de datos. Not found",404);
-        }
-
-    }
 
 
     /**
