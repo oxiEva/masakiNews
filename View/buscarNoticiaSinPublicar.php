@@ -10,7 +10,7 @@ require_once "../Model/Noticias.php";
 /*Reanudem la sessió*/
 session_start();
 
-if(!isset($_SESSION['username'])){
+if(!isset($_SESSION['username']) && ($_SESSION['rol'])){
 
 
     header("location: login.php");
@@ -48,10 +48,13 @@ if(!isset($_SESSION['username'])){
             </form>
 
             <?php
-            if(isset($_SESSION['username']) && $_SESSION['rol'] != 2){
+            if(isset($_SESSION['username']) && $_SESSION['rol'] !=2){
 
-                $buscador = new BuscadorNoticias();
-                $noticiasArr = $buscador->searchNewByAutor($_POST['autor']);
+                    $buscador = new BuscadorNoticias();
+                    $noticiasArr = $buscador->searchNewByAutor($_POST['autor']);
+                 /*   var_dump($_SESSION['username']);
+                    var_dump($_POST['autor']); exit();*/
+
 
             } else{
                 header("location: noPermisoAcciones.php");
@@ -59,19 +62,19 @@ if(!isset($_SESSION['username'])){
 
             ?>
 
-            <!--Podriem fer més buscadors per id, idSeccio...-->
-            <!--El username session del que hagi pogut entrar aquí és l'editor, per tant $_POST['editor']-->
 
             <h3>Resultados de la búsqueda</h3>
 
             <?php
 
-            foreach ($noticiasArr as $index => $noticia) {
+            foreach ($noticiasArr as $noticia) {
                 ?>
                 <div class="card mb-4">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-6">
+                                <?php $idnoticia =intval($noticia->getIdnoticia()); ?>
+                                <p class="card-text"><?php print $idnoticia;?></p>
                                 <a href="#">
                                     <img class="img-fluid rounded" src="http://placehold.it/750x300" alt="">
                                 </a>
@@ -80,12 +83,18 @@ if(!isset($_SESSION['username'])){
                                 <h2 class="card-title"> <?php print $noticia->getTitulo(); ?></h2>
                                 <h3 class="card-subtitle"> <?php print $noticia->getSubtitulo(); ?></h3>
                                 <p class="card-text"><?php print $noticia->getTexto(); ?></p>
-                                <button class="btn btn-info" type="submit" name="modificar" value="modificar">
-                                    Modifica <?php print $noticia->getIdnoticia(); ?>
-                                </button>
-                                <button class="btn btn-info" type="submit" name="publicar" value="publicar">
-                                    Publica
-                                </button>
+                                <form method="post" action="modificarNoticiaSinPublicar.php?id=<?php echo $idnoticia;?>" >
+                                    <button class="btn btn-info" type="submit" name="modificar" value="modificar">
+                                        Modifica
+                                    </button>
+                                </form>
+                                <br>
+
+                                <form>
+                                    <button class="btn btn-info" type="submit" name="publicar" value="publicar">
+                                        Publica
+                                     </button>
+                                </form>
                             </div>
                         </div>
                     </div>

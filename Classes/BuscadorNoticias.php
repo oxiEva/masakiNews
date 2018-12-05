@@ -162,6 +162,63 @@ class BuscadorNoticias
 
     }
 
+    public function updateAllUsersNews($request)
+    {
+        $idnoticia =intval($_POST['idnoticia']);
+        /*$idnoticia = $request['idnoticia'];*/
+
+        $autorNoticia =$_POST['autor'];
+
+
+        $editorNoticia = $request['editor'];
+
+        $editorNoticia = $_SESSION['username'];
+
+
+        $titulo = $_POST['titulo'];
+        //$titulo = ' New modificadation';
+        $subtitulo = $_POST['subtitulo'];
+        //$subtitulo = 'pq yo lo valgo';
+        $texto= $_POST['texto'];
+        //$texto = 'jkajdwpn rwn rwe';
+        $imagen = $_POST['imagen'];
+        //$imagen = '';
+        $idSeccion = $_POST['idSeccion'];
+
+        $fechaModificacion = date('Y-m-d');
+
+        if($idnoticia){
+            $conexion = new Conexion();
+            $consulta = $conexion->prepare("UPDATE noticias SET autor = '$autorNoticia',editor = '$editorNoticia',
+            titulo = '$titulo', idseccion = '$idSeccion', subtitulo = '$subtitulo', 
+            texto = '$texto', imagen = '$imagen', fechaModificacion ='$fechaModificacion'
+            WHERE noticias.idnoticia = '$idnoticia'");
+
+            $consulta->bindParam('autor', $autorNoticia);
+            $consulta->bindParam('editor', $editorNoticia);
+            $consulta->bindParam('titulo',$titulo);
+            $consulta->bindParam('idseccion', $idSeccion);
+            $consulta->bindParam('subtitulo',$subtitulo);
+            $consulta->bindParam('texto',$texto);
+            $consulta->bindParam('imagen',$imagen);
+            $consulta->bindParam('fechaModificacion',$fechaModificacion);
+
+
+
+            $consulta->execute();
+
+            return $consulta;
+
+
+
+
+
+        } else {
+            throw new Exception("Esta noticia no se encuentra en nuestra base de datos. Not found",404);
+        }
+
+    }
+
     public function search()
     {
         /*L'array és buit pq no sabem quants camps tindrà*/
