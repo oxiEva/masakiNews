@@ -18,7 +18,7 @@ class BuscadorNoticias
     {
         if($autor != null){
             $conexion = new Conexion();
-            $consulta = $conexion->prepare('SELECT * FROM noticias WHERE autor = :autor');
+            $consulta = $conexion->prepare('SELECT * FROM noticias WHERE autor = :autor ORDER BY idnoticia DESC');
 
             //Sql= ('SELECT * FROM ' . self::TABLA . ' WHERE autor = :autor ORDER BY idnoticia DESC  LIMIT 0,25')*/
             ;

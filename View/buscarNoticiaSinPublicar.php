@@ -80,9 +80,12 @@ if(!isset($_SESSION['username'])){
                                 <h2 class="card-title"> <?php print $noticia->getTitulo(); ?></h2>
                                 <h3 class="card-subtitle"> <?php print $noticia->getSubtitulo(); ?></h3>
                                 <p class="card-text"><?php print $noticia->getTexto(); ?></p>
-                                <a href="#" class="btn btn-primary">Modifica <?php print $noticia->getIdnoticia(); ?></a>
-                                <a href="#" class="btn btn-primary">Publica<?php  ?></a>
-
+                                <button class="btn btn-info" type="submit" name="modificar" value="modificar">
+                                    Modifica <?php print $noticia->getIdnoticia(); ?>
+                                </button>
+                                <button class="btn btn-info" type="submit" name="publicar" value="publicar">
+                                    Publica
+                                </button>
                             </div>
                         </div>
                     </div>
