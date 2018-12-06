@@ -30,29 +30,44 @@ session_start();
             foreach ($lista as $muestra) 
             {
             ?>
-            <div class="mb-4" id="accordion" role="tablist">
-            <a href=""><div class="card">
-                <div class="card-header" role="tab" id="headingOne">
-                    <p class="mb-0">
-                        <b>Usuario: </b><?php echo  $muestra['username'] ?>
-                        <b>Contraseña: </b><?php echo  $muestra['password'] ?>
-                        <b>Nombre: </b><?php echo  $muestra['nombre'] ?>
-                        <b>Rol: </b><?php echo  $muestra['idtipousuario'] ?>
-                        <?php 
-                            if ((int)($muestra['idtipousuario'] == 1)){
-                                echo 'Administrador';
-                            }elseif((int)($muestra['idtipousuario'] == 2)){
-                                echo 'Periodista';
-                            }else{
-                                echo 'Editor';
-                            }
-                        ?>
-                    </p>
+                <div class="col-lg-8 mb-4 mx-auto">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <form action="<?php $_SERVER['PHP_SELF'] ?>">
+                                <div class="form-group">
+                                    <label for="username">Usuario:</label>
+                                    <input type="text" class="form-control" name="username" value="<?php echo  $muestra['username'] ?>" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Contraseña:</label>
+                                    <input type="text" class="form-control" name="password" value="<?php echo  $muestra['password'] ?>" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Nombre:</label>
+                                    <input type="text" class="form-control" name="name" value="<?php echo  $muestra['nombre'] ?>" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="idtipousuario">Rol id:</label>
+                                    <input type="text" class="form-control" name="idtipousuario" value="<?php echo  $muestra['idtipousuario'] ?>" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-info" name="modificar" value="Modificar" id="modificarUsuario"/>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-            </div></a>
             <?php
+            /*Modificar datos del usuario*/
+            $usuari = new Conexion();
+                if(isset($_POST['modificar'] )) {
+                        $query = "UPDATE usuarios SET username = '$muestra[username]', password = '$muestra[password]', nombre = '$muestra[nombre]' WHERE username = '$muestra[username]'";
+                        $usuari->query($query);
+                        header('location: ../View/accionesNoticia.php');
+                }
             }
         }
+        
         ?>
         </div>
     </div>     
