@@ -23,10 +23,8 @@ if(isset($_SESSION['username']) && $_GET['id'] /*&& $_SESSION['rol'] != 3*/){
     $noticia = $buscador->selectNew($idnoticia);
     $avui= date('Y-m-d');
 
+    //echo "<button class='btn btn-info'><a href='../View/accionesNoticia.php' style='color: white'>" . "Volver atrás" . "</a></button> ";
 
-
-
-    echo "<a href='../View/accionesNoticia.php'  class='register'>" . "Volver atrás" . "</a>";
 
 }/* else{
     header("location: noPermisoAcciones.php");
@@ -74,8 +72,9 @@ if(isset($_SESSION['username']) && $_GET['id'] /*&& $_SESSION['rol'] != 3*/){
             $noticia = $buscador->updateNew($idnoticia);
             $avui = date('Y-m-d');
 
-            echo "<h3 style='color: green'>Noticia modificada con éxito</h3> <br>";
-            echo "<a href='../View/accionesNoticia.php'  class='register'>" . "Volver atrás" . "</a>";
+            echo "<h3 style='color: green'>Noticia modificada con éxito</h3>" . "<br>";
+            echo "<button class='btn btn-info'><a href='../View/accionesNoticia.php' style='color: white'>" . "Volver atrás" . "</a></button> ";
+
         }
         ?>
         <div class="col-lg-8 mb-4">

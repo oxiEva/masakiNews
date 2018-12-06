@@ -90,7 +90,7 @@ if(!isset($_SESSION['username']) && ($_SESSION['rol'])){
                                 </form>
                                 <br>
 
-                                <form>
+                                <form method="post" action="publicarNoticia.php?id=<?php echo $idnoticia;?>">
                                     <button class="btn btn-info" type="submit" name="publicar" value="publicar">
                                         Publica
                                      </button>

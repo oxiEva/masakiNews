@@ -14,7 +14,7 @@ $errores = array();
 session_start();
 
 ///*Guardem els valors introduits en el formulari
-if(isset($_POST["submit"]) && $_POST(['submit'] == 'guardar') && $_SESSION['rol'] != 3){
+/*if(isset($_POST["submit"]) && $_POST(['submit'] == 'guardar') && $_SESSION['rol'] != 3){
     $novaNew = new Noticias();
     $novaNew->crearNew();
 
@@ -29,16 +29,14 @@ if(isset($_POST["submit"]) && $_POST(['submit'] == 'guardar') && $_SESSION['rol'
     $imagen = $_POST['imagen'];
     $idSeccion = $_POST['idSeccion'];
 
-}
+}*/
 
-if(isset($_POST['titulo'])) {
+if(isset($_POST['titulo']) && $_SESSION['rol'] != 3) {
 
     $novaNew = new Noticias();
 
     $novaNew->crearNew();
-    echo 'Nueva noticia subida en la base de datos con éxito . <br>';
-
-    echo "<a href='../View/accionesNoticia.php'  class='register'>" . "Volver atrás" . "</a>";
+    echo "<h3 style='color: green'> Nueva noticia subida en la base de datos con éxito</h3>" . "<br>";
 
 
     $autorNoticia = $_SESSION['username'];
@@ -75,6 +73,8 @@ if(isset($_POST['titulo'])) {
     }
 
 
+} else {
+    header("location: noPermisoAcciones.php");
 }
 
 

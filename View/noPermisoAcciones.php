@@ -43,7 +43,7 @@ session_start();
 
                     ?></h3>
 
-                <a href='../View/accionesNoticia.php'  class='register'> Volver atrás</a>
+                <button class="btn btn-info"> <a href='../View/accionesNoticia.php' style="color:white"> Volver atrás</a></button>
 
         </div>
     </div>
