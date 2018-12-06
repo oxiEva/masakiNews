@@ -41,9 +41,9 @@ class BuscadorNoticias
                 $noticia->setTexto($row['texto']);
                 $noticia->setImagen($row['imagen']);
                 $noticia->setIdseccion($row['idseccion']);
-                $noticia->setFechaCreacion($fechaCreacion = date("d-m-Y"));
-                $noticia->setFechaModificacion($fechaModificacion= date("d-m-Y"));
-                $noticia->setFechaPublicacion($fechaPublicacio = date('d-m-Y'));
+                $noticia->setFechaCreacion($row['fechaCreacion']);
+                $noticia->setFechaModificacion($row['fechaModificacion']);
+                $noticia->setFechaPublicacion($row['fechaPublicacion']);
 
                 //afegir la noticia a un array de noticies
                 $noticiasArr[] = $noticia;
@@ -162,9 +162,116 @@ class BuscadorNoticias
 
     }
 
-    public function search()
+    public function updateAllUsersNews($request)
     {
-        /*L'array és buit pq no sabem quants camps tindrà*/
+        $idnoticia =intval($_POST['idnoticia']);
+        /*$idnoticia = $request['idnoticia'];*/
+
+        $autorNoticia =$_POST['autor'];
+
+
+        $editorNoticia = $request['editor'];
+
+        $editorNoticia = $_SESSION['username'];
+
+
+        $titulo = $_POST['titulo'];
+        //$titulo = ' New modificadation';
+        $subtitulo = $_POST['subtitulo'];
+        //$subtitulo = 'pq yo lo valgo';
+        $texto= $_POST['texto'];
+        //$texto = 'jkajdwpn rwn rwe';
+        $imagen = $_POST['imagen'];
+        //$imagen = '';
+        $idSeccion = $_POST['idSeccion'];
+
+        $fechaModificacion = date('Y-m-d');
+
+        if($idnoticia){
+            $conexion = new Conexion();
+            $consulta = $conexion->prepare("UPDATE noticias SET autor = '$autorNoticia',editor = '$editorNoticia',
+            titulo = '$titulo', idseccion = '$idSeccion', subtitulo = '$subtitulo', 
+            texto = '$texto', imagen = '$imagen', fechaModificacion ='$fechaModificacion'
+            WHERE noticias.idnoticia = '$idnoticia'");
+
+            $consulta->bindParam('autor', $autorNoticia);
+            $consulta->bindParam('editor', $editorNoticia);
+            $consulta->bindParam('titulo',$titulo);
+            $consulta->bindParam('idseccion', $idSeccion);
+            $consulta->bindParam('subtitulo',$subtitulo);
+            $consulta->bindParam('texto',$texto);
+            $consulta->bindParam('imagen',$imagen);
+            $consulta->bindParam('fechaModificacion',$fechaModificacion);
+
+
+
+            $consulta->execute();
+
+            return $consulta;
+
+
+
+
+
+        } else {
+            throw new Exception("Esta noticia no se encuentra en nuestra base de datos. Not found",404);
+        }
+
+    }
+
+    public function publicNew($request)
+    {
+        $idnoticia =intval($_POST['idnoticia']);
+
+        $idnoticia = $request;
+        /*$autorNoticia =$_POST['autor'];
+
+        $editorNoticia = $request['editor'];
+        $editorNoticia = $_SESSION['username'];
+        $titulo = $_POST['titulo'];
+        $subtitulo = $_POST['subtitulo'];
+        $texto= $_POST['texto'];
+        $imagen = $_POST['imagen'];
+        $idSeccion = $_POST['idSeccion'];*/
+
+        $fechaPublicacion = date('Y-m-d');
+
+        if($idnoticia){
+            $conexion = new Conexion();
+            $consulta = $conexion->prepare("UPDATE noticias SET fechaPublicacion ='$fechaPublicacion'
+            WHERE noticias.idnoticia = '$idnoticia'");
+            /*$consulta = $conexion->prepare("UPDATE noticias SET autor = '$autorNoticia',editor = '$editorNoticia',
+            titulo = '$titulo', idseccion = '$idSeccion', subtitulo = '$subtitulo', 
+            texto = '$texto', imagen = '$imagen', fechaPublicacion ='$fechaPublicacion'
+            WHERE noticias.idnoticia = '$idnoticia'");*/
+
+
+            /*$consulta->bindParam('autor', $autorNoticia);
+            $consulta->bindParam('editor', $editorNoticia);
+            $consulta->bindParam('titulo',$titulo);
+            $consulta->bindParam('idseccion', $idSeccion);
+            $consulta->bindParam('subtitulo',$subtitulo);
+            $consulta->bindParam('texto',$texto);
+            $consulta->bindParam('imagen',$imagen);*/
+            $consulta->bindParam('fechaPublicacion',$fechaPublicacion);
+
+
+
+            $consulta->execute();
+            return $consulta;
+
+
+
+
+
+        } else {
+            throw new Exception("Esta noticia no se encuentra en nuestra base de datos. Not found",404);
+        }
+
+    }
+
+    /*public function search()
+    {
         $finalPost = array();
         foreach ($this->post as $key => $fieldToSearch) {
             if (!empty($fieldToSearch) && $key != 'submit') {
@@ -178,9 +285,9 @@ class BuscadorNoticias
 
         foreach ($finalPost as $key => $fieldToSql) {
             switch ($key) {
-                /*Si el camp és un string, default*/
+
                 case 'idnoticia':
-                    /*Ja el cod_parte és un int*/
+
                     $sqlQuery .= ' AND ' . $key . ' = ' . $fieldToSql . ' ';
                     break;
                 default:
@@ -195,18 +302,17 @@ class BuscadorNoticias
         $result = $conexion->query($sqlQuery)->fetchAll();
         $arrResult = array();
         foreach ($result as $row) {
-            /*Instanciem el resultat com un nou parte*/
+
             $arrResult[] = new Noticias($row['autorNoticia']);
         }
 
-        /*Preparem el resuktat per formar la taula*/
+
         return($this->formatResponse($arrResult));
 
 
 
     }
 
-    /*Dibuixem el cos de la taula, els resultats obtinguts*/
     public function formatResponse($arrResult)
     {
         $tableHTML = '';
@@ -227,5 +333,5 @@ class BuscadorNoticias
 
         $tableHTML .= '';
         return $tableHTML;
-    }
+    }*/
 }
