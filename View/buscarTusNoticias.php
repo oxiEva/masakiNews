@@ -87,7 +87,7 @@ if(isset($_SESSION['username']) && $_SESSION['rol'] != 3){
 <!--Provant d fer un formulari per poder modificar cada noticia-->
                                 <form method="post" action="modificarNoticia.php?id=<?php echo $idnoticia;?>" >
 
-                                    <input type="submit" class="btn btn-primary" value="Modificar" name="modificar">
+                                    <input type="submit" class="btn btn-info" value="Modificar" name="modificar">
                                    <!-- <a href="modificarNoticia.php?id=<?php /*echo $idnoticia;*/?>" class="btn btn-primary">Modifica <?php /**/?></a>-->
                                 </form>
                             </div>
