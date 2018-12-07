@@ -37,14 +37,62 @@ class Noticias
             $editorNoticia = "Editor por defecto";
         }
 
-                $titulo = $_POST['titulo'];
-                $subtitulo = $_POST['subtitulo'];
-                $texto= $_POST['texto'];
-                $imagen = $_POST['imagen'];
-                $idSeccion = $_POST['idSeccion'];
-                $fechaCreacion= date('Y-m-d');
-                $fechaModificacion = date('Y-m-d');
-                $fechaPublicacion = date('Y-m-d');
+        $titulo = $_POST['titulo'];
+        $subtitulo = $_POST['subtitulo'];
+        $texto= $_POST['texto'];
+        $imagen = $_FILES['imagen']['name'];
+        /*$imagen =$_POST['imagen'];*/
+        $idSeccion = $_POST['idSeccion'];
+        $fechaCreacion= date('Y-m-d');
+        $fechaModificacion = date('Y-m-d');
+        $fechaPublicacion = date('Y-m-d');
+
+        /*Per pujar imatges*/
+        /*Mirem els diferents tipus d'error*/
+        if($_FILES['imagen']['error']){
+
+            switch ($_FILES['imagen']['error']){
+
+                case 1: //Error excés de tamany
+                    echo "Has superado el tamaño permitido";
+                    break;
+
+                case 2: //Error tamany arxiu marcat des del formulari amb l'input amagat
+                    echo "Has superado el tamaño permitido por el formulario";
+                    break;
+
+                case 3: //Error fitxer pujat parcialment
+                    echo "Error fichero subido parcialment, fichero corrupto";
+                    break;
+
+               /* case 4: //Error no sha pujat cap fitxer
+                    echo "Error no se ha subido ningun fichero";
+                    break;*/
+
+            }
+
+        } else {
+
+            //echo "Has subido la imagen correctamente <br>";
+
+            if((isset($_FILES['imagen']['name']) && ($_FILES['imagen']['error'] == UPLOAD_ERR_OK))){
+
+                /*Creem una carpeta on desarem les imatges*/
+                $destiRuta = "../View/imagenes/";
+
+                move_uploaded_file($_FILES['imagen']['tmp_name'], $destiRuta . $_FILES['imagen']['name']);
+
+
+                echo "El archivo " . $_FILES['imagen']['name'] . " se ha copiado en el directorio de imagenes";
+
+            } else {
+
+                echo "Ha habido algun error, no se ha copiado el archivo en imagenes/";
+            }
+        }
+
+
+
 
 
 
@@ -57,6 +105,7 @@ class Noticias
               idseccion, 
               subtitulo, 
               texto,
+              imagen,
               fechaCreacion, 
               fechaModificacion, 
               fechaPublicacion
@@ -66,7 +115,8 @@ class Noticias
               :titulo,
               :idSeccion,
               :subtitulo,
-              :texto,  
+              :texto, 
+              :imagen, 
               :fechaCreacion, 
               :fechaModificacion,
               :fechaPublicacion)"
@@ -83,6 +133,8 @@ class Noticias
         $consulta->bindValue(':subtitulo', $subtitulo);
         //$texto = 'dsadsadda';
         $consulta->bindValue(':texto', $texto);
+
+        $consulta->bindValue(':imagen', $imagen);
 
 
         $consulta->bindValue(':fechaCreacion', $fechaCreacion);

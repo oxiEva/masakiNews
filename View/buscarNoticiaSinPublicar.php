@@ -76,7 +76,8 @@ if(!isset($_SESSION['username']) && ($_SESSION['rol'])){
                                 <?php $idnoticia =intval($noticia->getIdnoticia()); ?>
                                 <p class="card-text"><?php print $idnoticia;?></p>
                                 <a href="#">
-                                    <img class="img-fluid rounded" src="http://placehold.it/750x300" alt="">
+                                    <img class="img-fluid rounded" src="../View/imagenes/<?php echo $noticia->getImagen(); ?>" alt="">
+
                                 </a>
                             </div>
                             <div class="col-lg-6">

@@ -76,8 +76,8 @@ if(isset($_SESSION['username']) && $_SESSION['rol'] != 3){
                                 //var_dump($idnoticia); exit()
                                 ?>
                                 <p class="card-text"><?php print $idnoticia;?></p>
-                                <a href="#">
-                                    <img class="img-fluid rounded" src="http://placehold.it/750x300" alt="">
+                                <a href="src='../View/imagenes/<?php echo $noticia->getImagen(); ?>'">
+                                        <img class="img-fluid rounded" src="../View/imagenes/<?php echo $noticia->getImagen(); ?>" alt="">
                                 </a>
                             </div>
                             <div class="col-lg-6">

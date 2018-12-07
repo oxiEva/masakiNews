@@ -31,45 +31,49 @@ session_start();
 
 }*/
 
-if(isset($_POST['titulo']) && $_SESSION['rol'] != 3) {
-
-    $novaNew = new Noticias();
-
-    $novaNew->crearNew();
-    echo "<h3 style='color: green'> Nueva noticia subida en la base de datos con éxito</h3>" . "<br>";
+if($_SESSION['rol'] != 3){
+    if(isset($_POST['titulo'])) {
 
 
-    $autorNoticia = $_SESSION['username'];
+        $novaNew = new Noticias();
 
-    $editorNoticia = $_POST['editorNoticia'];
-    $titulo = $_POST['titulo'];
-    $subtitulo = $_POST['subtitulo'];
-    $texto = $_POST['texto'];
-    $imagen = $_POST['imagen'];
-    $idSeccion = $_POST['idSeccion'];
-    $fechaCreacion = date('today');
-    $fechaModificacion = date('d-m-Y');
-    $fechaPublicacion = date('d-m-Y');
+        $novaNew->crearNew();
+        echo "<h3 style='color: green'> Nueva noticia subida en la base de datos con éxito</h3>" . "<br>";
 
-    /*if (empty($_POST['autorNoticia'])) {
-        $errores[] = "Falta autor";
-    }
-    if (empty($_POST['editorNoticia'])) {
-        $errores[] = "editorNoticiaes requerida";
-    }*/
 
-    ///*Filtres php
-    if (empty($_POST['titulo'])) {
-        $errores[] = "titulo es requerida";
-    }
-    if (empty($_POST['subtitulo'])) {
-        $errores[] = "Subtitulo es requerida";
-    }
-    if (empty($_POST['texto'])) {
-        $errores[] = "El texto es requerido";
-    }
-    if (empty($_POST['idSeccion'])) {
-        $errores[] = "La id seccion es requerida";
+        $autorNoticia = $_SESSION['username'];
+
+        $editorNoticia = $_POST['editorNoticia'];
+        $titulo = $_POST['titulo'];
+        $subtitulo = $_POST['subtitulo'];
+        $texto = $_POST['texto'];
+        $imagen = $_FILES['imagen']['name'];
+        $idSeccion = $_POST['idSeccion'];
+        $fechaCreacion = date('today');
+        $fechaModificacion = date('d-m-Y');
+        $fechaPublicacion = date('d-m-Y');
+
+        /*if (empty($_POST['autorNoticia'])) {
+            $errores[] = "Falta autor";
+        }
+        if (empty($_POST['editorNoticia'])) {
+            $errores[] = "editorNoticiaes requerida";
+        }*/
+
+        ///*Filtres php
+        if (empty($_POST['titulo'])) {
+            $errores[] = "titulo es requerida";
+        }
+        if (empty($_POST['subtitulo'])) {
+            $errores[] = "Subtitulo es requerida";
+        }
+        if (empty($_POST['texto'])) {
+            $errores[] = "El texto es requerido";
+        }
+        if (empty($_POST['idSeccion'])) {
+            $errores[] = "La id seccion es requerida";
+        }
+
     }
 
 
@@ -108,7 +112,7 @@ if(isset($_POST['titulo']) && $_SESSION['rol'] != 3) {
     </ul>
     <div class="col-lg-8 mb-4">
         <h3>Crea tu noticia <?php echo $_SESSION['username']?></h3>
-        <form name="sentMessage" method="post" id="contactForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
+        <form name="sentMessage" method="post" enctype="multipart/form-data"  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
             <div class="control-group form-group">
                 <div class="controls">
                     <label for="titulo">Título:</label>

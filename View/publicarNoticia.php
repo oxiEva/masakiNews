@@ -35,8 +35,8 @@ if(isset($_POST['publicar'])){
     $buscador= new BuscadorNoticias();
 
     $newPublicada = $buscador->publicNew($idnoticia);
-
-    echo "<h3 style='color: green'>Noticía publicada para nuestros lectores</h3>";
+/*
+    echo "<h3 style='color: green'>Noticía publicada para nuestros lectores</h3>";*/
 }
 
 
@@ -58,16 +58,16 @@ if(isset($_POST['publicar'])){
     <div class="row">
 
         <div class="col-lg-8 mb-4">
-            <h3>¿Quieres publicar esta noticia? <?php echo $_GET['id']?></h3>
-            <form method="post" action="?id=<?php echo $idnoticia;?>" >
+            <h3 style="color: green">Has publicado esta noticia  <?php echo $_GET['id']?></h3>
+            <form method="post" action="?id=<?php echo $idnoticia;?>" ><!--
                 <button class="btn btn-info" type="submit" name="publicar" value="publicar">
                     Publica
                 </button>
                 <br>
                 <br>
-                <br>
-                <button class="btn btn-info"><a href='../View/accionesNoticia.php'></a>
-                        Volver atrás
+                <br>-->
+                <button class="btn btn-info"><a href='../View/accionesNoticia.php' style="color: white">Volver atrás</a>
+
                 </button>
 
             </form>

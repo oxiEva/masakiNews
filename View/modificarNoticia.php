@@ -139,8 +139,10 @@ if(isset($_SESSION['username']) && $_GET['id'] /*&& $_SESSION['rol'] != 3*/){
                 </div>
                 <div class="control-group form-group">
                     <div class="controls form-control-file">
-                        <label for="imagen">Selecciona una imagen</label>
-                        <input type="file" name="imagen" id="imagen"  data-validation-required-message="Adjunta una imagen">
+                        <label for="imagen">Imagen guardada con la noticia: </label>
+                        <input type="file" name="imagen" id="imagen" value="" data-validation-required-message="Adjunta una imagen">
+                        <?php echo $noticia->getImagen(); ?>
+
                     </div>
                 </div>
 

@@ -121,21 +121,67 @@ class BuscadorNoticias
         }
 
         $titulo = $_POST['titulo'];
-        //$titulo = ' New modificadation';
         $subtitulo = $_POST['subtitulo'];
-        //$subtitulo = 'pq yo lo valgo';
         $texto= $_POST['texto'];
-        //$texto = 'jkajdwpn rwn rwe';
         $imagen = $_POST['imagen'];
-        //$imagen = '';
         $idSeccion = $_POST['idSeccion'];
+
         $fechaModificacion = date('Y-m-d');
+
+
+        //$imagen = $_FILES['imagen']['name'];
+       //var_dump($imagen); exit();
+
+
+        /*Per pujar imatges*/
+        /*Mirem els diferents tipus d'error*/
+       /* if($_FILES['imagen']['error']){
+
+            switch ($_FILES['imagen']['error']){
+
+                case 1: //Error excés de tamany
+                    echo "Has superado el tamaño permitido";
+                    break;
+
+                case 2: //Error tamany arxiu marcat des del formulari amb l'input amagat
+                    echo "Has superado el tamaño permitido por el formulario";
+                    break;
+
+                case 3: //Error fitxer pujat parcialment
+                    echo "Error fichero subido parcialment, fichero corrupto";
+                    break;
+
+
+            }
+
+        } else {
+
+            //echo "Has subido la imagen correctamente <br>";
+
+            if((isset($_FILES['imagen']['name']) && ($_FILES['imagen']['error'] == UPLOAD_ERR_OK))){
+
+                $destiRuta = "../View/imagenes/";
+
+                move_uploaded_file($_FILES['imagen']['tmp_name'], $destiRuta . $_FILES['imagen']['name']);
+
+
+                echo "El archivo " . $_FILES['imagen']['name'] . " se ha copiado en el directorio de imagenes";
+
+            } else {
+
+                echo "Ha habido algun error, no se ha copiado el archivo en imagenes/";
+            }
+        }*/
+
+/* imagen = '$imagen',*/
+
+
 
         if($idnoticia){
             $conexion = new Conexion();
             $consulta = $conexion->prepare("UPDATE noticias SET autor = '$autorNoticia',editor = '$editorNoticia',
             titulo = '$titulo', idseccion = '$idSeccion', subtitulo = '$subtitulo', 
-            texto = '$texto', imagen = '$imagen', fechaModificacion ='$fechaModificacion'
+            texto = '$texto',imagen = '$imagen',  fechaModificacion ='$fechaModificacion'
             WHERE noticias.idnoticia = '$idnoticia'");
 
             $consulta->bindParam('autor', $autorNoticia);
@@ -169,20 +215,14 @@ class BuscadorNoticias
 
         $autorNoticia =$_POST['autor'];
 
-
         $editorNoticia = $request['editor'];
 
         $editorNoticia = $_SESSION['username'];
 
-
         $titulo = $_POST['titulo'];
-        //$titulo = ' New modificadation';
         $subtitulo = $_POST['subtitulo'];
-        //$subtitulo = 'pq yo lo valgo';
         $texto= $_POST['texto'];
-        //$texto = 'jkajdwpn rwn rwe';
         $imagen = $_POST['imagen'];
-        //$imagen = '';
         $idSeccion = $_POST['idSeccion'];
 
         $fechaModificacion = date('Y-m-d');

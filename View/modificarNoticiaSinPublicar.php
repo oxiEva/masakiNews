@@ -152,6 +152,7 @@ if(isset($_SESSION['username']) && $_GET['id'] /*&& $_SESSION['rol'] != 3*/){
                     <div class="controls form-control-file">
                         <label for="imagen">Selecciona una imagen</label>
                         <input type="file" name="imagen" id="imagen"  data-validation-required-message="Adjunta una imagen">
+                        <?php echo $noticia->getImagen(); ?>
                     </div>
                 </div>
 
