@@ -223,5 +223,10 @@ class BuscadorNoticias
 
     }
 
+    /*Funció per ensenyar les noticies publicades segons secció*/
+    public function showPublicNews($request){
+
+    }
+
 
 }

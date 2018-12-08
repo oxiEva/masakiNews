@@ -49,6 +49,8 @@ session_start();
                 <a href="tuperfil.php" class="list-group-item">Tu perfil de usuario</a>
                 <!--Restringir Periodista i admin-->
                 <a href="crearNoticia.php" class="list-group-item">Crear una noticia</a>
+                <!--Restringir Periodista i admin-->
+                <a href="crearPalabrasClave.php" class="list-group-item">Crear palabra clave</a>
                 <!--Registringir periodista i admin-->
                 <a href="buscarTusNoticias.php" class="list-group-item">Buscar tus noticias</a>
                 <!--Restringir editor-->
