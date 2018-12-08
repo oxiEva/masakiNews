@@ -7,9 +7,6 @@ require_once "../Model/Noticias.php";
 
 class BuscadorNoticias
 {
-    /*Els posts serán totes les dades recollides pel form*/
-    private $post;
-
     public function __construct(){
 
     }
@@ -18,7 +15,9 @@ class BuscadorNoticias
     {
         if($autor != null){
             $conexion = new Conexion();
-            $consulta = $conexion->prepare('SELECT * FROM noticias WHERE autor = :autor ORDER BY idnoticia DESC');
+            /*Perquè només surtin les notícies q no estan publicades*/
+            $consulta = $conexion->prepare('SELECT * FROM noticias WHERE autor = :autor
+            AND fechaCreacion = fechaPublicacion ORDER BY idnoticia DESC');
 
             //Sql= ('SELECT * FROM ' . self::TABLA . ' WHERE autor = :autor ORDER BY idnoticia DESC  LIMIT 0,25')*/
             ;
@@ -62,7 +61,8 @@ class BuscadorNoticias
 
         if($idnoticia != null){
             $conexion = new Conexion();
-            $consulta = $conexion->prepare('SELECT * FROM noticias WHERE idnoticia = :idnoticia');
+            $consulta = $conexion->prepare('SELECT * FROM noticias WHERE idnoticia = :idnoticia 
+            AND fechaCreacion = fechaPublicacion');
 
             //Sql= ('SELECT * FROM ' . self::TABLA . ' WHERE autor = :autor ORDER BY idnoticia DESC  LIMIT 0,25')*/
             ;
@@ -91,8 +91,6 @@ class BuscadorNoticias
                 $noticia->setFechaModificacion($fechaModificacion= date("d-m-Y"));
                 $noticia->setFechaPublicacion($fechaPublicacio = date('d-m-Y'));
 
-
-
             }
 
             // retornar array de noticies
@@ -102,8 +100,6 @@ class BuscadorNoticias
         }
         throw new Exception(" Not found",404);
     }
-
-
 
 
     public function updateNew($request)
@@ -129,54 +125,6 @@ class BuscadorNoticias
         $fechaModificacion = date('Y-m-d');
 
 
-        //$imagen = $_FILES['imagen']['name'];
-       //var_dump($imagen); exit();
-
-
-        /*Per pujar imatges*/
-        /*Mirem els diferents tipus d'error*/
-       /* if($_FILES['imagen']['error']){
-
-            switch ($_FILES['imagen']['error']){
-
-                case 1: //Error excés de tamany
-                    echo "Has superado el tamaño permitido";
-                    break;
-
-                case 2: //Error tamany arxiu marcat des del formulari amb l'input amagat
-                    echo "Has superado el tamaño permitido por el formulario";
-                    break;
-
-                case 3: //Error fitxer pujat parcialment
-                    echo "Error fichero subido parcialment, fichero corrupto";
-                    break;
-
-
-            }
-
-        } else {
-
-            //echo "Has subido la imagen correctamente <br>";
-
-            if((isset($_FILES['imagen']['name']) && ($_FILES['imagen']['error'] == UPLOAD_ERR_OK))){
-
-                $destiRuta = "../View/imagenes/";
-
-                move_uploaded_file($_FILES['imagen']['tmp_name'], $destiRuta . $_FILES['imagen']['name']);
-
-
-                echo "El archivo " . $_FILES['imagen']['name'] . " se ha copiado en el directorio de imagenes";
-
-            } else {
-
-                echo "Ha habido algun error, no se ha copiado el archivo en imagenes/";
-            }
-        }*/
-
-/* imagen = '$imagen',*/
-
-
-
         if($idnoticia){
             $conexion = new Conexion();
             $consulta = $conexion->prepare("UPDATE noticias SET autor = '$autorNoticia',editor = '$editorNoticia',
@@ -192,14 +140,9 @@ class BuscadorNoticias
             $consulta->bindParam('imagen',$imagen);
             $consulta->bindParam('fechaModificacion',$fechaModificacion);
 
-
-
             $consulta->execute();
 
             return $consulta;
-
-
-
 
 
         } else {
@@ -243,14 +186,9 @@ class BuscadorNoticias
             $consulta->bindParam('imagen',$imagen);
             $consulta->bindParam('fechaModificacion',$fechaModificacion);
 
-
-
             $consulta->execute();
 
             return $consulta;
-
-
-
 
 
         } else {
@@ -264,15 +202,6 @@ class BuscadorNoticias
         $idnoticia =intval($_POST['idnoticia']);
 
         $idnoticia = $request;
-        /*$autorNoticia =$_POST['autor'];
-
-        $editorNoticia = $request['editor'];
-        $editorNoticia = $_SESSION['username'];
-        $titulo = $_POST['titulo'];
-        $subtitulo = $_POST['subtitulo'];
-        $texto= $_POST['texto'];
-        $imagen = $_POST['imagen'];
-        $idSeccion = $_POST['idSeccion'];*/
 
         $fechaPublicacion = date('Y-m-d');
 
@@ -280,19 +209,6 @@ class BuscadorNoticias
             $conexion = new Conexion();
             $consulta = $conexion->prepare("UPDATE noticias SET fechaPublicacion ='$fechaPublicacion'
             WHERE noticias.idnoticia = '$idnoticia'");
-            /*$consulta = $conexion->prepare("UPDATE noticias SET autor = '$autorNoticia',editor = '$editorNoticia',
-            titulo = '$titulo', idseccion = '$idSeccion', subtitulo = '$subtitulo', 
-            texto = '$texto', imagen = '$imagen', fechaPublicacion ='$fechaPublicacion'
-            WHERE noticias.idnoticia = '$idnoticia'");*/
-
-
-            /*$consulta->bindParam('autor', $autorNoticia);
-            $consulta->bindParam('editor', $editorNoticia);
-            $consulta->bindParam('titulo',$titulo);
-            $consulta->bindParam('idseccion', $idSeccion);
-            $consulta->bindParam('subtitulo',$subtitulo);
-            $consulta->bindParam('texto',$texto);
-            $consulta->bindParam('imagen',$imagen);*/
             $consulta->bindParam('fechaPublicacion',$fechaPublicacion);
 
 
@@ -301,77 +217,11 @@ class BuscadorNoticias
             return $consulta;
 
 
-
-
-
         } else {
             throw new Exception("Esta noticia no se encuentra en nuestra base de datos. Not found",404);
         }
 
     }
 
-    /*public function search()
-    {
-        $finalPost = array();
-        foreach ($this->post as $key => $fieldToSearch) {
-            if (!empty($fieldToSearch) && $key != 'submit') {
-                $finalPost[$key] = $fieldToSearch;
-            }
-        }
 
-        $sqlQuery = 'SELECT * FROM noticias WHERE autor = "' . $_SESSION['username'] . '"';
-
-
-
-        foreach ($finalPost as $key => $fieldToSql) {
-            switch ($key) {
-
-                case 'idnoticia':
-
-                    $sqlQuery .= ' AND ' . $key . ' = ' . $fieldToSql . ' ';
-                    break;
-                default:
-                    $sqlQuery .= ' AND ' . $key . ' LIKE \'%' . $fieldToSql . '%\'';
-                    break;
-
-            }
-        }
-        $sqlQuery .= ';';
-
-        $conexion = new Conexion();
-        $result = $conexion->query($sqlQuery)->fetchAll();
-        $arrResult = array();
-        foreach ($result as $row) {
-
-            $arrResult[] = new Noticias($row['autorNoticia']);
-        }
-
-
-        return($this->formatResponse($arrResult));
-
-
-
-    }
-
-    public function formatResponse($arrResult)
-    {
-        $tableHTML = '';
-
-        foreach($arrResult as $notCreada){
-            $tableHTML .= '<tr>';
-
-            $tableHTML .= '<td align="center">'. $notCreada->getId() .' </td>';
-            $tableHTML .= '<td align="center">'. $parte->getFecha() .' </td>';
-            $tableHTML .= '<td align="center">'. $parte->getHora() .' </td>';
-            $tableHTML .= '<td align="center">'. $parte->getCausa() .' </td>';
-            $tableHTML .= '<td align="center">'. $parte->getTipo() .' </td>';
-            $tableHTML .= '<td align="center">'. $parte->getCuerpo() .' </td>';
-            $tableHTML .= '<td align="center">'. $parte->getGravedad() .' </td>';
-            $tableHTML .= '<td align="center">'. $parte->getBaja() .' </td>';
-            $tableHTML .= '</tr>';
-        }
-
-        $tableHTML .= '';
-        return $tableHTML;
-    }*/
 }
