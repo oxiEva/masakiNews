@@ -35,11 +35,11 @@ session_start();
 
     ?>
     <div class="row">
-        <div class="col-lg-8 mb-4">
+        <div>
             <?php
             echo "<h2>Hola " . $_SESSION['username'] . " Tu rol es " .  $_SESSION['rol'] ." , qué deseas hacer?</h2>" ;
-
             ?>
+            <br>
 
         <!-- Sidebar Column -->
         <div class="col-lg-6 mb-4">
