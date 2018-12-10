@@ -50,13 +50,15 @@
                       <a class="nav-link" href="http://localhost/masakiNews/inici.php">Actualidad</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="View/politica.php">Política</a>
+                      <a class="nav-link" href="View/mostrarNoticiasPublicadas.php?idseccion=1">Política</a>
+                  </li>
+
+                  <?php /* var_dump($idseccion); exit();*/?>
+                  <li class="nav-item">
+                      <a class="nav-link" href="View/mostrarNoticiasPublicadas.php?idseccion=2">Cultura</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="View/cultura.php">Cultura</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="View/deportes.php">Deportes</a>
+                      <a class="nav-link" href="View/mostrarNoticiasPublicadas.php?idseccion=3">Deportes</a>
                   </li>
               </ul>
           </div>

@@ -12,6 +12,26 @@ class Keywords
     private $id;
     private $keywords;
 
+
+
+    public function crearKeyword(){
+
+        $conexion = new Conexion();
+        $autorNoticia =$_SESSION['username'];
+
+        $keywords = $_POST['keyword'];
+
+        //$consulta = $conexion->prepare("INSERT INTO keywords (id, Keywords) VALUES (NULL, :keyword)");
+        $consulta = $conexion->prepare("INSERT INTO keywords (Keywords) VALUES (:keywords)");
+        // $autorNoticia = 'Rosca';
+
+        $consulta->bindValue(':keywords', $keywords);
+
+        $consulta->execute();
+
+
+    }
+
     /**
      * @return mixed
      */
