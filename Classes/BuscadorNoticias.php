@@ -89,7 +89,7 @@ class BuscadorNoticias
                 $noticia->setIdseccion($row['idseccion']);
                 $noticia->setFechaCreacion($fechaCreacion = date("d-m-Y"));
                 $noticia->setFechaModificacion($fechaModificacion= date("d-m-Y"));
-                $noticia->setFechaPublicacion($fechaPublicacio = date('d-m-Y'));
+                $noticia->setFechaPublicacion($fechaPublicacion = date('d-m-Y'));
 
             }
 
@@ -224,7 +224,86 @@ class BuscadorNoticias
     }
 
     /*Funció per ensenyar les noticies publicades segons secció*/
-    public function showPublicNews($request){
+    public function showPublicNews($idseccion = null){
+
+        $idseccion = $_GET['idseccion'];
+        //var_dump($idseccion); exit();
+        /*var_dump($idseccion); exit();*/
+
+
+        /*Fer switch politica = id 2*/
+        /*if(isset($_GET['idseccion'])){
+            switch ($_GET['idseccion']){
+
+                case 'politica':
+                    $idseccion = 1;
+                    break;
+                case 'cultura':
+                    $idseccion = 2;
+                    break;
+                case 'deportes':
+                    $idseccion = 3;
+                    break;
+                default:
+                    echo 'Hola q mal';
+
+                    var_dump($idseccion); exit();
+
+            }
+            return $idseccion;
+
+
+      }*/
+
+
+        if($idseccion != null){
+            $conexion = new Conexion();
+           // var_dump($idseccion); exit();
+            $consulta = $conexion->prepare('SELECT * FROM noticias WHERE idseccion = :idseccion
+            AND fechaCreacion != fechaPublicacion LIMIT 0,5');
+            /*var_dump($idseccion); exit();*/
+            //var_dump($consulta); exit();
+
+            $consulta->bindParam('idseccion', $idseccion);
+            $consulta->execute();
+
+
+            $registro = $consulta->fetchAll();
+
+
+
+            foreach ($registro as $row){
+                //crear nova noticia
+                $publicada = new Noticias();
+
+                //assignar els valors a la noticia
+                $publicada->setIdnoticia($row['idnoticia']);
+                $publicada->setAutor($row['autor']);
+                $publicada->setEditor($row['editor']);
+                $publicada->setTitulo($row['titulo']);
+                $publicada->setSubtitulo($row['subtitulo']);
+                $publicada->setTexto($row['texto']);
+                $publicada->setImagen($row['imagen']);
+                $publicada->setIdseccion($idseccion);
+                $publicada->setFechaCreacion($row['fechaCreacion']);
+                $publicada->setFechaModificacion($row['fechaModificacion']);
+                $publicada->setFechaPublicacion($row['fechaPublicacion']);
+
+               //
+
+                $publicadaArr[] = $publicada;
+
+            }
+
+
+            //var_dump($publicadaArr); exit();
+            // retornar array de noticies
+            return $publicadaArr;
+            var_dump($publicadaArr); exit();
+
+
+       }
+        throw new Exception(" Not found",404);
 
     }
 
