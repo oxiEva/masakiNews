@@ -35,20 +35,17 @@ session_start();
 
     ?>
     <div class="row">
-        <div class="col-lg-8 mb-4">
-
+        <div>
+                <br>
                 <h3 style='color: red'><?php
                     echo "Hola " . $_SESSION['username'] . " Tu rol es " .  $_SESSION['rol'] .
                         " No tienes permiso para hacer esta acción, quieres hacer algo más ?" ;
-
                     ?></h3>
+                    <br>
 
                 <button class="btn btn-info"> <a href='../View/accionesNoticia.php' style="color:white"> Volver atrás</a></button>
 
         </div>
     </div>
-
-
-
 
 </html>

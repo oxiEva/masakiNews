@@ -21,22 +21,22 @@ session_start();
         <?php include '../View/Includes/adminNav.html'; ?>
         
         <!-- Users List -->
-        <?php 
-        if (isset($_SESSION['username']) && isset($_SESSION['rol'])){
+        <?php
+         
+        if (isset($_SESSION['username']) && $_SESSION['rol'] == 1){
             
             $usuario = new Usuario($_SESSION['username']);
             $lista = $usuario->list();
 
-            foreach ($lista as $muestra) 
-            {
-            ?>
+            foreach ($lista as $muestra) {
+                ?>
                 <div class="col-lg-8 mb-4 mx-auto">
                     <div class="card h-100">
                         <div class="card-header">
-                            <form action="<?php $_SERVER['PHP_SELF'] ?>">
+                            <form method="post" action="<?php $_SERVER['PHP_SELF'] ?>">
                                 <div class="form-group">
                                     <label for="username">Usuario:</label>
-                                    <input type="text" class="form-control" name="username" value="<?php echo  $muestra['username'] ?>" />
+                                    <input type="text" class="form-control" name="username" disabled="disabled" value="<?php echo  $muestra['username'] ?>" />
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Contraseña:</label>
@@ -57,15 +57,21 @@ session_start();
                         </div>
                     </div>
                 </div>
+                
             <?php
             /*Modificar datos del usuario*/
             $usuari = new Conexion();
-                if(isset($_POST['modificar'] )) {
-                        $query = "UPDATE usuarios SET username = '$muestra[username]', password = '$muestra[password]', nombre = '$muestra[nombre]' WHERE username = '$muestra[username]'";
-                        $usuari->query($query);
-                        header('location: ../View/accionesNoticia.php');
+                if (isset($_POST['modificar'])) {
+                    $password = $_POST['password'];
+                    $nombre = $_POST['name'];
+
+                    $query = "UPDATE usuarios SET username = '$muestra[username]', password = '$password', nombre = '$nombre' WHERE username = '$_SESSION[username]'";
+                    $usuari->query($query);
+                    header('location: ../View/accionesNoticia.php');
                 }
             }
+        } else {
+            header("location: noPermisoAcciones.php");
         }
         
         ?>

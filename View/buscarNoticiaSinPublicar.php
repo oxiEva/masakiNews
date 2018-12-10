@@ -12,7 +12,6 @@ session_start();
 
 if(!isset($_SESSION['username']) && ($_SESSION['rol'])){
 
-
     header("location: login.php");
 }
 
@@ -22,8 +21,6 @@ if(!isset($_SESSION['username']) && ($_SESSION['rol'])){
 <head>
     <?php include '../View/Includes/header.html'; ?>
     <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
-
-
 </head>
 <body>
 <div class="container">

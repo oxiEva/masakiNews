@@ -1,13 +1,12 @@
 <?php
-/*Establir la connexio*/
+/*Establecer conexión*/
 require_once "../Classes/Conexion.php";
 
-
-/*Carregar les classes q necessitem*/
+/*cargar clases*/
 require_once "../Model/Usuario.php";
 require_once "../Model/TipoUsuario.php";
 
-/*Reanudem la sessió*/
+/*Reanudar sesión*/
 session_start();
 
 ?>
@@ -30,10 +29,10 @@ session_start();
                     <h3>Registrar</h3>
 <?php
 
-/*Creem un tipodeusuari*/
+/*Crear un tipodeusuari*/
 $tipoUsuario = new TipoUsuario();
 
-/*Comprovem que el botó submit cliqui*/
+/*Comprovar submit*/
 $usuari = new Conexion();
 if(isset($_POST['registrar'] )) {
     $username = $_POST['username'];
@@ -41,9 +40,6 @@ if(isset($_POST['registrar'] )) {
     $nombre = $_POST['nombre'];
     $idtipousuario = $_POST['idtipousuario'];
     $confirmPassword = $_POST['reppassword'];
-
-
-
 
     if ($_POST['password'] == $_POST['reppassword']) {
         $usuari->query('INSERT INTO usuarios (username, password, nombre, idtipousuario)
@@ -59,11 +55,8 @@ if(isset($_POST['registrar'] )) {
     } else {
         echo '<h2>La contraseña no coincide</h2>';
     }
-
-
 }
 ?>
-
                     <form method="post" action="<?php $_SERVER['PHP_SELF']  ?>" id="formularioRegistro" >
                         <div class="form-group">
                             <label for="username">Username:</label>
@@ -100,39 +93,6 @@ if(isset($_POST['registrar'] )) {
                 </div>
             </div>   
         </div>
-
-        <!--<script>
-
-         $("#formularioRegistro").validate({
-
-            rules:
-            {
-                password: {
-                required: true,
-                minlength: 8,
-                maxlength: 20
-                },
-                cpassword: {
-                required: true,
-                equalTo: '#password'
-                },
-            },
-
-            messages:
-            {
-                password:{
-                required: "Porfavor introduzca una clave",
-                minlength: "La clave debe tener un almenos 8 caracteres"
-                },
-                cpassword:{
-                required: "Vuelva a introducir su clave",
-                equalTo: "Las claves no coinciden !"
-                },
-            },
-            
-        })
-
-        </script>-->
 </body>
 
 </html>
