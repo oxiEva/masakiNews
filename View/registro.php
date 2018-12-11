@@ -38,18 +38,12 @@ if(isset($_POST['registrar'] )) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $nombre = $_POST['nombre'];
-    $idtipousuario = $_POST['idtipousuario'];
+    $idtipousuario = (int) $_POST['idtipousuario'];
     $confirmPassword = $_POST['reppassword'];
 
     if ($_POST['password'] == $_POST['reppassword']) {
-        $usuari->query('INSERT INTO usuarios (username, password, nombre, idtipousuario)
- VALUES (:username, :password, :nombre, :idtipousuario)');
-        $usuari->bind(':username', $username);
-        $usuari->bind(':password', $password);
-        $usuari->bind(':nombre', $nombre);
-        $usuari->bind(':idtipousuario', $idtipousuario);
-        $usuari->execute();
-
+        $usuari->query("INSERT INTO `usuarios` (`username`, `password`, `nombre`, `idtipousuario`)
+ VALUES ('$username', '$password', '$nombre', '$idtipousuario')");
         echo $username . $password . '<br>' . '<h2>Usuario registrado</h2>';
         header('location: ../View/confirmacionAdmin.php');
     } else {
@@ -79,10 +73,10 @@ if(isset($_POST['registrar'] )) {
                             <label for="rol">Rol: </label>
                             <select class="form-control" id="sel1" name="idtipousuario">
                                 <option selected disabled>Rol </option>
-                                <option label="Administrador" value="1">Administrador</option>
+                                <option label="Administrador" value=1>Administrador</option>
 
-                                <option label="Periodista" value="2"> Periodista</option>
-                                <option label="Editor" value="3"> Editor</option>
+                                <option label="Periodista" value=2> Periodista</option>
+                                <option label="Editor" value=3> Editor</option>
                             </select>
                         </div>
 

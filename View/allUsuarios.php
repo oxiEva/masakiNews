@@ -36,7 +36,7 @@ session_start();
                             <form method="post" action="<?php $_SERVER['PHP_SELF'] ?>">
                                 <div class="form-group">
                                     <label for="username">Usuario:</label>
-                                    <input type="text" class="form-control" name="username" disabled="disabled" value="<?php echo  $muestra['username'] ?>" />
+                                    <input type="text" class="form-control" name="username" value="<?php echo  $muestra['username'] ?>" />
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Contraseña:</label>
@@ -52,6 +52,7 @@ session_start();
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" class="btn btn-info" name="modificar" value="Modificar" id="modificarUsuario"/>
+                                    <input type="submit" class="btn btn-info" name="eliminar" value="Eliminar" id="eliminarUsuario"/>
                                 </div>
                             </form>
                         </div>
@@ -67,6 +68,17 @@ session_start();
 
                     $query = "UPDATE usuarios SET username = '$muestra[username]', password = '$password', nombre = '$nombre' WHERE username = '$_SESSION[username]'";
                     $usuari->query($query);
+                    echo "usuario modificado correctamente";
+                    header('location: ../View/accionesNoticia.php');
+                }
+            
+            /*Eliminar usuario*/
+                if (isset($_POST['eliminar'])) {
+                    $username = $_POST['username'];
+
+                    $query = "DELETE FROM usuarios WHERE username = '$username' ";
+                    $usuari->query($query);
+                    echo "usuario eliminado correctamente";
                     header('location: ../View/accionesNoticia.php');
                 }
             }
