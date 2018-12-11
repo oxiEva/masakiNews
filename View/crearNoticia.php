@@ -148,10 +148,9 @@ if($_SESSION['rol'] != 3){
                 <div class="form-group">
                     <label for="seleccionSeccion">Selecciona la sección</label>
                     <select name="idSeccion" class="form-control" id="idSeccion">
-                        <option value="1" label="1 actualidad">Actualidad</option>
-                        <option value="2" label="2 politica">Política</option>
-                        <option value="3" label="3 cultura">Cultura</option>
-                        <option value="4" label="4 deportes">Deportes</option>
+                        <option value="1" label="1 politica">Política</option>
+                        <option value="2" label="2 cultura">Cultura</option>
+                        <option value="3" label="3 deportes">Deportes</option>
 
                     </select>
                 </div>

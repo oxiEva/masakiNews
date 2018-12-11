@@ -33,8 +33,10 @@ $idseccion = $_GET['idseccion'];
                 echo "Política";
             } elseif ($idseccion == 2) {
                 echo "Cultura";
-            } else {
+            } elseif ($idseccion == 3) {
                 echo "Deportes";
+            } else {
+                echo "Actualidad";
             };?>
         </h1>
 
@@ -49,7 +51,7 @@ $idseccion = $_GET['idseccion'];
 
                 <!-- Título-->
                 <h1 class="card-title"><?php print $publicada->getTitulo(); ?></h1>
-                <h2 class="card-title"><?php print $publicada->getSubtitulo(); ?></h2>
+                <h3 class="card-title"><?php print $publicada->getSubtitulo(); ?></h3>
 
                 <!-- Autor -->
                 <p class="card-footer text-right"><?php print $publicada->getAutor(); ?>, <?php print $publicada->getFechaPublicacion(); ?></p>
