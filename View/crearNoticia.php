@@ -5,7 +5,9 @@ require_once "../Classes/BuscadorNoticias.php";
 
 /*Carregar les classes q necessitem*/
 require_once "../Model/Noticias.php";
+require_once "../Model/Keywords.php";
 
+//var_dump($_POST); exit();
 //*Inicialitzem variables
 $resultat = true;
 $errores = array();
@@ -13,32 +15,23 @@ $errores = array();
 /*Reanudem la sessió*/
 session_start();
 
-///*Guardem els valors introduits en el formulari
-/*if(isset($_POST["submit"]) && $_POST(['submit'] == 'guardar') && $_SESSION['rol'] != 3){
-    $novaNew = new Noticias();
-    $novaNew->crearNew();
 
-    echo 'Hola, dades insertades';
-
-
-    $autorNoticia =$_POST['autorNoticia'];
-    $editorNoticia = $_POST['editorNoticia'];
-    $titulo = $_POST['titulo'];
-    $subtitulo = $_POST['subtitulo'];
-    $texto= $_POST['texto'];
-    $imagen = $_POST['imagen'];
-    $idSeccion = $_POST['idSeccion'];
-
-}*/
 
 if($_SESSION['rol'] != 3){
-    if(isset($_POST['titulo'])) {
+    if(isset($_POST['titulo'])){
 
 
         $novaNew = new Noticias();
 
-        $novaNew->crearNew();
+        $idNoticiaCreada = $novaNew->crearNew();
+        $keywordsClass = new Keywords();
+
+        $paraulaClau= $_POST['keywords'];
+
+        $keywordsClass->saveKeywordNew($idNoticiaCreada, $paraulaClau);
         echo "<h3 style='color: green'> Nueva noticia subida en la base de datos con éxito</h3>" . "<br>";
+
+
 
 
         $autorNoticia = $_SESSION['username'];
@@ -48,6 +41,7 @@ if($_SESSION['rol'] != 3){
         $subtitulo = $_POST['subtitulo'];
         $texto = $_POST['texto'];
         $imagen = $_FILES['imagen']['name'];
+        $paraulaClau= $_POST['keywords'];
         $idSeccion = $_POST['idSeccion'];
         $fechaCreacion = date('today');
         $fechaModificacion = date('d-m-Y');
@@ -73,6 +67,8 @@ if($_SESSION['rol'] != 3){
         if (empty($_POST['idSeccion'])) {
             $errores[] = "La id seccion es requerida";
         }
+
+
 
     }
 
@@ -167,26 +163,22 @@ if($_SESSION['rol'] != 3){
                </div>
             </div>
 
-            <!--<div class="control-group form-group">
+            <div class="control-group form-group">
                 <div class="controls">
                     <label for="keywords">Palabras clave:</label>
-                    <input  name="keywords" type="text" class="form-control" id="palabrasClave" data-validation-required-message="Palabras clave">
-                </div>
-            </div>-->
+                    <select name="keywords" class="form-control">
+                        <option value="0">Seleccione:</option>
+                        <?php
+                        $selectClau = new Keywords();
 
-            <!--<div class="control-group form-group">
-                <div class="controls">
-                    <label>Autor notícia:</label>
-                    <input type="text" class="form-control" id="autorNoticia" required data-validation-required-message="Autor notícia" value="">
-                </div>
-            </div>-->
+                        $paraulaClau = $selectClau->selectKeyword();
 
-            <!--<div class="control-group form-group">
-                <div class="controls">
-                    <label>Editor notícia:</label>
-                    <input type="text" class="form-control" id="editorNoticia" required data-validation-required-message="Editor notícia" value="">
+                        
+                        ?>
+                    </select>
                 </div>
-            </div>-->
+            </div>
+
 
             <div id="success"></div>
             <!-- For success/fail messages -->
@@ -195,7 +187,11 @@ if($_SESSION['rol'] != 3){
             <!--<button type="submit" class="btn btn-info" id="modificarNoticia">Modificar notícia</button>-->
         </form>
     </div>
+    <?php
 
+
+
+    ?>
 </div>
 </div>
 <script>

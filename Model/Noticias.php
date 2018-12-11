@@ -28,6 +28,7 @@ class Noticias
     public function crearNew(){
 
         $conexion = new Conexion();
+
         $autorNoticia =$_SESSION['username'];
 
 
@@ -99,7 +100,7 @@ class Noticias
 
         $consulta = $conexion->prepare(
             "INSERT INTO noticias 
-              (  autor,   
+              (autor,   
               editor, 
               titulo,
               idseccion, 
@@ -122,6 +123,7 @@ class Noticias
               :fechaPublicacion)"
         );
        // $autorNoticia = 'Rosca';
+        //$consulta->bindValue(':idnoticia', $idnoticia);
         $consulta->bindValue(':autorNoticia', $autorNoticia);
         //$editorNoticia = 'editor';
         $consulta->bindValue(':editorNoticia', $editorNoticia);
@@ -144,6 +146,11 @@ class Noticias
 
 
         $consulta->execute();
+
+        $lastId = $conexion->lastInsertId();
+
+        return $lastId;
+        //var_dump($lastId); exit();
 
 
     }
