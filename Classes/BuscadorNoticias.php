@@ -226,34 +226,13 @@ class BuscadorNoticias
     /*Funció per ensenyar les noticies publicades segons secció*/
     public function showPublicNews($idseccion = null){
 
-        $idseccion = $_GET['idseccion'];
+        $idseccion =(int) $_GET['idseccion'];
+
+
         //var_dump($idseccion); exit();
         /*var_dump($idseccion); exit();*/
 
 
-        /*Fer switch politica = id 2*/
-        /*if(isset($_GET['idseccion'])){
-            switch ($_GET['idseccion']){
-
-                case 'politica':
-                    $idseccion = 1;
-                    break;
-                case 'cultura':
-                    $idseccion = 2;
-                    break;
-                case 'deportes':
-                    $idseccion = 3;
-                    break;
-                default:
-                    echo 'Hola q mal';
-
-                    var_dump($idseccion); exit();
-
-            }
-            return $idseccion;
-
-
-      }*/
 
 
         if($idseccion != null){
@@ -284,7 +263,7 @@ class BuscadorNoticias
                 $publicada->setSubtitulo($row['subtitulo']);
                 $publicada->setTexto($row['texto']);
                 $publicada->setImagen($row['imagen']);
-                $publicada->setIdseccion($idseccion);
+                $publicada->setIdseccion((int)$idseccion);
                 $publicada->setFechaCreacion($row['fechaCreacion']);
                 $publicada->setFechaModificacion($row['fechaModificacion']);
                 $publicada->setFechaPublicacion($row['fechaPublicacion']);
@@ -293,13 +272,14 @@ class BuscadorNoticias
 
                 $publicadaArr[] = $publicada;
 
+
             }
 
 
             //var_dump($publicadaArr); exit();
             // retornar array de noticies
             return $publicadaArr;
-            var_dump($publicadaArr); exit();
+            //var_dump($publicadaArr); exit();
 
 
        }

@@ -8,12 +8,13 @@ require_once "../Model/Usuario.php";
 require_once "../Model/TipoUsuario.php";
 
 //if(isset($idseccion)){
-$idseccion = $_GET['idseccion'];
+$idseccion =(int) $_GET['idseccion'];
+
 
     $buscador = new BuscadorNoticias();
     $notPublicades = $buscador->showPublicNews($idseccion);
 
-//var_dump($idseccion);
+//var_dump($idseccion); exit();
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +41,9 @@ $idseccion = $_GET['idseccion'];
             };?>
         </h1>
 
-        <?php foreach ($notPublicades as $publicada) {?>
+        <?php foreach ($notPublicades as $publicada)
+        //var_dump($notPublicades); exit();
+        {?>
     <div class="my-4">
         <div class="card h-100">
             <!-- Noticia -->
