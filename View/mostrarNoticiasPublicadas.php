@@ -14,15 +14,13 @@ $idseccion = $_GET['idseccion'];
     $notPublicades = $buscador->showPublicNews($idseccion);
 
 //var_dump($idseccion);
-
-
-
 ?>
+
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Sección</title>
-</head>
+    <head>
+        <title>Sección</title>
+    </head>
 
 <body>
 
@@ -32,28 +30,36 @@ $idseccion = $_GET['idseccion'];
 <div class="container">
 
 
-        <h3>Secció <?php echo $idseccion ;?></h3>
+        <h1 class="my-4"><?php if ($idseccion == 1) {
+                echo "Política";
+            } elseif ($idseccion == 2) {
+                echo "Cultura";
+            } else {
+                echo "Deportes";
+            };?>
+        </h1>
 
         <?php foreach ($notPublicades as $publicada) {?>
-    <div class="row">
-        <!-- Post Content Column -->
-        <div class="col-lg-8 mb-4" style="margin-top: 30px; float: right">
-            <p style=""><?php echo $publicada->getIdnoticia();?></p>
-            <!-- Preview Image -->
-            <img class="img-fluid rounded" src="../View/imagenes/<?php echo $publicada->getImagen(); ?>" alt="">
+    <div class="my-4">
+        <div class="card h-100">
+            <!-- Noticia -->
+            <div>
+                <p><?php echo $publicada->getIdnoticia();?></p>
+                <!-- Imagen -->
+                <img class="img-fluid rounded" src="../View/imagenes/<?php echo $publicada->getImagen(); ?>" alt="">
 
-            <hr>
+                <!-- Título-->
+                <h1 class="card-title"><?php print $publicada->getTitulo(); ?></h1>
+                <h2 class="card-title"><?php print $publicada->getSubtitulo(); ?></h2>
 
-            <p><?php print $publicada->getAutor(); ?>, <?php print $publicada->getFechaPublicacion(); ?></p>
+                <!-- Autor -->
+                <p class="card-footer text-right"><?php print $publicada->getAutor(); ?>, <?php print $publicada->getFechaPublicacion(); ?></p>
+                
+                <!-- Texto -->
+                <p class="lead"><?php print $publicada->getTexto(); ?></p>
+            </div>
 
-            <hr>
-
-            <!-- Post Content -->
-            <h1 class="mt-4 mb-3"><?php print $publicada->getTitulo(); ?></h1>
-            <h2 class="card-title"><?php print $publicada->getSubtitulo(); ?></h2>
-            <p class="lead"><?php print $publicada->getTexto(); ?></p>
         </div>
-
     </div>
 
             <?php
