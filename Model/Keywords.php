@@ -9,8 +9,8 @@
 class Keywords
 {
 
-    private $id;
-    private $keywords;
+    private $idKeyword;
+    private $Keywords;
 
 
 
@@ -32,20 +32,70 @@ class Keywords
 
     }
 
-    /**
-     * @return mixed
-     */
-    public function getId()
+    public function selectKeyword(){
+        /*$msqli = new Conexion();
+
+        $query = $msqli->query("SELECT * FROM keywords");*/
+        $conexion = new Conexion();
+        $consulta = $conexion->prepare("SELECT * FROM keywords");
+        //var_dump($consulta); exit();
+
+        $consulta->execute();
+
+        //$registro = $consulta->fetchAll();
+
+        while ($registro = $consulta->fetch()){
+          //  var_dump($registro); exit();
+            echo '<option value ="' . $registro['idKeyword'] . '"> '. utf8_encode ($registro['Keywords']) .'</option>';
+
+
+
+        }
+
+        return $registro;
+
+
+    }
+
+    public function saveKeywordNew($idNoticia = false, $keyword = false)
     {
-        return $this->id;
+
+        if (!$idNoticia || !$keyword) {
+            return false;
+        }
+
+
+        $conexion = new Conexion();
+        $consulta = $conexion->prepare("INSERT INTO keywordsnoticia (idnoticia, idkeyword) VALUES 
+        (".$idNoticia.", ".$keyword.")");
+
+
+  //      $consulta->bindValue(':idnoticia', (int)$idNoticia);
+   //     $consulta->bindValue(':idkeyword', (int)$keyword);
+        //  var_dump($consulta); exit();
+
+        $consulta->execute();
+
+
+
+
+
     }
 
     /**
-     * @param mixed $id
+     * @return mixed
      */
-    public function setId($id)
+    public function getIdKeyword()
     {
-        $this->id = $id;
+        return $this->idKeyword;
+    }
+
+    /**
+     * @param mixed $idKeyword
+     */
+    public function setIdKeyword($idKeyword)
+    {
+        $this->idKeyword = $idKeyword;
     }
 
     /**
@@ -53,16 +103,18 @@ class Keywords
      */
     public function getKeywords()
     {
-        return $this->keywords;
+        return $this->Keywords;
     }
 
     /**
-     * @param mixed $keywords
+     * @param mixed $Keywords
      */
-    public function setKeywords($keywords)
+    public function setKeywords($Keywords)
     {
-        $this->keywords = $keywords;
+        $this->Keywords = $Keywords;
     }
+
+
 
 
 }
