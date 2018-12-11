@@ -24,11 +24,10 @@ $idseccion = $_GET['idseccion'];
 
 <body>
 
-<?php include '../View/Includes/header2.html'; ?>
+    <?php include '../View/Includes/header2.html'; ?>
 
-<!-- Page Content -->
+<!-- Contenido -->
 <div class="container">
-
 
         <h1 class="my-4"><?php if ($idseccion == 1) {
                 echo "Política";
@@ -58,48 +57,24 @@ $idseccion = $_GET['idseccion'];
                 <!-- Texto -->
                 <p class="lead"><?php print $publicada->getTexto(); ?></p>
             </div>
-
         </div>
     </div>
 
-            <?php
+            <?php } ?>
 
-            }
+    </div>
 
-            ?>
-
-            <!-- Comments Form -->
-       <!-- <div class="row">
-            <div class="card my-12">
-                <h5 class="card-header">Leave a Comment:</h5>
-                <div class="card-body">
-                    <form>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-info">Submit</button>
-                    </form>
+    <div class="card my-12">
+        <h5 class="card-header">Leave a Comment:</h5>
+        <div class="card-body">
+            <form>
+                <div class="form-group">
+                    <textarea class="form-control" rows="3"></textarea>
                 </div>
-            </div>
-
-
-
-        </div>-->
-
+                <button type="submit" class="btn btn-info">Submit</button>
+            </form>
+        </div>
     </div>
-
-
-<div class="card my-12">
-    <h5 class="card-header">Leave a Comment:</h5>
-    <div class="card-body">
-        <form>
-            <div class="form-group">
-                <textarea class="form-control" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn btn-info">Submit</button>
-        </form>
-    </div>
-</div>
 <?php include '../View/Includes/footer.html'; ?>
 
 </body>

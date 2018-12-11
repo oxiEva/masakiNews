@@ -34,9 +34,6 @@
                   <li class="nav-item">
                       <a class="nav-link" href="View/login.php">Login</a>
                   </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="View/logout.php">Logout</a>
-                  </li>
               </ul>
           </div>
       </div>
