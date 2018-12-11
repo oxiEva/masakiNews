@@ -1,3 +1,15 @@
+<?php
+require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Classes/Conexion.php";
+
+require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Classes/BuscadorNoticias.php";
+require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Model/Usuario.php";
+require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Model/TipoUsuario.php";
+
+
+$buscador = new BuscadorNoticias();
+$noticiesPortada = $buscador->ShowNewsHome();
+//var_dump($noticiesPortada);
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -49,8 +61,6 @@
                   <li class="nav-item">
                       <a class="nav-link" href="View/mostrarNoticiasPublicadas.php?idseccion=1">Política</a>
                   </li>
-
-                  <?php /* var_dump($idseccion); exit();*/?>
                   <li class="nav-item">
                       <a class="nav-link" href="View/mostrarNoticiasPublicadas.php?idseccion=2">Cultura</a>
                   </li>
@@ -109,10 +119,14 @@
       <h1 class="my-4">Actualidad</h1>
 
       <!-- Marketing Icons Section -->
+
       <div class="row">
         <div class="col-lg-4 mb-4">
+            <?php foreach ($noticiesPortada as $portada)
+                //var_dump($noticiesPortada); exit();
+            {?>
           <div class="card h-100">
-            <h4 class="card-header">Noticia 1</h4>
+            <h4 class="card-header"><?php print $portada->getTitulo(); ?></h4>
             <div class="card-body">
               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
             </div>
@@ -121,6 +135,7 @@
             </div>
           </div>
         </div>
+          <?php } ?>
         <div class="col-lg-4 mb-4">
           <div class="card h-100">
             <h4 class="card-header">Noticia 2</h4>

@@ -1,7 +1,7 @@
 <?php
 
 /*Establir la connexio*/
-require_once "../Classes/Conexion.php";
+require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Classes/Conexion.php";
 
 class Usuario
 {

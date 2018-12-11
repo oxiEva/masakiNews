@@ -1,12 +1,12 @@
 <?php
 /*Establir la connexio*/
-require_once "../Classes/Conexion.php";
+require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Classes/Conexion.php";
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Login</title>
-    <?php include '../View/Includes/header.html';
+    <?php include $_SERVER['DOCUMENT_ROOT']. '/masakiNews/View/Includes/header.html';
     ?>
 
 </head>

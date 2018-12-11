@@ -1,5 +1,5 @@
 <?php
-require_once '../Classes/Conexion.php';
+require_once $_SERVER['DOCUMENT_ROOT']. '/masakiNews/Classes/Conexion.php';
 
 class TipoUsuario
 {

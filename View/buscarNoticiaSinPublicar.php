@@ -1,10 +1,10 @@
 <?php
 /*Establir la connexio*/
-require_once "../Classes/Conexion.php";
-require_once "../Classes/BuscadorNoticias.php";
+require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Classes/Conexion.php";
+require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Classes/BuscadorNoticias.php";
 
 /*Carregar les classes q necessitem*/
-require_once "../Model/Noticias.php";
+require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Model/Noticias.php";
 
 
 /*Reanudem la sessió*/
@@ -19,12 +19,12 @@ if(!isset($_SESSION['username']) && ($_SESSION['rol'])){
 <!DOCTYPE html>
 <html>
 <head>
-    <?php include '../View/Includes/header.html'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT']. '/masakiNews/View/Includes/header.html'; ?>
     <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
 </head>
 <body>
 <div class="container">
-    <?php include '../View/Includes/adminNav.html'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT']. '/masakiNews/View/Includes/adminNav.html'; ?>
     <div class="row">
         <div class="col-lg-12 mb-4">
 

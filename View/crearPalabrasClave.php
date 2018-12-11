@@ -1,10 +1,10 @@
 <?php
 /*Establir la connexio*/
-require_once "../Classes/Conexion.php";
-require_once "../Classes/BuscadorNoticias.php";
+require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Classes/Conexion.php";
+require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Classes/BuscadorNoticias.php";
 
 /*Carregar les classes q necessitem*/
-require_once "../Model/Keywords.php";
+require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Model/Keywords.php";
 
 
 /*Reanudem la sessió*/
@@ -36,13 +36,13 @@ if($_SESSION['rol'] != 3){
 <!DOCTYPE html>
 <html>
 <head>
-    <?php include '../View/Includes/header.html'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT']. '/masakiNews/View/Includes/header.html'; ?>
 
 
 </head>
 <body>
 <div class="container">
-    <?php include '../View/Includes/adminNav.html'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT']. '/masakiNews/View/Includes/adminNav.html'; ?>
     <!-- New Form -->
     <div class="row">
 

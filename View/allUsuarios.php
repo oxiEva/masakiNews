@@ -1,7 +1,7 @@
 <?php
 /*Incluir clases*/
-require_once "../Classes/Conexion.php";
-require_once "../Model/Usuario.php";
+require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Classes/Conexion.php";
+require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Model/Usuario.php";
 
 /*Iniciar sesión*/
 session_start();
@@ -14,11 +14,11 @@ session_start();
         
     </head>
 <body>
-    <?php include '../View/Includes/header.html'; ?>  
+    <?php include $_SERVER['DOCUMENT_ROOT']. '/masakiNews/View/Includes/header.html'; ?>
 
     <div class="container"><br>
 
-        <?php include '../View/Includes/adminNav.html'; ?>
+        <?php include $_SERVER['DOCUMENT_ROOT']. '/masakiNews/View/Includes/adminNav.html'; ?>
         
         <!-- Users List -->
         <?php

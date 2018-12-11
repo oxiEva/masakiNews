@@ -1,12 +1,12 @@
 <?php
 
 /*Establir la connexio*/
-require_once "../Classes/Conexion.php";
+require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Classes/Conexion.php";
 
 
 /*Carregar les classes q necessitem*/
-require_once "../Model/Usuario.php";
-require_once "../Model/TipoUsuario.php";
+require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Model/Usuario.php";
+require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Model/TipoUsuario.php";
 
 /*Reanudem la sessió*/
 session_start();
@@ -16,7 +16,7 @@ session_start();
 <html>
 <head>
     <title>Perfil usuario</title>
-    <?php include '../View/Includes/header.html'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT']. '/masakiNews/View/Includes/header.html'; ?>
 
 </head>
 

@@ -1,6 +1,6 @@
 <?php
 /*Establir la connexio*/
-require_once "../Classes/Conexion.php";
+require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Classes/Conexion.php";
 
 /*Reanudem la sessió*/
 session_start();
@@ -13,7 +13,7 @@ session_start();
         
     </head>
 <body>
-    <?php include '../View/Includes/header.html'; ?>  
+    <?php include $_SERVER['DOCUMENT_ROOT']. '/masakiNews/View/Includes/header.html'; ?>
 
     <div class="container"><br>
         

@@ -1,9 +1,9 @@
 <?php
 /*Establir la connexio*/
-require_once "../Classes/Conexion.php";
+require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Classes/Conexion.php";
 
 /*Carregar les classes q necessitem*/
-require_once "../Model/Noticias.php";
+require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Model/Noticias.php";
 
 class BuscadorNoticias
 {
@@ -286,6 +286,44 @@ class BuscadorNoticias
         throw new Exception(" Not found",404);
 
     }
+
+
+    public function ShowNewsHome()
+    {
+
+        $conexion = new Conexion();
+        $consulta = $conexion->prepare('SELECT * FROM noticias WHERE fechaCreacion != fechaPublicacion LIMIT 0,6');
+
+        $consulta->execute();
+
+        $notPortada = $consulta->fetchAll();
+
+        foreach ($notPortada as $row) {
+            $portada = new Noticias();
+
+            //assignar els valors a la noticia
+            $portada->setIdnoticia($row['idnoticia']);
+            $portada->setAutor($row['autor']);
+            $portada->setEditor($row['editor']);
+            $portada->setTitulo($row['titulo']);
+            $portada->setSubtitulo($row['subtitulo']);
+            $portada->setTexto($row['texto']);
+            $portada->setImagen($row['imagen']);
+            $portada->setIdseccion($row['idseccion']);
+            $portada->setFechaCreacion($row['fechaCreacion']);
+            $portada->setFechaModificacion($row['fechaModificacion']);
+            $portada->setFechaPublicacion($row['fechaPublicacion']);
+
+            $portadaArr[] = $portada;
+
+        }
+
+        return $portadaArr;
+        //
+        // var_dump($portadaArr); exit();
+
+    }
+
 
 
 }

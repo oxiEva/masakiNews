@@ -1,11 +1,11 @@
 <?php
 /*Establir la connexio*/
-require_once "../Classes/Conexion.php";
-require_once "../Classes/BuscadorNoticias.php";
+require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Classes/Conexion.php";
+require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Classes/BuscadorNoticias.php";
 
 /*Carregar les classes q necessitem*/
-require_once "../Model/Usuario.php";
-require_once "../Model/TipoUsuario.php";
+require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Model/Usuario.php";
+require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Model/TipoUsuario.php";
 
 //if(isset($idseccion)){
 $idseccion =(int) $_GET['idseccion'];
@@ -25,7 +25,7 @@ $idseccion =(int) $_GET['idseccion'];
 
 <body>
 
-    <?php include '../View/Includes/header2.html'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT']. '/masakiNews/View/Includes/header2.html'; ?>
 
 <!-- Contenido -->
 <div class="container">
@@ -80,7 +80,7 @@ $idseccion =(int) $_GET['idseccion'];
             </form>
         </div>
     </div>
-<?php include '../View/Includes/footer.html'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT']. '/masakiNews/View/Includes/footer.html'; ?>
 
 </body>
 

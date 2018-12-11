@@ -1,10 +1,10 @@
 <?php
 /*Establecer conexión*/
-require_once "../Classes/Conexion.php";
+require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Classes/Conexion.php";
 
 /*cargar clases*/
-require_once "../Model/Usuario.php";
-require_once "../Model/TipoUsuario.php";
+require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Model/Usuario.php";
+require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Model/TipoUsuario.php";
 
 /*Reanudar sesión*/
 session_start();
@@ -14,7 +14,7 @@ session_start();
 <html>
 <head>
     <title>Registro</title>
-    <?php include '../View/Includes/header.html'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT']. '/masakiNews/View/Includes/header.html'; ?>
 
 </head>
 
