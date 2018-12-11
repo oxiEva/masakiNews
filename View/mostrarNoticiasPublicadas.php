@@ -44,7 +44,7 @@ $idseccion = $_GET['idseccion'];
         <div class="card h-100">
             <!-- Noticia -->
             <div>
-                <p><?php echo $publicada->getIdnoticia();?></p>
+                <p class="text-right"><?php echo $publicada->getIdnoticia();?></p>
                 <!-- Imagen -->
                 <img class="img-fluid rounded" src="../View/imagenes/<?php echo $publicada->getImagen(); ?>" alt="">
 

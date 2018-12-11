@@ -65,8 +65,10 @@ session_start();
                 if (isset($_POST['modificar'])) {
                     $password = $_POST['password'];
                     $nombre = $_POST['name'];
+                    $idtipousuario = (int) $_POST['idtipousuario'];
 
-                    $query = "UPDATE usuarios SET username = '$muestra[username]', password = '$password', nombre = '$nombre' WHERE username = '$_SESSION[username]'";
+                    $query = "UPDATE usuarios SET username = '$muestra[username]', password = '$password', 
+                    nombre = '$nombre', idtipousuario = '$idtipousuario' WHERE username = '$_POST[username]'";
                     $usuari->query($query);
                     echo "usuario modificado correctamente";
                     header('location: ../View/accionesNoticia.php');
