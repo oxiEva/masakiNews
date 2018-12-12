@@ -22,6 +22,7 @@ session_start();
 
 <body>
 <div class="container">
+    <?php include $_SERVER['DOCUMENT_ROOT']. '/masakiNews/View/Includes/adminNav.html'; ?>
     <div class="row">
         <div class="col-lg-8 mb-4">
 

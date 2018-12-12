@@ -1,14 +1,12 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Classes/Conexion.php";
-
 require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Classes/BuscadorNoticias.php";
 require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Model/Usuario.php";
 require_once $_SERVER['DOCUMENT_ROOT']. "/masakiNews/Model/TipoUsuario.php";
 
-
 $buscador = new BuscadorNoticias();
 $noticiesPortada = $buscador->ShowNewsHome();
-//var_dump($noticiesPortada);
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -34,7 +32,7 @@ $noticiesPortada = $buscador->ShowNewsHome();
 <!-- Navigation -->
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="inici.php">MasakiNews</a>
+        <a class="navbar-brand" href="index.php">MasakiNews</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -56,7 +54,7 @@ $noticiesPortada = $buscador->ShowNewsHome();
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="http://localhost/masakiNews/inici.php">Actualidad</a>
+                    <a class="nav-link" href="http://localhost/masakiNews/index.php">Actualidad</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="View/mostrarNoticiasPublicadas.php?idseccion=1">Política</a>
@@ -123,7 +121,7 @@ $noticiesPortada = $buscador->ShowNewsHome();
     <div class="row">
 
         <?php foreach ($noticiesPortada as $portada)
-            //var_dump($noticiesPortada); exit();
+
         {?>
             <div class="col-lg-4 mb-4">
                 <div class="card h-100">
