@@ -1,0 +1,380 @@
+-- phpMyAdmin SQL Dump
+-- version 4.7.7
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: localhost:3306
+-- Temps de generació: 12-12-2018 a les 19:22:00
+-- Versió del servidor: 10.1.31-MariaDB
+-- Versió de PHP: 7.0.26
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de dades: `id7723517_masaki`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de la taula `keywords`
+--
+
+CREATE TABLE `keywords` (
+  `idKeyword` int(11) NOT NULL,
+  `Keywords` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Bolcant dades de la taula `keywords`
+--
+
+INSERT INTO `keywords` (`idKeyword`, `Keywords`) VALUES
+(1, 'exclusiva'),
+(2, 'investigación'),
+(3, 'tendencia'),
+(4, '1O'),
+(5, 'historia'),
+(6, 'premio'),
+(7, 'Catalunya'),
+(8, 'Fin de año'),
+(9, 'Última jornada'),
+(10, 'Liga'),
+(11, 'Oscars'),
+(12, 'Elecciones'),
+(13, 'puente'),
+(14, 'Final'),
+(15, 'Final'),
+(16, 'prusti'),
+(17, 'ayudar jugando'),
+(18, 'rebajas'),
+(19, 'tamborrada'),
+(20, 'cultura'),
+(21, 'música'),
+(22, 'sonido'),
+(23, 'arte'),
+(24, 'Bansky'),
+(25, 'guerreras'),
+(26, 'fútbol'),
+(27, 'gol'),
+(28, 'Galicia'),
+(29, 'Prerromano'),
+(30, 'Proyecto');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de la taula `keywordsnoticia`
+--
+
+CREATE TABLE `keywordsnoticia` (
+  `idnoticia` int(11) NOT NULL,
+  `idkeyword` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Bolcant dades de la taula `keywordsnoticia`
+--
+
+INSERT INTO `keywordsnoticia` (`idnoticia`, `idkeyword`) VALUES
+(4, 4),
+(7, 8),
+(111, 7),
+(112, 7),
+(113, 7),
+(127, 5),
+(130, 5),
+(131, 18),
+(134, 13),
+(148, 30);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de la taula `noticias`
+--
+
+CREATE TABLE `noticias` (
+  `idnoticia` int(11) NOT NULL,
+  `autor` varchar(45) NOT NULL,
+  `editor` varchar(45) NOT NULL,
+  `titulo` varchar(100) NOT NULL,
+  `idseccion` int(11) NOT NULL,
+  `subtitulo` varchar(100) NOT NULL,
+  `texto` longtext NOT NULL,
+  `imagen` varchar(45) DEFAULT NULL,
+  `fechaCreacion` date NOT NULL,
+  `fechaModificacion` date NOT NULL,
+  `fechaPublicacion` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Bolcant dades de la taula `noticias`
+--
+
+INSERT INTO `noticias` (`idnoticia`, `autor`, `editor`, `titulo`, `idseccion`, `subtitulo`, `texto`, `imagen`, `fechaCreacion`, `fechaModificacion`, `fechaPublicacion`) VALUES
+(1, 'periodista', 'Editor por defecto', 'Intentem canviar data modificaciÃ³n', 2, 'lorem ipsum', '<p>TV actress and writer Lena Dunham has said publicly defending a writer on her show Girls after he was accused of rape was &quot;a terrible mistake&quot;.</p>\r\n\r\n<p><a href=\"https://www.hollywoodreporter.com/news/lena-dunham-my-apology-aurora-perrineau-1165614\">Writing in The Hollywood Reporter</a>, Dunham apologised for speaking up for Murray Miller out of &quot;blind faith&quot;.</p>\r\n\r\n<p>She originally spoke about it last November after Miller was accused of assaulting an actress when she was 17.</p>\r\n\r\n<p>Miller has always denied the &quot;outrageous&quot; allegations, and in August prosecutors decided not to charge him.</p>\r\n\r\n<p>The Los Angeles County District Attorney&#39;s office didn&#39;t pursue a prosecution because of the expiry of the statute of limitations and &quot;inconsistencies and the delay in reporting&quot;,&nbsp;<a href=\"https://www.thewrap.com/murray-miller-no-charges-aurora-perrineau-girls-lena-dunham/\">The Wrap reported in August</a>.</p>\r\n', '', '2018-11-19', '2018-12-06', '2018-11-24'),
+(2, 'Cloita', 'Editor por defecto', 'Primera new', 1, 'A veure si la inserto', '<p>As you can see, the value in the&nbsp;<code>TIMESTAMP</code>&nbsp;column is different. This is because the&nbsp;<code>TIMESTAMP</code>&nbsp;column stores the date and time value in UTC when we changed the time zone, the value of the&nbsp;<code>TIMESTAMP</code>column is adjusted according to the new time zone.</p>\r\n\r\n<p>It means that if you use the&nbsp;<code>TIMESTAMP</code>&nbsp;data to store date and time values, you should take a serious consideration when you move your database to a server located in a different time zone.</p>\r\n', '', '2018-11-04', '2018-12-07', '2018-11-26'),
+(4, 'Rosca', 'editor', 'titulo', 1, 'subtitulo', 'dsadsadda', NULL, '2018-11-28', '2018-11-28', '2018-11-28'),
+(5, 'Buuu', 'Rosca', 'New modificada', 2, 'porque si', '<p>ala q bieeeeeeeeeeeeeeeeeeeeeen</p>\r\n', NULL, '2018-11-28', '2018-11-28', '2018-11-28'),
+(7, 'buuu', 'Editor por defecto', '3era noticia', 3, 'subtituiekjwqjlr w', '<p>Para actualizar tu repositorio local al commit m&aacute;s nuevo, ejecuta&nbsp;<br />\r\n<code>git pull</code><br />\r\nen tu directorio de trabajo para&nbsp;<em>bajar</em>&nbsp;y&nbsp;<em>fusionar</em>&nbsp;los cambios remotos.<br />\r\nPara fusionar otra rama a tu rama activa (por ejemplo master), utiliza<br />\r\n<code>git merge &lt;branch&gt;</code><br />\r\nen ambos casos git intentar&aacute; fusionar autom&aacute;ticamente los cambios. Desafortunadamente, no siempre ser&aacute; posible y se podr&aacute;n producir&nbsp;<em>conflictos</em>. T&uacute; eres responsable de fusionar esos&nbsp;<em>conflictos</em>&nbsp;manualmente al editar los archivos mostrados por git. Despu&eacute;s de modificarlos, necesitas marcarlos como fusionados con<br />\r\n<code>git add &lt;filename&gt;</code><br />\r\nAntes de fusionar los cambios, puedes revisarlos usando<br />\r\n<code>git diff &lt;source_branch&gt; &lt;target_branch&gt;</code></p>\r\n', NULL, '2018-11-29', '2018-11-29', '2018-11-29'),
+(8, 'buuu', 'Editor por defecto', '3era noticia', 3, 'subtituiekjwqjlr w', '<p>Para actualizar tu repositorio local al commit m&aacute;s nuevo, ejecuta&nbsp;<br />\r\n<code>git pull</code><br />\r\nen tu directorio de trabajo para&nbsp;<em>bajar</em>&nbsp;y&nbsp;<em>fusionar</em>&nbsp;los cambios remotos.<br />\r\nPara fusionar otra rama a tu rama activa (por ejemplo master), utiliza<br />\r\n<code>git merge &lt;branch&gt;</code><br />\r\nen ambos casos git intentar&aacute; fusionar autom&aacute;ticamente los cambios. Desafortunadamente, no siempre ser&aacute; posible y se podr&aacute;n producir&nbsp;<em>conflictos</em>. T&uacute; eres responsable de fusionar esos&nbsp;<em>conflictos</em>&nbsp;manualmente al editar los archivos mostrados por git. Despu&eacute;s de modificarlos, necesitas marcarlos como fusionados con<br />\r\n<code>git add &lt;filename&gt;</code><br />\r\nAntes de fusionar los cambios, puedes revisarlos usando<br />\r\n<code>git diff &lt;source_branch&gt; &lt;target_branch&gt;</code></p>\r\n', NULL, '2018-11-29', '2018-11-29', '2018-11-29'),
+(16, 'periodista', 'Editor por defecto', 'Another new', 2, 'Another subtitle', '<p>JetBrains Rider supports multiple carets. The majority of the editor actions, such as keyboard navigation, text insertion and deletion, etc., apply to each caret. Live templates and autocompletion are supported as well.</p>\r\n\r\n<p>It is possible to add or delete carets; at least one caret always exists in an editor tab.</p>\r\n\r\n<p>The most recently added caret is considered&nbsp;primary. Highlighting of an editor line at caret applies to the primary caret only.</p>\r\n', NULL, '2018-11-29', '2018-11-29', '2018-11-29'),
+(17, 'periodista', 'Editor por defecto', 'Another new', 2, 'Another subtitle', '<p>JetBrains Rider supports multiple carets. The majority of the editor actions, such as keyboard navigation, text insertion and deletion, etc., apply to each caret. Live templates and autocompletion are supported as well.</p>\r\n\r\n<p>It is possible to add or delete carets; at least one caret always exists in an editor tab.</p>\r\n\r\n<p>The most recently added caret is considered&nbsp;primary. Highlighting of an editor line at caret applies to the primary caret only.</p>\r\n', NULL, '2018-11-29', '2018-11-29', '2018-11-29'),
+(18, 'periodista', 'administradora', 'Noticia modificada per l editor No se quina seccio es', 3, 'la trobarÃ©?', '<p>The pictures of Paris swathed in tear gas, with burning cars and angry protesters rampaging through the streets in high-vis jackets demanding an end to a fuel tax rise have been seen across the world.</p>\r\n\r\n<p>That so-called carbon tax had already increased diesel by 7.6 cents per litre and petrol by 3.9 cents in the last year, and it was due to rise again in January.</p>\r\n\r\n<p>Yet as the rage over the added expense spilled into the cities and on to front pages, the original reason for the increase became somewhat lost.</p>\r\n\r\n<p>The pictures of Paris swathed in tear gas, with burning cars and angry protesters rampaging through the streets in high-vis jackets demanding an end to a fuel tax rise have been seen across the world.</p>\r\n\r\n<p>That so-called carbon tax had already increased diesel by 7.6 cents per litre and petrol by 3.9 cents in the last year, and it was due to rise again in January.</p>\r\n\r\n<p>Yet as the rage over the added expense spilled into the cities and on to front pages, the original reason for the increase became somewhat lost.</p>\r\n', '', '2018-11-29', '2018-12-11', '2018-11-29'),
+(19, 'Dimsa', 'Editor por defecto', 'Titol modificat', 3, 'titol modificat', '<p>Fuel tax rises which have led to weeks of violent protests in France have now been postponed for six months.</p>\r\n\r\n<p>The move was announced in a televised address by PM Edouard Philippe, who said anyone would have &quot;to be deaf or blind&quot; not to hear or see the anger.</p>\r\n\r\n<p>The protests have hit major cities, causing damage and disruption over the past three weekends.</p>\r\n\r\n<p>The &quot;gilets jaunes&quot; (yellow vest) protests have now grown to reflect more widespread anger at the government.</p>\r\n\r\n<ul>\r\n	<li><a href=\"https://www.bbc.com/news/world-europe-46424267\">Who are the &#39;gilets jaunes&#39;?</a></li>\r\n	<li><a href=\"https://www.bbc.com/news/world-europe-45559355\">Jobseeker: Macron should help me find work</a></li>\r\n</ul>\r\n\r\n<p>The &quot;yellow vests&quot; are so called because they have taken to the streets wearing the high-visibility yellow clothing that is required to be carried in every vehicle by French law.</p>\r\n', '', '2018-11-29', '2018-12-04', '2018-11-29'),
+(20, 'Dimsa', 'Buuu', 'Intento canviar fecha de modificaciÃ³n', 3, 'modificada el dia 6', '<h2>Analysis by Clive Coleman, BBC legal correspondent</h2>\r\n\r\n<p>The advocate general&#39;s opinion that the UK has the right to unilaterally withdraw Article 50 notification of its intention to leave the EU flies in the face of what the UK government and the EU want.</p>\r\n\r\n<p>Although the Advocate General&#39;s opinion is non-binding, the ECJ follow his opinions in the majority of cases.</p>\r\n\r\n<p>The whole issue of revocation remains hypothetical at present because the government has made it clear there is no possibility of seeking to revoke the notice to leave the EU.</p>\r\n', '', '2018-11-29', '2018-12-06', '2018-11-29'),
+(21, 'Dimsa', 'administradora', 'Dimsa new modificada', 3, 'Dimsa new modificada', '<p>The overwhelming majority of adults in England are so unhealthy they put their lives at risk, a survey suggests.</p>\r\n\r\n<p>The data from the Health Survey for England showed nearly nine in 10 had at least one unhealthy trait.</p>\r\n\r\n<p>That was classed as those who smoke, drink more than 14 units of alcohol, eat fewer than five portions of fruit and vegetables, are obese or have low rates of physical activity.</p>\r\n\r\n<p>Half of adults have two or more of these risk factors.</p>\r\n\r\n<p>Although there are signs some people are giving up some of the unhealthy traits.</p>\r\n\r\n<ul>\r\n	<li><a href=\"https://www.bbc.com/news/health-42353206\">Parents give children alcohol &#39;too young&#39;</a></li>\r\n	<li><a href=\"https://www.bbc.com/news/health-30934590\">The cost of being unhealthy</a></li>\r\n	<li><a href=\"https://www.bbc.com/news/health-43201586\">Britain &#39;needs to go on a diet&#39;</a></li>\r\n</ul>\r\n', 'guitar.jpeg', '2018-11-29', '2018-12-07', '2018-11-29'),
+(22, 'dimsa', 'Editor por defecto', 'dimsa new', 3, 'wrfewgrhghjj', '<p>Germany&#39;s public prosecutor alleged that two staff members have helped clients launder money from criminal activities.</p>\r\n\r\n<p>Police cars were seen outside the tower blocks that house the headquarters of Germany&#39;s biggest bank.</p>\r\n\r\n<p>Other Deutsche offices in the city were searched in an operation involving about 170 police and officials.</p>\r\n\r\n<p>Prosecutors are looking into whether Deutsche Bank staff helped clients set up off-shore accounts to &quot;transfer money from criminal activities&quot;.</p>\r\n', NULL, '2018-11-29', '2018-11-29', '2018-11-29'),
+(23, 'Dimsa', 'Editor por defecto', 'dimsa2', 3, 'Noticia super chachi modificada abans de publicar', '<p>El consum de totes les drogues s&#39;ha estabilitzat aquests dos &uacute;ltims anys segons es despr&egrave;n a l&#39;enquesta sobre alcohol i altres drogues a Espanya (Edades) 2017-2018, excepte en el cas del tabac, que presenta un repunt d&#39;un 3%, i del c&agrave;nnabis. En el primer cas, el que m&eacute;s preocupa el ministeri de Sanitat &eacute;s que els joves comencen abans a consumir-ne, i representen un 5% d&#39;aquest repunt. Una altra dada substancial &eacute;s que el 34% de la poblaci&oacute; entre els 15 i els 64 anys ha fumat di&agrave;riament en l&#39;&uacute;ltim mes un 3,6% m&eacute;s que l&#39;any 2011.&nbsp;</p>\r\n\r\n<p>A m&eacute;s, augmenta lleugerament el consum de drogues entre la poblaci&oacute; m&eacute;s jove de 18 anys, amb edats compreses entre els 15 i els 17. En l&#39;&uacute;ltim any, el 60% dels menors enquestats han consumit alcohol i un 25,4% tabac (el 2015 va ser d&#39;un 20,6%).&nbsp;</p>\r\n', '', '2018-11-29', '2018-12-10', '2018-12-10'),
+(24, 'dimsa', 'Buuu', 'dimsa2', 3, 'Not modif', '<p>France is seeing renewed anti-government protests, with nearly 90,000 security personnel on the streets.</p>\r\n\r\n<p>Some 8,000 officers and 12 armoured vehicles have been deployed in Paris alone, where about 5,000 people have gathered in the city centre.</p>\r\n\r\n<p>At least 211 people have been held in Paris. Video footage showed several episodes of police firing tear gas.</p>\r\n\r\n<p>The &quot;yellow vest&quot; movement opposed fuel tax rises but ministers say it&#39;s been hijacked by &quot;ultra-violent&quot; protesters.</p>\r\n', 'candau.jpeg', '2018-11-29', '2018-12-08', '2018-12-08'),
+(25, 'Buuu', 'Editor por defecto', 'Noticia modificada', 3, 'vamos ya', 'http://www.uterra.com/codigo_php/codigo_php.php?ref=paso_de_variable_por_url_mediante_enlace\r\n', NULL, '2018-11-29', '2018-11-29', '2018-12-03'),
+(26, 'buuu', 'Editor por defecto', 'new buu', 3, 'agrhgehjt', '<p>jrtjytrkjtykukst</p>\r\n', NULL, '2018-11-29', '2018-11-29', '2018-11-29'),
+(27, 'buuu', 'Editor por defecto', 'new buu', 3, 'agrhgehjt', '<p>jrtjytrkjtykukst</p>\r\n', NULL, '2018-11-29', '2018-11-29', '2018-11-29'),
+(28, 'buuu', 'Editor por defecto', 'provant boto', 3, 'torna a acciones news', '<p>aESDGrhgth&lt;th</p>\r\n', NULL, '2018-11-29', '2018-11-29', '2018-11-29'),
+(29, 'buuu', 'Editor por defecto', 'p2', 3, 'boto enrera', '<p>grhghhtfrhhtjhms e4r s</p>\r\n', NULL, '2018-11-29', '2018-11-29', '2018-11-29'),
+(30, 'buuu', 'Editor por defecto', 'boto patras', 3, 'edgrhgh eryt ', '<p>hthutrh bjnjyj</p>\r\n', NULL, '2018-11-29', '2018-11-29', '2018-11-29'),
+(31, 'buuu', 'Editor por defecto', 'new d\'avui divendres', 1, 'hggns nas', '<p>&quot;Many Urk people are fishing under a UK flag, they own a lot of quota. If the UK says they must land the fish in the UK we lose a lot of clients. We have a long history; with Brexit they can just throw it away and say these are the new rules.&quot;</p>\r\n', NULL, '2018-11-30', '2018-11-30', '2018-11-30'),
+(34, 'Dimsa', 'Editor por defecto', 'Noticia modificada abans de publicar', 2, 'Li afegeixo foto', '<p>In comparison, 91% of British people believe climate change is partially caused by human activity, and just 66% believe the impact will be negative. Meanwhile,&nbsp;<a href=\"http://closup.umich.edu/files/ieep-nsee-2018-spring-climate-belief.pdf\">a report by the University of Michigan&#39;s Center for Local, State, and Urban Policy notes only 60% of Americans believe climate change</a>&nbsp;is happening and humans are playing a part.</p>\r\n', 'bombilla1.png', '2018-12-04', '2018-12-08', '2018-12-08'),
+(35, 'Dimsa', 'Editor por defecto', 'Hooooola jo siiiiiiiiii', 2, 'Foto mod', '<p>The pictures of Paris swathed in tear gas, with burning cars and angry protesters rampaging through the streets in high-vis jackets demanding an end to a fuel tax rise have been seen across the world.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Yet as the rage over the added expense spilled into the cities and on to front pages, the original reason for the increase became somewhat lost.</p>\r\n\r\n<p>It was supposed to help reduce the country&#39;s reliance on fossil fuel-guzzling cars, part of a wider attempt to reduce emissions and curb the effects of man-made climate change.</p>\r\n', '', '2018-12-04', '2018-12-06', '2018-12-06'),
+(42, 'Dimsa', 'Editor por defecto', 'Mossos', 1, 'Modi new 42', '<p>Afegim foto, candau</p>\r\n\r\n<p>It returns one row as expected. In case the table has many rows, MySQL has to perform a full table scan to locate the&nbsp;rows&nbsp;that match the condition.</p>\r\n\r\n<h3>MySQL TIME function</h3>\r\n\r\n<p>To extract the time portion from a&nbsp;<code>DATETIME</code>&nbsp;value, you use the&nbsp;<code>TIME</code>&nbsp;function as the following statement:</p>\r\n', 'candau.jpeg', '2018-12-06', '2018-12-08', '2018-12-11'),
+(44, 'Buuu', 'Editor por defecto', 'vale', 1, 'new buuu', '<p><a href=\"https://www.abc.es/espana/catalunya/politica/abci-detenido-y-cuatro-mossos-heridos-manifestacion-anti-vox-gerona-201812061118_noticia.html#disqus_thread\">6</a></p>\r\n\r\n<p>NOTICIAS RELACIONADAS</p>\r\n\r\n<ul>\r\n	<li><a href=\"https://www.abc.es/espana/catalunya/politica/abci-piden-frente-antifascista-evite-ilegalizacion-201811281630_noticia.html#ns_campaign=mod-sugeridos&amp;ns_mchannel=relacionados&amp;ns_source=la-cup-piden-un-frente-antifascista-que-evite-su-ilegalizacion&amp;ns_linkname=noticia.foto.local&amp;ns_fee=pos-1\">La CUP piden un &laquo;frente antifascista&raquo; que evite su ilegalizaci&oacute;n</a></li>\r\n	<li><a href=\"https://www.abc.es/espana/catalunya/politica/abci-desfalco-economico-201811231403_noticia.html#ns_campaign=mod-sugeridos&amp;ns_mchannel=relacionados&amp;ns_source=desfalco-economico-en-los-cdr&amp;ns_linkname=noticia.foto.local&amp;ns_fee=pos-2\">Desfalco econ&oacute;mico en los CDR</a></li>\r\n	<li><a href=\"https://www.abc.es/espana/catalunya/politica/abci-sedes-partidos-indepedentistas-y-omnium-amanecen-llenos-pintura-amarilla-201811221056_noticia.html#ns_campaign=mod-sugeridos&amp;ns_mchannel=relacionados&amp;ns_source=las-sedes-de-partidos-indepedentistas-anc-y-omnium-amanecen-llenos-de-pintura-amarilla&amp;ns_linkname=noticia.foto.local&amp;ns_fee=pos-3\">Las sedes de partidos indepedentistas, ANC y &Ograve;mnium amanecen llenos de pintura amarilla</a></li>\r\n</ul>\r\n\r\n<p>Los&nbsp;<strong>Mossos d&#39;Esquadra&nbsp;</strong>han cargado este jueves en Gerona contra un grupo de manifestantes que pretend&iacute;an boicotear la manifestaci&oacute;n &laquo;<strong>Unidos por la Constituci&oacute;n</strong>&raquo; organizada por el PP y Vox, entre otras entidades y partidos.&nbsp;<a href=\"https://www.abc.es/espana/catalunya/politica/abci-piden-frente-antifascista-evite-ilegalizacion-201811281630_noticia.html\">&laquo;Gerona ser&aacute; la tumba del fascismo. Las calles ser&aacute;n siempre nuestras&raquo;</a>, afirmaban los activistas independentistas mientras los agentes trataban de evitar su entrada en la plaza<strong>&nbsp;&laquo;1 d&#39;octubre&raquo;</strong>&nbsp;-antes plaza de la Constituci&oacute;n.</p>\r\n\r\n<p>Seg&uacute;n ha confirmado la polic&iacute;a catalana, cuatro agentes de los Mossos han resultado heridos en su enfrentamiento con los manifestantes. Asimismo, uno de los&nbsp;<strong>activistas &laquo;antifascistas&raquo;</strong>&nbsp;ha resultado herido. Muchos de los concentrados que quer&iacute;an evitar la marcha constitucionalista iban con el rostro cubierto y con banderas negras y rojas. Otros portaban banderas esteladas o antifascistas.</p>\r\n\r\n<p>Varias entidades independentistas, as&iacute; como los autodenominados&nbsp;<strong>Comit&eacute;s de Defensa de la Rep&uacute;blica&nbsp;</strong>han criticado r&aacute;pidamente las cargas de la polic&iacute;a auton&oacute;mica que ten&iacute;an por objetivo garantizar la celebraci&oacute;n de una concentraci&oacute;n en la que est&aacute; previsto que participe el secretario general de&nbsp;<strong>Vox</strong>, Javier Ortega Smith.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>ADVERTISING</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h3>Piden la dimisi&oacute;n de Buch</h3>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&laquo;Los Mossos del Gobierno efectivo vuelven a reprimir una manifestaci&oacute;n antifascista. Todo el apoyo a las personas que se manifiestan hoy en&nbsp;<strong>Gerona</strong>, y toda la solidaridad con las que han sufrido la violencia policial&raquo;, se&ntilde;alaban los CDR en las redes antes de pedir de nuevo la dimisi&oacute;n del consejero de&nbsp;<strong>Interior&nbsp;</strong>de la Generalitat de Catalu&ntilde;a, Miquel Buch.</p>\r\n', NULL, '2018-12-05', '2018-12-06', '2018-12-06'),
+(48, 'periodista', 'Editor por defecto', 'Provant imatges', 1, 'Ole q bÃ©', '<h1>Why Spain&#39;s government is exhuming General Franco&#39;s remains</h1>\r\n\r\n<p>The country&rsquo;s current socialist government has promised to remove the body of fascist dictator General Franco from its mausoleum &ndash; one of a number of moves made in a country still trying to overcome its buried, divided past.</p>\r\n\r\n<p>James Reynolds explores the open wounds of Spain.</p>\r\n', 'bombilla1.png', '2018-12-07', '2018-12-07', '2018-12-07'),
+(49, 'periodista', 'Editor por defecto', 'Provant fotos', 1, 'Bombeta power', '<h1>Vox: Who are Spain&#39;s far-right party?</h1>\r\n\r\n<p>The party is the first from the far-right to win seats in a Spanish regional election in decades.</p>\r\n', NULL, '2018-12-07', '2018-12-07', '2018-12-07'),
+(51, 'periodista', 'Editor por defecto', 'fotoooos', 3, 'fotos q be', '<p>Cardi B, Drake and Ariana Grande are expected to be among the contenders for this year&#39;s Grammys.</p>\r\n\r\n<p>The nominations for the biggest awards in music will be announced later.</p>\r\n\r\n<p>Four of the major categories are being expanded this year, which could mean more recognition for women and BAME (black, Asian and minority ethnic) artists.</p>\r\n\r\n<p>Song and album of the year are among the categories which will now have eight nominees, instead of five.</p>\r\n\r\n<p>The change comes after the Recording Academy created a diversity task force in response to criticism that the winners are usually disproportionately white and male.</p>\r\n', NULL, '2018-12-07', '2018-12-07', '2018-12-07'),
+(52, 'periodista', 'Editor por defecto', 'Creem news amb foto', 3, 'bieeeeeeeeeeen', '<p>El Govern no far&agrave; canvis als Mossos d&#39;Esquadra i ha defensat &quot;com a globalment correctes&quot; els dispositius de Girona i Terrassa.&nbsp;Despr&eacute;s del secretisme sobre&nbsp;<a href=\"https://www.ara.cat/politica/Torra-reuneix-Buch-Palau-Pedralbes_0_2139986180.html\" target=\"_blank\">la reuni&oacute; que van tenir ahir, durant dues hores i mitja</a>, el president de la Generalitat, Quim Torra, i el conseller d&#39;Interior, Miquel Buch, al Palau de Pedralbes, avui n&#39;ha transcendit el contingut. Buch, que aquest migdia s&#39;ha reunit amb la c&uacute;pula dels Mossos, ha descartat canvis immediats i ha afegit que en tot cas es farien en &quot;una decisi&oacute; interna, que ha de respondre a necessitats estructurals i atenent a criteris professionals i objectius&quot;. Segons fonts del departament d&#39;Interior, el conseller ha fet autocr&iacute;tica davant els comandaments policials per la confusi&oacute; o el malestar que s&#39;hagu&eacute;s pogut generar els &uacute;ltims dies.</p>\r\n', '', '2018-12-07', '2018-12-10', '2018-12-10'),
+(53, 'periodista', 'Editor por defecto', 'provabt fotos 2', 1, 'ole q te', '<p>/var/www/phpMysql/blog</p>\r\n', 'OrtusRegni_026.png', '2018-12-07', '2018-12-07', '2018-12-10'),
+(55, 'periodista', 'Editor por defecto', 'somhi', 3, 'bieeeeeeeeeeen', '<ul>\r\n	<li><a href=\"https://www.bbc.com/news/newsbeat-42914551\">&#39;Gender bias task force&#39; launched by Grammys</a></li>\r\n</ul>\r\n\r\n<p>The categories which have been expanded are album of the year, record of the year (for best overall song), song of the year (which is specifically for songwriting) and best new artist.</p>\r\n\r\n<p>The other categories will continue to include five nominees.</p>\r\n', NULL, '2018-12-07', '2018-12-07', '2018-12-07'),
+(60, 'periodista', 'Editor por defecto', 'Not super chachi amb foto', 1, 'Foto bombeta', '<p>Mr Castaner said &quot;large-scale security measures&quot; would be put in place this weekend.</p>\r\n\r\n<p>Across France, 89,000 police officers will be on duty and armoured vehicles will be deployed in the capital, Prime Minister Edouard Philippe announced.</p>\r\n\r\n<p>Paris police have urged shops and restaurants on the Champs-Elysees to shut and some museums will also be closed.</p>\r\n\r\n<ul>\r\n	<li><a href=\"https://www.bbc.com/news/world-europe-46480867\">Why the &#39;yellow vests&#39; won&#39;t stop protests</a></li>\r\n	<li><a href=\"https://www.bbc.com/news/world-europe-46481397\">French students &#39;humiliated by police&#39;</a></li>\r\n	<li><strong>Will you be affected by the planned closures? Email&nbsp;</strong><a href=\"mailto:haveyoursay@bbc.co.uk?subject=paris46476037\">haveyoursay@bbc.co.uk</a></li>\r\n</ul>\r\n\r\n<p>The government has said it is scrapping the unpopular fuel tax increases in its budget - but discontent with the government has spread and protests have erupted over other issues.</p>\r\n', '', '2018-12-07', '2018-12-07', '2018-12-07'),
+(61, 'administradora', 'Editor por defecto', 'foto con new', 1, 'new con foto', '<ul>\r\n	<li>Archivo:&nbsp;cambiodatospersonales.php</li>\r\n</ul>\r\n\r\n<p>Ejecutamos nuestra sentencia SQL donde su funci&oacute;n es actualizar el campo de nuestra&nbsp;tabla &ldquo;ruta_imagen&rdquo; con el nombre de nuestra imagen almacenada en nuestro servidor, por lo tanto el objetivo final es guardarnos la ruta de la imagen, en nuestro caso ser&iacute;a el nombre de la imagen subida.</p>\r\n', 'bombilla1.png', '2018-12-07', '2018-12-07', '2018-12-11'),
+(63, 'Cloita', 'Editor por defecto', 'Modifico aqa new de la secciÃ³ 3', 3, 'Dp la publicarÃ©', '<p>Anti-government protests in France have &quot;created a monster&quot;, France&#39;s Interior Minister Christophe Castaner has said.</p>\r\n\r\n<p>And he is warning that &quot;radical elements&quot; could infiltrate planned &quot;yellow vest&quot; protests at the weekend.</p>\r\n\r\n<p>Tourist sites in Paris are to close on Saturday amid fears of further street violence.</p>\r\n\r\n<p>The protests began three weeks ago, initially against a rise in fuel taxes but have spread to take in other issues, including education reforms.</p>\r\n\r\n<p>Mr Castaner said &quot;large-scale security measures&quot; would be put in place this weekend.</p>\r\n\r\n<p>Across France, 89,000 police officers will be on duty and armoured vehicles will be deployed in the capital, Prime Minister Edouard Philippe announced.</p>\r\n\r\n<p>Paris police have urged shops and restaurants on the Champs-Elysees to shut and some museums will also be closed.</p>\r\n', '', '2018-12-07', '2018-12-11', '2018-12-11'),
+(64, 'Cloita', 'Editor por defecto', 'otra new con foto', 1, 'tb el subtitol', '<pre>\r\nA veure si puc modificar sense foto</pre>\r\n', 'xupaxup.jpeg', '2018-12-07', '2018-12-07', '2018-12-07'),
+(65, 'Cloita', 'Editor por defecto', 'foto con new', 3, 'pq siiiiiiiiii', '<p>vamooos</p>\r\n', 'dau.jpeg', '2018-12-07', '2018-12-07', '2018-12-07'),
+(66, 'Cloita', 'Editor por defecto', 'Fem una new amb foto', 2, 'Toma que te', '<p>Dp la intentarem canviar la <strong>foto.</strong>..</p>\r\n\r\n<p>La primera ser&aacute; el telf, baixa</p>\r\n\r\n<p>Ara la modifico per gato</p>\r\n', 'img_cuidados_de_gatos_cachorros_21217_600.jpg', '2018-12-07', '2018-12-07', '2018-12-07'),
+(68, 'periodista', 'Editor por defecto', 'Torrent ha evitat valorar el discurs de Quim Torra ', 2, 'pq si', '<p>Vilalta ha validat les paraules del president del Parlament, Roger Torrent, que ha apostat per la via escocesa com l&#39;&quot;&uacute;nica&quot; amb qu&egrave; es pot resoldre el conflicte catal&agrave;. En declaracions als mitjans des de les portes de Lledoners despr&eacute;s de visitar els presos pol&iacute;tics, Torrent ha evitat valorar el discurs de Quim Torra en qu&egrave; va apel&middot;lar a la determinaci&oacute; dels eslovens, i ha posat l&#39;accent en l&#39;estrat&egrave;gia que &quot;connecta amb el 80% de la poblaci&oacute; del pa&iacute;s&quot;, que &eacute;s la&quot;c&iacute;vica, democr&agrave;tica i pac&iacute;fica&quot;. Les paraules de Torrent contrasten amb les de l&#39;exconseller de Salut Toni Com&iacute;n, que ha assegurat que la independ&egrave;ncia &quot;no es podr&agrave; fer per la via brit&agrave;nica ni la canadenca&quot;.&nbsp;&nbsp;</p>\r\n', '', '2018-12-10', '2018-12-10', '2018-12-10'),
+(69, 'periodista', 'Editor por defecto', 'Now amb paraula clau', 2, 'noticia keyword', '<p>Vilalta ha validat les paraules del president del Parlament, Roger Torrent, que ha apostat per la via escocesa com l&#39;&quot;&uacute;nica&quot; amb qu&egrave; es pot resoldre el conflicte catal&agrave;. En declaracions als mitjans des de les portes de Lledoners despr&eacute;s de visitar els presos pol&iacute;tic<strong>s, Torrent ha evitat valorar el discurs de Quim Torra </strong>en qu&egrave; va apel&middot;lar a la determinaci&oacute; dels eslovens, i ha posat l&#39;accent en l&#39;estrat&egrave;gia que &quot;connecta amb el 80% de la poblaci&oacute; del pa&iacute;s&quot;, que &eacute;s la&quot;c&iacute;vica, democr&agrave;tica i pac&iacute;fica&quot;. Les paraules de Torrent contrasten amb les de l&#39;exconseller de Salut Toni Com&iacute;n, que ha assegurat que la independ&egrave;ncia &quot;no es podr&agrave; fer per la via brit&agrave;nica ni la canadenca&quot;.&nbsp;&nbsp;</p>\r\n', '', '2018-12-10', '2018-12-10', '2018-12-10'),
+(70, 'periodista', 'Editor por defecto', 'not amb paraula clau', 2, 'afegim final com a keyword', '<ul>\r\n	<li>Vilalta ha validat les paraules del president del Parlament, Roger Torrent, que ha apostat per la via escocesa com l&#39;&quot;&uacute;nica&quot; amb qu&egrave; es pot resoldre el conflicte catal&agrave;. En declaracions als mitjans des de les portes de Lledoners despr&eacute;s de visitar els presos pol&iacute;tics,</li>\r\n	<li>Torrent ha evitat valorar el discurs de Quim Torra en qu&egrave; va apel&middot;lar a la determinaci&oacute; dels eslovens, i ha posat l&#39;accent en l&#39;estrat&egrave;gia que &quot;connecta amb el 80% de la poblaci&oacute; del pa&iacute;s&quot;, que &eacute;s la&quot;c&iacute;vica, democr&agrave;tica i pac&iacute;fica&quot;. Les paraules de Torrent contrasten amb les de l&#39;exconseller de Salut Toni Com&iacute;n, que ha assegurat que la independ&egrave;ncia &quot;no es podr&agrave; fer per la via brit&agrave;nica ni la canadenca&quot;.&nbsp;&nbsp;</li>\r\n</ul>\r\n', '', '2018-12-10', '2018-12-10', '2018-12-10'),
+(71, 'periodista', 'Editor por defecto', 'vamos con las keywords', 2, 'vamos con las keywords', '<p>aloa&nbsp;vamos con las keywords</p>\r\n', '', '2018-12-10', '2018-12-10', '2018-12-10'),
+(72, 'periodista', 'Editor por defecto', 'vamos con las keywords', 2, 'vamos con las keywords', '<p>aloa&nbsp;vamos con las keywords</p>\r\n', '', '2018-12-10', '2018-12-10', '2018-12-10'),
+(73, 'periodista', 'Editor por defecto', 'vamos con las keywords', 2, 'vamos con las keywords', '<p>aloa&nbsp;vamos con las keywords</p>\r\n', '', '2018-12-10', '2018-12-10', '2018-12-11'),
+(74, 'periodista', 'Editor por defecto', 'vamos con las keywords', 2, 'vamos con las keywords', '<p>aloa&nbsp;vamos con las keywords</p>\r\n', '', '2018-12-10', '2018-12-10', '2018-12-10'),
+(75, 'periodista', 'Editor por defecto', 'vamos con las keywords', 2, 'vamos con las keywords', '<p>aloa&nbsp;vamos con las keywords</p>\r\n', '', '2018-12-10', '2018-12-10', '2018-12-10'),
+(76, 'periodista', 'Editor por defecto', 'vamos con las keywords', 2, 'vamos con las keywords', '<p>aloa&nbsp;vamos con las keywords</p>\r\n', '', '2018-12-10', '2018-12-10', '2018-12-10'),
+(77, 'periodista', 'Editor por defecto', 'eterygehrtj', 2, 'jyju7y8m 758m', '<p>&nbsp;5868m758m65</p>\r\n', '', '2018-12-10', '2018-12-10', '2018-12-10'),
+(78, 'periodista', 'Editor por defecto', 'eterygehrtj', 2, 'jyju7y8m 758m', '<p>&nbsp;5868m758m65</p>\r\n', '', '2018-12-10', '2018-12-10', '2018-12-10'),
+(79, 'periodista', 'Editor por defecto', 'eterygehrtj', 2, 'jyju7y8m 758m', '<p>&nbsp;5868m758m65</p>\r\n', '', '2018-12-10', '2018-12-10', '2018-12-10'),
+(80, 'periodista', 'Editor por defecto', 'estfer yer ', 2, 'ytru trur rtur6u ', '<p>u 6tru ui75876</p>\r\n', '', '2018-12-10', '2018-12-10', '2018-12-10'),
+(81, 'periodista', 'Editor por defecto', 'estfer yer ', 2, 'ytru trur rtur6u ', '<p>u 6tru ui75876</p>\r\n', '', '2018-12-10', '2018-12-10', '2018-12-10'),
+(82, 'periodista', 'Editor por defecto', 'estfer yer ', 2, 'ytru trur rtur6u ', '<p>u 6tru ui75876</p>\r\n', '', '2018-12-10', '2018-12-10', '2018-12-10'),
+(83, 'periodista', 'Editor por defecto', 'Modifico new 83', 2, 'ytru trur rtur6u ', '<p>El que faran els ultranacionalistes espanyols durant el judici ja ho sabem. El jutge Llarena s&rsquo;ha inventat &ldquo;viol&egrave;ncia&rdquo; i la premsa i els pol&iacute;tics afins (que s&rsquo;hi juguen els quartos) l&rsquo;han &ldquo;afinat&rdquo;. El que &eacute;s una inc&ograve;gnita &eacute;s el que faran els nacionalistes espanyols honestos. &iquest;N&rsquo;hi haur&agrave; que diran &ndash;exposant-se a les ires d&rsquo;en Borrell, exposant-se a no tenir contractes laborals, exposant-se a boicots a les seves pel&middot;l&iacute;cules o gires&ndash; que mai hi ha hagut viol&egrave;ncia i punt? &iquest;Callaran quan els ultres repeteixin l&rsquo;expressi&oacute; &ldquo;cop d&rsquo;estat&rdquo;? M&rsquo;ho conec, aix&ograve;, perqu&egrave; &eacute;s el mateix comportament de quan es parla de toros. Els que no volen excitar les ires patri&ograve;tiques hisp&agrave;niques diuen que &ldquo;no es pronuncien&rdquo;. Per&ograve; no pronunciar-se &eacute;s consentir i consentir quan estem parlant de tortura animal no &eacute;s el mateix que consentir quan estem parlant de si tramvia s&iacute; o tramvia no. Tots els que callen, &iquest;callarien tamb&eacute; davant d&rsquo;un pare que maltracta un fill al pis del costat? En aquest cas no, oi? Per&ograve; &iquest;i si el pare fos membre d&rsquo;una fam&iacute;lia poderosa, de sang blava, amb algun c&agrave;rrec important? Ah. Llavors es tractaria, com ara, de mirar cap a una altra banda.</p>\r\n', '', '2018-12-10', '2018-12-11', '2018-12-10'),
+(84, 'Dimsa', 'Editor por defecto', 'Noticia dimarts 11', 2, 'ole q te', '<p>Aquest dimarts ha comen&ccedil;at amb m&eacute;s fred i temperatures for&ccedil;a m&eacute;s baixes que ahir en general. Ha parat el vent i aix&ograve; ha perm&egrave;s que la temperatura caigu&eacute;s fins a 7 o 8 graus en algunes comarques de Ponent i de les Terres de l&#39;Ebre. D&#39;entre les temperatures m&iacute;nimes d&#39;avui en destaquem:</p>\r\n', '', '2018-12-11', '2018-12-11', '2018-12-11'),
+(85, 'Dimsa', 'Editor por defecto', 'Noticia 85', 1, 'subtitul canviat', '<pre>\r\n&lt;h1 class=&quot;my-4&quot;&gt;&lt;?php if ($idseccion == 1) {\r\n        echo &quot;Pol&iacute;tica&quot;;\r\n    } elseif ($idseccion == 2) {\r\n        echo &quot;Cultura&quot;;\r\n    } else {\r\n        echo &quot;Deportes&quot;;\r\n    };?&gt;\r\n&lt;/h1&gt;</pre>\r\n', '', '2018-12-11', '2018-12-11', '2018-12-11'),
+(97, 'Dimsa', 'Editor por defecto', 'Noticia de dimarts amb last id', 2, 'pollo a l\'ast', '<h3><strong>A<strong>dministrar el acceso a dominios analizando y respetando los requerimientos de seguridad</strong></strong></h3>\r\n', '', '2018-12-11', '2018-12-11', '2018-12-11'),
+(98, 'Dimsa', 'Editor por defecto', 'edfgwg', 1, 'rgyy', '<p>yhteayhuyr</p>\r\n', '', '2018-12-11', '2018-12-11', '2018-12-11'),
+(102, 'Dimsa', 'Editor por defecto', 'etwt', 1, 'ryteryhgy', '<p>herhyterh</p>\r\n', '', '2018-12-11', '2018-12-11', '2018-12-11'),
+(111, 'Dimsa', 'Editor por defecto', 'fefe', 1, 'fefef', '<p>fefef</p>\r\n', '', '2018-12-11', '2018-12-11', '2018-12-11'),
+(112, 'Dimsa', 'Editor por defecto', 'fefe', 1, 'fefef', '<p>fefef</p>\r\n', '', '2018-12-11', '2018-12-11', '2018-12-11'),
+(113, 'Dimsa', 'Editor por defecto', 'fefe', 1, 'fefef', '<p>fefef</p>\r\n', '', '2018-12-11', '2018-12-11', '2018-12-11'),
+(114, 'Dimsa', 'Editor por defecto', 'fefe', 1, 'fefef', '<p>fefef</p>\r\n', '', '2018-12-11', '2018-12-11', '2018-12-11'),
+(115, 'Dimsa', 'Editor por defecto', 'dsgsg', 1, 'hghb', '<p>hbthhj</p>\r\n', '', '2018-12-11', '2018-12-11', '2018-12-11'),
+(116, 'Dimsa', 'Editor por defecto', 'dsgsg', 1, 'hghb', '<p>hbthhj</p>\r\n', '', '2018-12-11', '2018-12-11', '2018-12-11'),
+(117, 'Dimsa', 'Editor por defecto', 'dsgsg', 1, 'hghb', '<p>hbthhj</p>\r\n', '', '2018-12-11', '2018-12-11', '2018-12-11'),
+(118, 'Dimsa', 'Editor por defecto', 'dsgsg', 1, 'hghb', '<p>hbthhj</p>\r\n', '', '2018-12-11', '2018-12-11', '2018-12-11'),
+(119, 'Dimsa', 'Editor por defecto', 'dsgsg', 1, 'hghb', '<p>hbthhj</p>\r\n', '', '2018-12-11', '2018-12-11', '2018-12-11'),
+(120, 'Dimsa', 'Editor por defecto', 'dsgsg', 1, 'hghb', '<p>hbthhj</p>\r\n', '', '2018-12-11', '2018-12-11', '2018-12-11'),
+(121, 'Dimsa', 'Editor por defecto', 'dsgsg', 1, 'hghb', '<p>hbthhj</p>\r\n', '', '2018-12-11', '2018-12-11', '2018-12-11'),
+(122, 'Dimsa', 'Editor por defecto', 'fsfsf', 1, 'fsfsf', '<p>fsfsf</p>\r\n', '', '2018-12-11', '2018-12-11', '2018-12-11'),
+(123, 'Dimsa', 'Editor por defecto', 'fsfsf', 1, 'fsfsf', '<p>fsfsf</p>\r\n', '', '2018-12-11', '2018-12-11', '2018-12-11'),
+(124, 'Dimsa', 'Editor por defecto', 'fsfsf', 1, 'fsfsf', '<p>fsfsf</p>\r\n', '', '2018-12-11', '2018-12-11', '2018-12-11'),
+(125, 'Dimsa', 'editor', 'Not mod 125', 1, 'yeryyy', '<p>truyuhru</p>\r\n', '', '2018-12-11', '2018-12-11', '2018-12-11'),
+(126, 'Dimsa', 'Editor por defecto', 'rtt', 1, 'yeryyy', '<p>truyuhru</p>\r\n', '', '2018-12-11', '2018-12-11', '2018-12-11'),
+(127, 'Dimsa', 'Editor por defecto', 'rtt', 1, 'yeryyy', '<p>truyuhru</p>\r\n', '', '2018-12-11', '2018-12-11', '2018-12-11'),
+(130, 'Dimsa', 'Editor por defecto', 'La Audiencia rechaza apartar al juez Andreu del juicio sobre Gürtel y Aena ', 1, 'Su amistad con Delgado y Garzón le separa del juicio sobre los casos Gürtel y Aena', '<p>La Secci&oacute;n Segunda de la Sala de lo Penal de la Audiencia Nacional ha rechazado de plano apartar al juez Fernando Andreu del juicio sobre los contratos presuntamente irregulares de la trama G&uuml;rtel con Aena, una recusaci&oacute;n que ped&iacute;a uno de los encausados alegando que su amistad con la actual ministra de Justicia, Dolores Delgado, y con el exmagistrado instructor de la causa, Baltasar Garz&oacute;n, pon&iacute;a en duda su imparcialidad.</p>\r\n\r\n<p>En concreto, la recusaci&oacute;n fue interpuesta por Jos&eacute; Mar&iacute;a Gavari, que fue n&uacute;mero dos del entonces director de Comunicaci&oacute;n de Aena, &Aacute;ngel L&oacute;pez de la Mota, cuando se registraron los supuestos contratos irregulares con las empresas de G&uuml;rtel. Por ellos, ambos se sentar&aacute;n en el banquillo a partir del pr&oacute;ximo 10 de diciembre en la Secci&oacute;n Segunda, de la que forma parte Andreu, futuro ponente de la sentencia.</p>\r\n', 'juezandreu.jpg', '2018-12-11', '2018-12-12', '2018-12-11'),
+(131, 'periodista', 'Editor por defecto', 'La IAAF aprueba solicitar al COI la inclusión de los 50 marcha femeninos en Tokio 2020', 2, 'La española Ainhoa Pinedo forma parte de la comitiva que ha viajado a Mónaco', '<p>La Federaci&oacute;n Internacional de atletismo (IAAF) ha aprobado solicitar al Comit&eacute; Ol&iacute;mpico Internacional la inclusi&oacute;n de los 50 marcha femeninos en el programa ol&iacute;mpico ya en la edici&oacute;n de Tokio 2020. Una delegaci&oacute;n de marchadoras de esta prueba, entre la que se encontraba la espa&ntilde;ola Ainhoa Pinedo, viaj&oacute; hasta M&oacute;naco donde estos d&iacute;as se celebra el Consejo de la IAAF para realizar formalmente esta petici&oacute;n, que finalmente ha contado con el benepl&aacute;cito del organismo internacional. &quot;Gracias a todos y cada uno de los miembros de la IAAF que nos han recibido con los brazos abiertos mostrando su apoyo absoluto&quot;, asegura Pinedo. La comitiva estuvo encabezada por el abogado estadounidense Paul DeMeester y la atleta espa&ntilde;ola, junto a Erin Taylor-Talcott, de Estados Unidos; In&eacute;s Henriques, de Portugal; y Johanna Ord&oacute;&ntilde;ez, de Ecuador.La petici&oacute;n ahora debe ser aceptada por el COI, aunque las marchadoras se muestran optimistas de que as&iacute; sea.&nbsp;</p>\r\n', 'ainhoa.jpg', '2018-12-11', '2018-12-12', '2018-12-11'),
+(134, 'periodista', 'Editor por defecto', 'Esta noticia no se ve en mis noticias de periodista, quizás por haber sido insertada desdel servidor', 2, 'Noticia creada des del servidor', '<p>I ha continuat: &quot;El nou l&iacute;der no tindria temps de renegociar l&#39;acord de sortida i no aconseguiria [fer aprovar] la legislaci&oacute; a trav&eacute;s del Parlament abans del 29 de mar&ccedil;, de manera que un dels seus primers actes hauria de ser estendre o rescindir l&#39;article 50 [el que marca la sortida de la UE], retardar o fins i tot aturar el Brexit, quan el que vol la gent &eacute;s que el tirem endavant&quot;.</p>\r\n', 'xupaxup.jpeg', '2018-12-03', '2018-12-12', '2018-12-12'),
+(135, 'Iris', 'Editor por defecto', 'Las obras de Banksy llegan a España en la primera muestra dedicada al artista', 2, 'Las piezas, que ya se han expuesto en Moscú y proceden de colecciones privadas.', '<p>&quot;Una exposici&oacute;n no autorizada de trabajos procedentes de colecciones privadas del artista conocido como Banksy. &iquest;Genio o V&aacute;ndalo?&quot;; as&iacute; se ha anunciado este viernes la primera muestra que se dedica al artista callejero en Espa&ntilde;a, que abrir&aacute; sus puertas en el Espacio 51 de Ifema el pr&oacute;ximo 6 de diciembre.</p>\r\n\r\n<p>Seg&uacute;n ha informado en una nota Sold Out, organizadora de la muestra junto a IQ Art Management, se expondr&aacute;n &quot;m&aacute;s de 70 creaciones&quot;. Algunas de las cuales &quot;estar&aacute;n a la venta&quot;, entre las que hay &quot;obras originales, esculturas, instalaciones, v&iacute;deos y fotograf&iacute;as&quot;.</p>\r\n', 'bansky.jpg', '2018-12-04', '2018-12-12', '2018-12-12'),
+(136, 'Iris', 'Editor por defecto', 'El reggae y las tamborradas, considerados Patrimonio Inmaterial de la Humanidad', 2, 'La Unesco destacó su importancia en un comunicado official.', '<p>El reggae de Jamaica y las tamboradas de Espa&ntilde;a fueron declarados este jueves Patrimonio Cultural Inmaterial de la Humanidad por la Unesco. As&iacute; lo ha decidido la Convenci&oacute;n de la Organizaci&oacute;n de las Naciones Unidas para la Educaci&oacute;n, la Ciencia y la Cultura (Unesco) tras examinar varias candidaturas esta semana.</p>\r\n\r\n<p>En cuanto al g&eacute;nero musical, &quot;su aportaci&oacute;n a la reflexi&oacute;n internacional sobre cuestiones como la injusticia, la resistencia, el amor y la condici&oacute;n humana pone de relieve la fuerza intelectual, sociopol&iacute;tica, espiritual y sensual de este elemento del patrimonio cultural&quot;, ha explicado la organizaci&oacute;n en un comunicado.</p>\r\n', 'tamborrada.jpg', '2018-12-11', '2018-12-12', '2018-12-12'),
+(137, 'periodista', 'Editor por defecto', 'La colombiana Caterine Ibargüen gana el premio a la mejor atleta del año', 3, 'La saltadora, medallista de oro en los olímpicos de Río, apunta ahora a Tokio 2020.', '<p>La saltadora colombiana Caterine Ibarg&uuml;en corrobor&oacute; este martes el estatus de indestronable que disfruta desde hace a&ntilde;os en su pa&iacute;s al ser elegida como la mejor atleta de 2018 por la Federaci&oacute;n Internacional de Atletismo (IAAF), apenas la segunda ocasi&oacute;n en que Latinoam&eacute;rica obtiene la distinci&oacute;n. En la gala celebrada en M&oacute;naco la acompa&ntilde;&oacute; el fondista keniano Eliud Kipchoge, recordman de marat&oacute;n.<br />\r\nIbarg&uuml;en, medalla de oro en salto triple en los ol&iacute;mpicos de R&iacute;o 2016, coron&oacute; as&iacute; un a&ntilde;o impecable. La desparpajada atleta colombiana, de 34 a&ntilde;os, gan&oacute; las competencias de longitud y salto triple en los &uacute;ltimos Juegos Centroamericanos y del Caribe, en Barranquilla, y realiz&oacute; la proeza de ganar estos dos t&iacute;tulos en la Liga de Diamante en dos ciudades diferentes en el espacio de 24 horas.</p>\r\n', 'ibarguen.jpg', '2018-12-05', '2018-12-12', '2018-12-12'),
+(138, 'Iris', 'Editor por defecto', 'El descubrimiento de un aljibe en un castro revela el desarrollado pasado prerromano de los gallegos', 2, 'Un gran depósito de agua muestra que hubo un importante asentamiento antes de la conquista.', '<p>En lo alto de un monte desde donde las vistas sobre la comarca de A Terra Ch&aacute; gallega son privilegiadas, se erige un antiguo poblado fortificado, el Castro de Viladonga. Un nuevo descubrimiento ha puesto en entredicho lo que se sab&iacute;a hasta ahora sobre este yacimiento arqueol&oacute;gico ubicado a 535 metros sobre el nivel del mar en el municipio Castro de Rei (5.000 habitantes), a 23 kil&oacute;metros al noroeste de Lugo. Se trata del hallazgo de un aljibe de m&aacute;s de 70 metros cuadrados y cuatro de profundidad con capacidad para almacenar m&aacute;s de 150.000 litros de agua y abastecer a m&aacute;s de 300 personas, en la zona nordeste del castro. El dep&oacute;sito fue construido en el siglo III a. C., a diferencia de la mayor parte de las estructuras descubiertas hasta ahora en el lugar, que fueron fabricadas en plena &eacute;poca romana, entre los siglos II y V d. C. El aljibe excavado en la roca y hallado debajo de una muralla de esta fortificaci&oacute;n, considerada Bien de Inter&eacute;s Cultural desde 2009, es la punta de lanza para ahondar en el pasado prerromano de la cultura castre&ntilde;a.</p>\r\n', 'viladonga.jpg', '2018-12-11', '2018-12-12', '2018-12-12'),
+(139, 'Iris', 'Editor por defecto', 'Las directoras asaltan el nuevo cine español', 2, 'En el 2018, se ha producido una explosión de obras femeninas', '<p>En los &uacute;ltimos a&ntilde;os hemos asistido a una explosi&oacute;n de &oacute;peras primas dirigidas por mujeres. El a&ntilde;o pasado Carla Sim&oacute;n gan&oacute; el Goya a la mejor direcci&oacute;n novel por &lsquo;Estiu 1993&rsquo;, convirti&eacute;ndose en la representante de una nueva generaci&oacute;n que viene dispuesta a cambiar las reglas del juego y plantarle cara a una industria profundamente masculinizada.</p>\r\n\r\n<p>No nos enga&ntilde;emos, los datos siguen siendo desesperanzadores. En el &uacute;ltimo informe CIMA, se apuntaba que tan solo un 12% de mujeres hab&iacute;an liderado una producci&oacute;n, frente a un avasallador 88% de hombres. Sin embargo, que en el 2018 se hayan estrenado m&aacute;s de diez debuts femeninos, no deja de ser una buena noticia.</p>\r\n\r\n<p>Si hace unos a&ntilde;os asist&iacute;amos al surgimiento de nombres como el de Leticia Dolera, Lara Izaguirre, Marina Seresesky, Elena Mart&iacute;n o el colectivo formado por Laila Alabart, Alba Cros, Laura Rius y Marta Verheyen responsables de &lsquo;Les amigues de l&#39;&Agrave;gata&rsquo;, as&iacute; como al asentamiento de figuras fundamentales como Mar Coll o Paula Ortiz, ahora es el momento de hablar de Celia Rico (&lsquo;Viaje al cuarto de una madre&rsquo;), Arantxa Echevarr&iacute;a (&lsquo;Carmen y Lola&rsquo;), Meritxell Colell (&lsquo;Con el viento&rsquo;), Anxos Faz&aacute;ns (&lsquo;A estaci&oacute;n violenta&rsquo;), Andrea Jaurrieta (&lsquo;Ana de d&iacute;a&rsquo;), Marta D&iacute;az (&lsquo;Mi querida cofrad&iacute;a&rsquo;), Carolina Astudillo (&lsquo;Ainhoa, yo no soy esa&rsquo;), Ana Asensio (&lsquo;Most Beautiful Island&rsquo;, esta bajo bandera estadounidense), Carmen Blanco (&lsquo;Los amores cobardes&rsquo;), Sara Guti&eacute;rrez Galve (&lsquo;Yo la busco&rsquo;), Clara Mart&iacute;nez L&aacute;zaro (&lsquo;Hacerse mayor y otros problemas&rsquo;) o Diana Toucedo (&lsquo;Trinta Lumes&rsquo;).</p>\r\n', 'directoras.jpg', '2018-12-10', '2018-12-12', '2018-12-12'),
+(140, 'Iris', 'Editor por defecto', 'Los editores de diccionarios Vox admiten que les desagrada que exista un partido con el mismo nombre', 1, 'La editorial prefiere que su marca no se asocie a la política', '<p>Los editores de los diccionarios Vox, con m&aacute;s de medio siglo de trayectoria, han admitido este lunes que les &quot;toca las narices&quot; que exista un partido con el mismo nombre, y preferir&iacute;an que su marca no se asociase a la pol&iacute;tica. &quot;Nosotros no nos presentamos a las elecciones, nos dedicamos a hacer diccionarios, a la cultura y a la investigaci&oacute;n&quot;, han explicado a Europa Press fuentes de la empresa.</p>\r\n\r\n<p>La editorial Vox, con sede en Barcelona e integrada en el Grupo Anaya, est&aacute; especializada desde hace d&eacute;cadas a la creaci&oacute;n de diccionarios monoling&uuml;es y biling&uuml;es, entre ellos de lat&iacute;n, la lengua en la que su nombre significa voz. La misma palabra que utiliz&oacute; para denominarse el partido de Santiago Abascal, que este domingo irrumpi&oacute; con fuerza en las elecciones andaluzas obteniendo 12 esca&ntilde;os, cuando se fund&oacute; en 2013.</p>\r\n', 'vox.jpg', '2018-12-10', '2018-12-12', '2018-12-12'),
+(141, 'Dimsa', 'Editor por defecto', 'España cae contra Holanda ', 3, 'España pierde casi al final del partido', '<p>Un gol en el &uacute;ltimo segundo de la lateral Lois Abbingh conden&oacute; a Espa&ntilde;a a su primera derrota en el Europeo de Francia, tras caer este lunes por 28-27 ante Holanda, la vigente subcampeona mundial, en un encuentro en el que Espa&ntilde;a demostr&oacute; que puede competir de t&uacute; a t&uacute; con las grandes potencias del balonmano mundial.</p>\r\n\r\n<p>Pero ni la excepcional actuaci&oacute;n del conjunto espa&ntilde;ol pudo evitar una derrota, que lleg&oacute; de la manera m&aacute;s cruel posible, con un lanzamiento de golpe franco de Abbingh en el &uacute;ltimo segundo, cuando Espa&ntilde;a contaba con tan s&oacute;lo cuatro jugadoras de pista por las exclusiones de Almudena Rodr&iacute;guez y Carmen Mart&iacute;n.</p>\r\n', 'guerreras.jpg', '2018-12-10', '2018-12-12', '2018-12-12');
+INSERT INTO `noticias` (`idnoticia`, `autor`, `editor`, `titulo`, `idseccion`, `subtitulo`, `texto`, `imagen`, `fechaCreacion`, `fechaModificacion`, `fechaPublicacion`) VALUES
+(142, 'Dimsa', 'Editor por defecto', 'Tokio 2020 propone adelantar el maratón a las 6 de la mañana para evitar el calor', 3, 'Se uniría a otras medidas ya previstas para mitigar las altas temperaturas', '<p>El Comit&eacute; Ol&iacute;mpico Internacional (COI) y la organizaci&oacute;n de Tokio 2020 han propuesto adelantar el inicio de las pruebas de marat&oacute;n a las 5.30 o 6.00 de la ma&ntilde;ana para evitar el intenso calor que se prev&eacute; en las fechas de la cita deportiva. Esta medida fue formulada por un comit&eacute; de expertos designado por el COI y la organizaci&oacute;n de Tokio 2020, y discutida durante las reuniones celebradas entre ambas partes en los &uacute;ltimos d&iacute;as en la capital nipona, seg&uacute;n asegur&oacute; el presidente de la Comisi&oacute;n de Coordinaci&oacute;n para los pr&oacute;ximos JJOO, el australiano John Coates.El objetivo del adelanto horario es evitar las horas centrales del d&iacute;a con temperaturas de entre 39 y 41 grados que se prev&eacute;n para las fechas de la competici&oacute;n ol&iacute;mpica (del 24 de julio al 9 de agosto de 2020). La medida cuenta con el respaldo de expertos en medicina deportiva y meteorolog&iacute;a y del Gobierno Metropolitano de Tokio, tras analizar lo que conllevar&iacute;a en t&eacute;rminos log&iacute;sticos, como una suficiente disponibilidad de transporte p&uacute;blico a horas tempranas del d&iacute;a.El COI y la organizaci&oacute;n de Tokio 2020 se encuentran actualmente en conversaciones con la Federaci&oacute;n Internacional de Asociaciones de Atletismo (IAAF, de sus siglas en ingl&eacute;s) para aprobar el cambio respecto a la hora de inicio fijada (las 7.00), algo que se espera que se formalice antes de finales de a&ntilde;o.</p>\r\n', 'maraton.jpg', '2018-12-11', '2018-12-12', '2018-12-12'),
+(143, 'Roi', 'Editor por defecto', 'El rey emérito regresa al Congreso más antimonárquico de la historia reciente', 1, 'En el 40 aniversario de la Constitución se suman las de En Comú Podem y Compromís.', '<p>Juan Carlos I conoce bien el Congreso de los Diputados. En el hemiciclo de la C&aacute;mara sancion&oacute; la Constituci&oacute;n que este jueves cumple 40 a&ntilde;os, y desde su tribuna ha presentado la apertura de la mayor&iacute;a de legislaturas que han tenido lugar en Espa&ntilde;a desde el final de la dictadura franquista. Pero algo ha cambiado en el Congreso, y una tendencia antimon&aacute;rquica, desde diferentes visiones e ideolog&iacute;as, ya no respalda su presencia en las Cortes, ni tampoco la de su hijo, Felipe VI.</p>\r\n\r\n<p>El aniversario de la Carta Magna reunir&aacute; este martes en el hemiciclo a dos reyes, el actual y el em&eacute;rito. Al acto conmemorativo asistir&aacute;n el presidente y los miembros del Gobierno, algunos presidentes auton&oacute;micos, los expresidentes, diputados, senadores y los denominados &quot;padres&quot; de la Constituci&oacute;n vivos, adem&aacute;s de los presidentes del Congreso y del Senado.</p>\r\n', '40constitucion.jpg', '2018-12-11', '2018-12-12', '2018-12-12'),
+(144, 'Roi', 'Editor por defecto', '20.198 aficionados en el Ciutat en el ‘derbi de la igualdad’', 3, 'El bautizado como ‘derbi de la igualdad’ entre el Levante y el Valencia acabó a 0 en el marcador', '<p>El bautizado como &lsquo;derbi de la igualdad&rsquo; entre el Levante y el Valencia acab&oacute; tambi&eacute;n en igualdad en el marcador, empate sin goles. Se cumplieron las mejores expectativas de asistencia. Un total de 20.198 aficionados acudieron al Ciutat de Valencia, que vivieron una gran fiesta del f&uacute;tbol. El objetivo del club granota era dar el mismo tratamiento al derbi que al masculino. Tambi&eacute;n, acercarse a los 24.073 espectadores del &uacute;ltimo derbi de LaLiga Santander.<br />\r\nEl choque empez&oacute; con mucho respeto entre ambos equipos. Pasada la media hora el Valencia empez&oacute; a aproximarse con peligro a la porter&iacute;a de Paraluta. La delantera chilena Yenara Aedo protagoniz&oacute; grandes ocasiones para el equipo valencianista. En el 27&rsquo; su lanzamiento se estrell&oacute; en el larguero y en el 33&rsquo; su disparo de cabeza lo despej&oacute; Alharilla.</p>\r\n\r\n<p>En la segunda parte la balanza se inclin&oacute; para el Levante, con ocasiones de Sonia, Jesica Silva y Charlyn. En el 57&rsquo; la mexicana tuvo la m&aacute;s clara tras el pase de Sonia. Con el Levante dominando, el Valencia lo sigui&oacute; intentando. Fue el derbi de la igualdad, tambi&eacute;n en el terreno de juego y en el resultado.</p>\r\n', 'derbigualdad.jpg', '2018-12-10', '2018-12-12', '2018-12-12'),
+(145, 'Eva', 'Editor por defecto', 'El PP destinó más de 65.000 euros de la caja B para pagar los trajes de Rajoy, Rato, Trillo y Cascos', 1, 'La unidad de la Policía Nacional fué la encargada de recuperar los papeles de Bárcenas', '<p>El PP destin&oacute; m&aacute;s de 65.000 euros de la caja B a servicios de sastrer&iacute;a para el expresidente del Gobierno Mariano Rajoy y los exministros conservadores Rodrigo Rato, Federico Trillo y Francisco &Aacute;lvarez Cascos, seg&uacute;n se desprende de los documentos relacionados con la contabilidad paralela de la formaci&oacute;n, investigados en la Audiencia Nacional en el marco de la operaci&oacute;n Kitchen.</p>\r\n\r\n<p>Una tarjeta del extesorero del PP Luis B&aacute;rcenas revela los pagos que la formaci&oacute;n hizo a un sastre para elaborar los trajes de los altos cargos, seg&uacute;n ha tenido acceso El Independiente. En este sentido, el PP abon&oacute; 12.620 euros por los servicios de sastrer&iacute;a para Rajoy, 13.700 euros para los de Rato, as&iacute; como 19.830 euros para &Aacute;lvarez Cascos. Tambi&eacute;n, se recoge otro importe a nombre de Trillo por el valor de 19.470 euros. En total suman 65.623 euros.</p>\r\n', 'cajab.jpg', '2018-12-11', '2018-12-12', '2018-12-12'),
+(146, 'Eva', 'Editor por defecto', 'Reino Unido puede revocar el Brexit según el Tribunal de Justicia de la Unión Europea', 1, 'La institución rechaza que solo los Veintisiete puedan decidir de manera detener la separación', '<p>Hasta el &uacute;ltimo minuto. Reino Unido podr&aacute; suspender unilateralmente el proceso de salida de la Uni&oacute;n Europea en cualquier momento hasta la medianoche del 29 de marzo de 2019, fecha prevista para la consumaci&oacute;n del Brexit, seg&uacute;n ha sentenciado este lunes el Tribunal de Justicia de la Uni&oacute;n Europea (TJUE).</p>\r\n\r\n<p><br />\r\nEl esperado veredicto resuelve uno de los dilemas jur&iacute;dicos planteados por la primera salida de un socio de la Uni&oacute;n. Y aunque el Gobierno de Theresa May insiste en que no tiene intenci&oacute;n de frenar el proceso, la sentencia llega la v&iacute;spera de una sesi&oacute;n del Parlamento brit&aacute;nico en la que podr&iacute;a rechazarse el acuerdo de salida negociado por Londres con la Uni&oacute;n Europea, lo que abrir&iacute;a nuevos escenarios, incluida la posibilidad de que no se lleve a cabo el Brexit.</p>\r\n', 'brexit.jpg', '2018-12-11', '2018-12-12', '2018-12-12'),
+(147, 'Iris', 'Editor por defecto', 'Premio Nobel de la Paz 2018 al ginecólogo congoleño Denis Mukwege y la activista yazidí Nadia Murad', 2, 'El Comité Noruego les ha concedido el galardón por su labor en la lucha contra la violencia sexual', '<p>Denis Mukwege y Nadia Murad han sido galardonados este viernes con el Premio Nobel de la Paz 2018. El Comit&eacute; Noruego lo ha anunciado a las 11.00. Denis Mukwege, un ginec&oacute;logo que cura a mujeres violadas en la Rep&uacute;blica Democr&aacute;tica del Congo (RDC), y la activista iraqu&iacute; de origen yazid&iacute; Nadia Murad, de 25 a&ntilde;os, exesclava del grupo yihadista Estado Isl&aacute;mico entraban en todas las quinielas y finalmente han sido los galardonados. Ambos, adem&aacute;s, fueron ganadores del Premio Saj&aacute;rov que concede el Parlamento Europeo. El Comit&eacute; Noruego ha concedido el galard&oacute;n por la labor de ambos en la lucha contra la violencia sexual.</p>\r\n', 'pnpaz.jpg', '2018-12-11', '2018-12-12', '2018-12-12'),
+(148, 'periodista', 'Editor por defecto', 'El Consejo de Ministros en Barcelona se celebrará en la Cámara de Comercio', 1, 'La portavoz del Govern señala que la Llotja de Mar no es la mejor ubicación', '<p>La reuni&oacute;n del <strong>Consejo de Ministros </strong>del pr&oacute;ximo viernes 21 de diciembre se realizar&aacute; finalmente en la Llotja de Mar, uno de los edificios m&aacute;s emblem&aacute;ticos y representativos de la econom&iacute;a y la cultura de Barcelona, seg&uacute;n han informado fuentes de Moncloa. Este lugar es actualmente la sede de la C&aacute;mara Oficial de Comercio, Industria y Navegaci&oacute;n, ubicado en el Paseo de Isabel II de la capital catalana, al final de Via Laietana y muy cerca del puerto de la ciudad. La portavoz del Gobierno catal&aacute;n, Elsa Artadi, ha considerado que celebrar la reuni&oacute;n en el centro de Barcelona no es la mejor ubicaci&oacute;n: &quot;Hay sitios que favorecen mejor la movilidad que otros&quot;.</p>\r\n', '', '2018-12-11', '2018-12-12', '2018-12-12');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de la taula `seccion`
+--
+
+CREATE TABLE `seccion` (
+  `idseccion` int(11) NOT NULL,
+  `descripcion` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Bolcant dades de la taula `seccion`
+--
+
+INSERT INTO `seccion` (`idseccion`, `descripcion`) VALUES
+(1, 'politica'),
+(2, 'cultura'),
+(3, 'deportes');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de la taula `tipousuarios`
+--
+
+CREATE TABLE `tipousuarios` (
+  `idtipousuario` int(11) NOT NULL,
+  `tipousuarios` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Bolcant dades de la taula `tipousuarios`
+--
+
+INSERT INTO `tipousuarios` (`idtipousuario`, `tipousuarios`) VALUES
+(1, 'ADMINISTRADOR'),
+(2, 'PERIODISTA'),
+(3, 'EDITOR');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de la taula `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `username` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `nombre` varchar(45) NOT NULL,
+  `idtipousuario` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Bolcant dades de la taula `usuarios`
+--
+
+INSERT INTO `usuarios` (`username`, `password`, `nombre`, `idtipousuario`) VALUES
+('administradora', '1111', 'Iris Martínez  Solano', 1),
+('Buuu', '1234', 'Prusti', 3),
+('Cloita', '2222', 'Cloita Prustiana', 2),
+('Dimsa', '1111', 'Dimsa Dos Cos', 2),
+('editor', '1111', 'Pringaten Primer', 3),
+('Editor por defecto', '1111', 'Editor por defecto', 3),
+('Eva', '1111', 'Eva Lujan', 2),
+('Iris', '1111', 'Iris Martínez', 2),
+('Mininem', '1111', 'Mininem Prustiana', 1),
+('periodista', '1111', 'Mininem Lujan', 2),
+('Roi', '1111', 'Roi Vázquez', 2),
+('Rosca', 'value', 'oscar', 1),
+('Supercloe', 'oxieva', 'etweryeryh', 3);
+
+--
+-- Indexos per taules bolcades
+--
+
+--
+-- Index de la taula `keywords`
+--
+ALTER TABLE `keywords`
+  ADD PRIMARY KEY (`idKeyword`);
+
+--
+-- Index de la taula `keywordsnoticia`
+--
+ALTER TABLE `keywordsnoticia`
+  ADD PRIMARY KEY (`idnoticia`,`idkeyword`),
+  ADD KEY `fk_keywordsNoticia_1_idx` (`idkeyword`);
+
+--
+-- Index de la taula `noticias`
+--
+ALTER TABLE `noticias`
+  ADD PRIMARY KEY (`idnoticia`),
+  ADD KEY `fk_noticias_1_idx` (`idseccion`),
+  ADD KEY `fk_noticias_2_idx` (`autor`),
+  ADD KEY `fk_noticias_3_idx` (`editor`);
+
+--
+-- Index de la taula `seccion`
+--
+ALTER TABLE `seccion`
+  ADD PRIMARY KEY (`idseccion`);
+
+--
+-- Index de la taula `tipousuarios`
+--
+ALTER TABLE `tipousuarios`
+  ADD PRIMARY KEY (`idtipousuario`);
+
+--
+-- Index de la taula `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`username`),
+  ADD KEY `fk_usuarios_1_idx` (`idtipousuario`);
+
+--
+-- AUTO_INCREMENT per les taules bolcades
+--
+
+--
+-- AUTO_INCREMENT per la taula `keywords`
+--
+ALTER TABLE `keywords`
+  MODIFY `idKeyword` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT per la taula `noticias`
+--
+ALTER TABLE `noticias`
+  MODIFY `idnoticia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
+
+--
+-- Restriccions per taules bolcades
+--
+
+--
+-- Restriccions per la taula `keywordsnoticia`
+--
+ALTER TABLE `keywordsnoticia`
+  ADD CONSTRAINT `fk_keywordsNoticia_1` FOREIGN KEY (`idkeyword`) REFERENCES `keywords` (`idKeyword`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_keywordsNoticia_2` FOREIGN KEY (`idnoticia`) REFERENCES `noticias` (`idnoticia`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Restriccions per la taula `noticias`
+--
+ALTER TABLE `noticias`
+  ADD CONSTRAINT `fk_noticias_1` FOREIGN KEY (`idseccion`) REFERENCES `seccion` (`idseccion`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_noticias_2` FOREIGN KEY (`autor`) REFERENCES `usuarios` (`username`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_noticias_3` FOREIGN KEY (`editor`) REFERENCES `usuarios` (`username`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Restriccions per la taula `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `fk_usuarios_1` FOREIGN KEY (`idtipousuario`) REFERENCES `tipousuarios` (`idtipousuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
