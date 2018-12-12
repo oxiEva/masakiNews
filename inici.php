@@ -49,8 +49,6 @@
                   <li class="nav-item">
                       <a class="nav-link" href="View/mostrarNoticiasPublicadas.php?idseccion=1">Política</a>
                   </li>
-
-                  <?php /* var_dump($idseccion); exit();*/?>
                   <li class="nav-item">
                       <a class="nav-link" href="View/mostrarNoticiasPublicadas.php?idseccion=2">Cultura</a>
                   </li>
@@ -62,46 +60,46 @@
       </div>
   </nav>
 
-    <header>
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" role="listbox">
-          <!-- Slide One - Set the background image for this slide in the line below -->
-          <div class="carousel-item active" style="background-image: url('View/imagenes/libros.jpg')">
-            <div class="carousel-caption d-none d-md-block">
-              <h3>Feria del libro</h3>
-              <p>Empieza la 78ª feria del libro en Madrid.</p>
-            </div>
-          </div>
-          <!-- Slide Two - Set the background image for this slide in the line below -->
-          <div class="carousel-item" style="background-image: url('View/imagenes/coches.jpg')">
-            <div class="carousel-caption d-none d-md-block">
-              <h3>La DGT trabaja para reducir la contaminación</h3>
-              <p>El límite será de 30 km/h en todas las ciudades</p>
-            </div>
-          </div>
-          <!-- Slide Three - Set the background image for this slide in the line below -->
-          <div class="carousel-item" style="background-image: url('View/imagenes/ciclismo.jpg')">
-            <div class="carousel-caption d-none d-md-block">
-              <h3>La Vuelta ciclista</h3>
-              <p>Participantes de la Vuelta España.</p>
-            </div>
+  <header>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <!-- Slide One - Set the background image for this slide in the line below -->
+        <div class="carousel-item active" style="background-image: url('View/imagenes/libros.jpg')">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>Feria del libro</h3>
+            <p>Empieza la 78ª feria del libro en Madrid.</p>
           </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
+        <!-- Slide Two - Set the background image for this slide in the line below -->
+        <div class="carousel-item" style="background-image: url('View/imagenes/coches.jpg')">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>La DGT trabaja para reducir la contaminación</h3>
+            <p>El límite será de 30 km/h en todas las ciudades</p>
+          </div>
+        </div>
+        <!-- Slide Three - Set the background image for this slide in the line below -->
+        <div class="carousel-item" style="background-image: url('View/imagenes/ciclismo.jpg')">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>La Vuelta ciclista</h3>
+            <p>Participantes de la Vuelta España.</p>
+          </div>
+        </div>
       </div>
-    </header>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </header>
 
     <!-- Page Content -->
     <div class="container">
